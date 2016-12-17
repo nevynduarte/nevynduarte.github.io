@@ -1,2 +1,1 @@
-# nevynduarte.github.io
-My Personal Site
+#Nevyn Duarte's Personal Site
