@@ -4,28 +4,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="shortcut icon" href="images/favicon.ico"/>
 		<script>
-			document.title = "blah";
-			var origTitle = document.title;
-			document.title = "You have ("+x+") new messages - "+origTitle;
-			var origTitle = document.title;
-			var isChatTab = false; // Set to true/false by separate DOM event.
-			var animStep = true;
-			var animateTitle = function() {
-			    if (isChatTab) {
-				if (animStep) {
-				    document.title = "You have ("+x+") new messages - "+origTitle;
-				} else {
-				    document.title = origTitle;
-				}
-				animStep = !animStep;
-			    } else {
-				    document.title = origTitle;
-				    animStep = false;
-			    }
-			    setTimeout(animateTitle, 5000);
-			};
-
-			animateTitle();
+			window.onfocus = function () { document.title = "Nevyn Duarte - Aspiring Software Engineer; }
+			window.onblur = function () { document.title = "Hey, look at this!"; }
 		</script>
 	</head>
 	<body>
