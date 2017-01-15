@@ -1,10 +1,17 @@
 /* Original Stylesheet for Personal Site of Nevyn Duarte */
 
+.container{
+}
+
 .nameplate {
   font-family: 'Roboto Mono', monospace;
   font-size: 70px;
   text-align: center;
-  padding-bottom: 2%;
+}
+
+.sheader {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 40px;
 }
 
 .description {
@@ -22,10 +29,31 @@
   margin-top: 5%;
 }
 
+.cicon {
+  height: auto;
+  width: 35px;
+  padding: 2%;
+  padding-top: 1%;
+}
+
 @media only screen and (max-width: 100px) {
   .profile {
     padding-bottom: 3%;
     width: 100%;
+  }
+  .description {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10vw;
+  }
+  .nameplate {
+    font-size: 40vw;
+  }
+  .sheader {
+    font-size: 32vw;
+  }
+  .cicon {
+    height: auto;
+    width: 0px;
   }
 }
 
@@ -40,8 +68,13 @@
     font-size: 5vw;
   }
   .nameplate {
-    font-size: 20vw;
-    padding-bottom: 1%;
+    font-size: 40vw;
+  }
+  .sheader {
+    font-size: 25vw;
+  }
+  .cicon {
+    width: auto;
   }
 }
 
@@ -49,10 +82,20 @@
   .profile {
     padding-bottom: 7%;
   }
+  .cicon {
+    width: auto;
+  }
 }
 
 @media only screen and (max-width: 800px) {
   .nameplate {
     font-size: 8vw;
+  }
+  .sheader {
+    font-size: 7vw;
+  }
+  .cicon {
+    width: 30px;
+    padding-bottom: 5%;
   }
 }
