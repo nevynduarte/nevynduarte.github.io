@@ -1,0 +1,131 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Negotiatus Sales Dashboard</title>
+  <meta name="description" content="Negotiatus Sales Dashboard">
+  <meta name="author" content="Nevyn Duarte">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div class="chart-container" style="position: relative; float: left; height: 95vh; width: 49.115vw; border-right: medium solid #BEC0C2; margin-top: 2%">
+    <p style="text-align: center; position: absolute; top: 3vh; left: 0vh; width: 100%; font-family: 'Martel Sans', sans-serif; font-size: xx-large; color: #4a4c4f;">THIS MONTH</p>
+    <p style="text-align: center; position: absolute; top: 9vh; left: 0vh; width: 100%; font-family: 'Martel Sans', sans-serif; font-size: 700%; color: #50CEA2;">$35,000</p>
+    <p style="text-align: center; position: absolute; top: 31vh; left: 0vh; width: 100%; font-family: 'Martel Sans', sans-serif; font-size: xx-large; color: #4a4c4f;">Revenue: <span style="color: red">(-12%)</span></p>
+    <p style="text-align: center; position: absolute; top: 44vh; left: 0vh; width: 100%; font-family: 'Martel Sans', sans-serif; font-size: 700%; color: #50CEA2;">$35,000</p>
+    <p style="text-align: center; position: absolute; top: 66vh; left: 0vh; width: 100%; font-family: 'Martel Sans', sans-serif; font-size: xx-large; color: #4a4c4f;">Revenue: <span style="color: #2a8465">(+18%)</span></p>
+    <canvas id="myChart"></canvas>
+  </div>
+  <div class="chart-container" style="position: relative; float: right; height: 95vh; width: 49.115vw; margin-top: 2%">
+    <p style="text-align: center; position: absolute; top: 3vh; left: 0vh; width: 100%; font-family: 'Martel Sans', sans-serif; font-size: xx-large; color: #4a4c4f;">THIS MONTH</p>
+    <p style="text-align: center; position: absolute; top: 9vh; left: 0vh; width: 100%; font-family: 'Martel Sans', sans-serif; font-size: 700%; color: #50CEA2;">$35,000</p>
+    <p style="text-align: center; position: absolute; top: 31vh; left: 0vh; width: 100%; font-family: 'Martel Sans', sans-serif; font-size: xx-large; color: #4a4c4f;">Revenue: <span style="color: red">(-12%)</span></p>
+    <p style="text-align: center; position: absolute; top: 44vh; left: 0vh; width: 100%; font-family: 'Martel Sans', sans-serif; font-size: 700%; color: #50CEA2;">$35,000</p>
+    <p style="text-align: center; position: absolute; top: 66vh; left: 0vh; width: 100%; font-family: 'Martel Sans', sans-serif; font-size: xx-large; color: #4a4c4f;">Revenue: <span style="color: #2a8465">(+18%)</span></p>
+    <canvas id="myChart2"></canvas>
+  </div>
+  <script src="js/scripts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'line',
+
+      // The data for our dataset
+      data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [{
+              label: "My First dataset",
+              backgroundColor: 'rgb(237,241,245)',
+              borderColor: 'rgb(237,241,245)',
+              data: [500, 10, 5, 2, 20, 30, 45],
+              lineTension: 0,
+          }]
+      },
+
+
+      // Configuration options go here
+      options: {
+        legend: {
+            display: false
+         },
+         tooltips: {
+            enabled: true
+         },
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          xAxes: [{
+            display: false,
+            gridLines: {
+              drawOnChartArea: false
+            }
+          }],
+          yAxes: [{
+            display: false,
+            gridLines: {
+              drawOnChartArea: false
+            }
+          }]
+        }
+      }
+    });
+  </script>
+  <script>
+    var ctx = document.getElementById('myChart2').getContext('2d');
+    var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'line',
+
+      // The data for our dataset
+      data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [{
+              label: "My First dataset",
+              backgroundColor: 'rgb(237,241,245)',
+              borderColor: 'rgb(237,241,245)',
+              data: [0, 10, 5, 2, 20, 30, 45],
+              lineTension: 0,
+          }]
+      },
+
+
+      // Configuration options go here
+      options: {
+        legend: {
+            display: false
+         },
+         tooltips: {
+            enabled: true
+         },
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          xAxes: [{
+            display: false,
+            gridLines: {
+              drawOnChartArea: false
+            }
+          }],
+          yAxes: [{
+            display: false,
+            gridLines: {
+              drawOnChartArea: false
+            }
+          }]
+        }
+      }
+    });
+  </script>
+</body>
+</html>
