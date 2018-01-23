@@ -41,6 +41,9 @@ body {
   .twelve.columns {
     width: 100%; margin-left: 0;
   }
+  .six.columns {
+    width: 50%; margin-left: 0;
+  }
 }
 
 .nameplate {
@@ -63,14 +66,22 @@ body {
   font-size: 20px;
 }
 
-.profile {
-  width: 300px;
-  height: 300px;
-  display: block;
-  margin: auto;
-  padding: 2%;
-  padding-bottom: 4%;
-  margin-top: 5%;
+.image_off, #home:hover .image_on{
+   display: none;
+   width: 300px;
+   height: 300px;
+   padding: 2%;
+   padding-bottom: 4%;
+   margin-top: 5%;
+}
+
+.image_on, #home:hover .image_off{
+   display: block;
+   width: 300px;
+   height: 300px;
+   padding: 2%;
+   padding-bottom: 4%;
+   margin-top: 5%;
 }
 
 .cicon {
