@@ -72,7 +72,14 @@ body {
    height: 300px;
    padding: 2%;
    padding-bottom: 4%;
-   margin-top: 5%;
+   margin-top: 15%;
+   margin-bottom: 10%;
+}
+
+.horizontal-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .image_on, #home:hover .image_off{
@@ -81,7 +88,8 @@ body {
    height: 300px;
    padding: 2%;
    padding-bottom: 4%;
-   margin-top: 5%;
+   margin-top: 15%;
+   margin-bottom: 10%;
 }
 
 .cicon {
