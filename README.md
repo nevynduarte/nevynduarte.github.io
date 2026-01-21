@@ -16,10 +16,10 @@ A modern, professional portfolio site designed to showcase experience in Machine
 ├── css/
 │   └── style.css       # Stylesheet
 ├── images/
-│   ├── profilepic.png  # Profile photo
+│   ├── profilepic.jpg  # Profile photo
 │   ├── favicon.ico     # Site favicon
 │   └── ...             # Other assets
-└── goaltracker.html    # Interactive goal tracker
+└── NevynDuarteResume.pdf
 ```
 
 ## Sections
@@ -29,8 +29,11 @@ A modern, professional portfolio site designed to showcase experience in Machine
 3. **Experience** - Professional history with tech tags
 4. **Projects** - Featured work including ML research
 5. **Education** - Academic credentials
-6. **Currently Reading** - Recent and current book list
-7. **Contact** - Links and call-to-action
+6. **Contact** - Links and call-to-action
+
+## Deployment
+
+This site is designed for GitHub Pages. Simply push to a repository named `username.github.io`.
 
 ## Tech Stack
 
