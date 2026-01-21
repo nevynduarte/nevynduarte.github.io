@@ -31,6 +31,8 @@
                 <a href="#about">About</a>
                 <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
+                <a href="#research">Research</a>
+                <a href="#blog">Blog</a>
                 <a href="#contact">Contact</a>
                 <a href="NevynDuarteResume.pdf" class="nav-cta" target="_blank">Resume ↗</a>
             </div>
@@ -46,6 +48,8 @@
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#blog">Blog</a>
         <a href="#contact">Contact</a>
         <a href="NevynDuarteResume.pdf" target="_blank">Resume ↗</a>
     </div>
@@ -374,10 +378,245 @@
     </section>
 
     <!-- Education Section -->
-    <section class="section education">
+    <section id="research" class="section research">
         <div class="section-inner">
             <div class="section-header">
                 <span class="section-number">04</span>
+                <h2 class="section-title">Research & Foundations</h2>
+            </div>
+            <div class="research-intro">
+                <div class="research-philosophy">
+                    <h3>Research philosophy</h3>
+                    <p>
+                        My work is grounded in statistical theory, machine learning research, and systems design. I
+                        actively study academic papers, textbooks, and practitioner research to inform how I design
+                        models, evaluate risk, and build production-ready systems.
+                    </p>
+                    <p>
+                        I organize readings by domain to mirror how I approach problems in practice: theory first,
+                        empirical validation second, and engineering constraints always in view.
+                    </p>
+                </div>
+                <div class="research-status">
+                    <h3>Reading status taxonomy</h3>
+                    <ul class="status-list">
+                        <li><span class="status-tag completed">Completed</span> Core understanding established.</li>
+                        <li><span class="status-tag in-progress">In Progress</span> Actively working through.</li>
+                        <li><span class="status-tag reference">Revisited / Reference</span> Used for quick refreshers.</li>
+                        <li><span class="status-tag applied">Applied in Projects</span> Directly influenced model or system
+                            choices.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="research-domains">
+                <article class="research-card">
+                    <h3>Statistical Learning & Inference</h3>
+                    <div class="research-entry">
+                        <div class="entry-header">
+                            <span class="entry-title">The Elements of Statistical Learning</span>
+                            <span class="entry-meta">Hastie, Tibshirani, Friedman • 2009</span>
+                        </div>
+                        <p class="entry-why">
+                            Why it matters: Formalizes bias-variance tradeoffs and model diagnostics for high-stakes
+                            prediction.
+                        </p>
+                        <p class="entry-application">
+                            Application: Used to justify regularization and model complexity in equity prediction
+                            pipelines.
+                        </p>
+                        <span class="status-tag applied">Applied in Projects</span>
+                    </div>
+                    <div class="research-entry">
+                        <div class="entry-header">
+                            <span class="entry-title">All of Statistics</span>
+                            <span class="entry-meta">Larry Wasserman • 2004</span>
+                        </div>
+                        <p class="entry-why">
+                            Why it matters: Reinforces probabilistic foundations for inference and experimental design.
+                        </p>
+                        <p class="entry-application">
+                            Application: Revisited for uncertainty quantification and hypothesis testing workflows.
+                        </p>
+                        <span class="status-tag reference">Revisited / Reference</span>
+                    </div>
+                </article>
+
+                <article class="research-card">
+                    <h3>Machine Learning & AI</h3>
+                    <div class="research-entry">
+                        <div class="entry-header">
+                            <span class="entry-title">Deep Learning</span>
+                            <span class="entry-meta">Goodfellow, Bengio, Courville • 2016</span>
+                        </div>
+                        <p class="entry-why">
+                            Why it matters: Provides the theoretical grounding for representation learning and
+                            optimization dynamics.
+                        </p>
+                        <p class="entry-application">
+                            Application: Informs architecture selection and training stability checks for NLP models.
+                        </p>
+                        <span class="status-tag completed">Completed</span>
+                    </div>
+                    <div class="research-entry">
+                        <div class="entry-header">
+                            <span class="entry-title">On Calibration of Modern Neural Networks</span>
+                            <span class="entry-meta">Guo et al. • 2017</span>
+                        </div>
+                        <p class="entry-why">
+                            Why it matters: Highlights reliability gaps between accuracy and confidence.
+                        </p>
+                        <p class="entry-application">
+                            Application: Evaluating post-hoc calibration for classification confidence in production.
+                        </p>
+                        <span class="status-tag in-progress">In Progress</span>
+                    </div>
+                </article>
+
+                <article class="research-card">
+                    <h3>Quantitative Finance</h3>
+                    <div class="research-entry">
+                        <div class="entry-header">
+                            <span class="entry-title">Active Portfolio Management</span>
+                            <span class="entry-meta">Grinold, Kahn • 2000</span>
+                        </div>
+                        <p class="entry-why">
+                            Why it matters: Frames alpha generation and risk budgeting in a systematic way.
+                        </p>
+                        <p class="entry-application">
+                            Application: Used to translate research factors into portfolio constraints.
+                        </p>
+                        <span class="status-tag applied">Applied in Projects</span>
+                    </div>
+                    <div class="research-entry">
+                        <div class="entry-header">
+                            <span class="entry-title">Advances in Financial Machine Learning</span>
+                            <span class="entry-meta">Marcos López de Prado • 2018</span>
+                        </div>
+                        <p class="entry-why">
+                            Why it matters: Focuses on leakage, backtest overfitting, and financial time-series reality.
+                        </p>
+                        <p class="entry-application">
+                            Application: Revisited when designing validation for alternative data models.
+                        </p>
+                        <span class="status-tag reference">Revisited / Reference</span>
+                    </div>
+                </article>
+
+                <article class="research-card">
+                    <h3>Software Engineering & Systems</h3>
+                    <div class="research-entry">
+                        <div class="entry-header">
+                            <span class="entry-title">Designing Data-Intensive Applications</span>
+                            <span class="entry-meta">Martin Kleppmann • 2017</span>
+                        </div>
+                        <p class="entry-why">
+                            Why it matters: Clarifies tradeoffs in distributed systems and data pipelines.
+                        </p>
+                        <p class="entry-application">
+                            Application: Influenced event-driven ingestion and storage decisions in ML pipelines.
+                        </p>
+                        <span class="status-tag completed">Completed</span>
+                    </div>
+                    <div class="research-entry">
+                        <div class="entry-header">
+                            <span class="entry-title">Hidden Technical Debt in Machine Learning Systems</span>
+                            <span class="entry-meta">Sculley et al. • 2015</span>
+                        </div>
+                        <p class="entry-why">
+                            Why it matters: Explains why production ML systems degrade without rigorous engineering
+                            discipline.
+                        </p>
+                        <p class="entry-application">
+                            Application: Applied to monitoring, validation, and pipeline resilience checks.
+                        </p>
+                        <span class="status-tag applied">Applied in Projects</span>
+                    </div>
+                </article>
+            </div>
+            <div class="research-forward">
+                <h3>Forward-looking research interests</h3>
+                <ul class="research-interests">
+                    <li>Representation learning for structured and tabular data</li>
+                    <li>Model interpretability under regulatory constraints</li>
+                    <li>Time-series forecasting under non-stationarity</li>
+                    <li>Risk-aware optimization and decision-making</li>
+                </ul>
+                <p class="research-link">
+                    Curious how these themes show up in practice? <a href="#projects">See related projects →</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="section blog">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Blog & Technical Commentary</h2>
+            </div>
+            <div class="blog-intro">
+                <p>
+                    Writing is how I pressure-test ideas, document tradeoffs, and translate research into production
+                    decisions. These posts are structured like internal design reviews and research memos.
+                </p>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <span class="blog-pill">Project Deep Dive</span>
+                    <h3>Designing equity prediction models that survive data drift</h3>
+                    <p>
+                        A walkthrough of how I set up evaluation, leakage checks, and monitoring for alternative data
+                        signals in production research pipelines.
+                    </p>
+                    <ul>
+                        <li>Problem framing and signal selection</li>
+                        <li>Validation strategy for non-stationary data</li>
+                        <li>Engineering guardrails to prevent silent failure</li>
+                    </ul>
+                    <span class="blog-status">Drafting</span>
+                </article>
+
+                <article class="blog-card">
+                    <span class="blog-pill">Research → Practice</span>
+                    <h3>Calibration is not optional in financial classification</h3>
+                    <p>
+                        Translating neural network calibration research into decision-making thresholds for risk-aware
+                        models.
+                    </p>
+                    <ul>
+                        <li>Why accuracy hides confidence issues</li>
+                        <li>Temperature scaling for deployment</li>
+                        <li>Aligning prediction confidence with action</li>
+                    </ul>
+                    <span class="blog-status">Outline in progress</span>
+                </article>
+
+                <article class="blog-card">
+                    <span class="blog-pill">Technical Opinion</span>
+                    <h3>Most ML pipelines fail silently — here is how I audit them</h3>
+                    <p>
+                        A practical checklist for monitoring data contracts, model drift, and feature integrity in
+                        production ML systems.
+                    </p>
+                    <ul>
+                        <li>Pipeline health as a first-class metric</li>
+                        <li>Detecting leakage and training skew</li>
+                        <li>Designing actionable alerts</li>
+                    </ul>
+                    <span class="blog-status">Drafting</span>
+                </article>
+            </div>
+            <p class="blog-link">
+                Want deeper dives? <a href="#contact">Reach out and I can share full drafts.</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section education">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">06</span>
                 <h2 class="section-title">Education</h2>
             </div>
             <div class="education-grid">
@@ -493,7 +732,9 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.experience-item, .project-card, .edu-card, .skill-category').forEach(el => {
+        document.querySelectorAll(
+            '.experience-item, .project-card, .edu-card, .skill-category, .research-card, .blog-card'
+        ).forEach(el => {
             observer.observe(el);
         });
 
