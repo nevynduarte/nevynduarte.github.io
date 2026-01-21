@@ -1,77 +1,517 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-	<link rel="stylesheet" href="css/style.min.css">
-	<link rel="icon" href="images/favicon.ico" />
-	<title>Nevyn Duarte - Personal Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nevyn Duarte - Data Scientist & ML Engineer specializing in quantitative finance, machine learning, and predictive modeling.">
+    <title>Nevyn Duarte | Data Scientist & ML Engineer</title>
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-	<div class="container">
-		<div class="twelve columns horizontal-center">
-			<a id="home">
-				<img class="image_on" src="images/profilepic.jpg" alt="logo" />
-				<img class="image_off" src="images/duarte_material.jpg" alt="logo" />
-			</a>
-		</div>
-		<div class="twelve columns">
-			<h1 class="nameplate">Nevyn Duarte</h1>
-			<div class="cicontainer">
-				<a href="https://www.linkedin.com/in/nevynduarte/" class="nounderline" target='_blank'>
-					<img src="images/linkedin.png" alt="LinkedIn" class="cicon linkedin">
-				</a>
-				<a class="nounderline" href="mailto:me@nevynduarte.com" target='_blank'>
-					<img src="images/email.png" alt="Email" class="cicon">
-				</a>
-				<a class="nounderline" href="https://www.github.com/nevynduarte/" target='_blank'>
-					<img src="images/github.png" alt="GitHub" class="cicon">
-				</a>
-				<a class="nounderline" href="https://www.twitter.com/nevynduarte/" target='_blank'>
-					<img src="images/twitter.png" alt="Twitter" class="cicon">
-				</a>
-				<a class="nounderline" href="tel:917-650-0432" target='_blank'>
-					<img src="images/phone.png" alt="Phone" class="cicon">
-				</a>
-			</div>
-			<p class="description">
-				Hi, I'm Nevyn. I'm a student pursuing a Bachelor of Science in Mathematics at the University of Texas at Austin and a Bachelor of Science in Computer Science at the University of the People, a data analyst, quantiative developer, software engineer, and tech enthusiast.
-				Check out my resume <a href="https://rb.gy/yqv2ta" target="_blank">here</a>.
-			</p>
-			<p class="description">
-				Also, if you're interested, here's what I'm reading:
-			</p>
-		</div>
-		<div class="six columns">
-			<p class="stitle">
-				Current
-			</p>
-			<p class="description">
-				<ul>
-				<li><i> Understanding Machine Learning: From Theory to Algorithms </i> by Shai Shalev-Shwartz and Shai Ben-David</li>
-				<li><i> Options, Futures and Other Derivatives</i> by John Hull</li>
-				<li><i> The Concepts and Practice of Mathematical Finance</i> by Mark Joshi</li>
-				<li><i> Deep Learning</i> by Ian Goodfellow, Yoshua Bengio, Aaron Courville, and Francis Bach</li>
-			</ul>
-			</p>
-		</div>
-		<div class="six columns">
-			<p class="stitle">
-				Finished
-			</p>
-			<p class="description">
+    <!-- Subtle grid background -->
+    <div class="grid-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">nd</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <a href="https://rb.gy/yqv2ta" class="nav-cta" target="_blank">Resume ↗</a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
 
-			</p>
-		</div>
-		<div class="twelve columns">
-			<p>Made with &hearts; in New York City.</p>
-		</div>
-	</div>
-</body>
-<script src="js/script.min.js" />
-</script>
+    <!-- Mobile menu -->
+    <div class="mobile-menu">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="https://rb.gy/yqv2ta" target="_blank">Resume ↗</a>
+    </div>
 
-</html>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="hero-label">Data Scientist & ML Engineer</p>
+                <h1 class="hero-title">
+                    <span class="line">Building predictive</span>
+                    <span class="line">models at the</span>
+                    <span class="line"><em>intersection</em> of</span>
+                    <span class="line">ML & finance</span>
+                </h1>
+                <p class="hero-description">
+                    I develop machine learning systems and quantitative models for financial applications. 
+                    Currently pursuing my M.S. in Data Science at CU Boulder while building tools that 
+                    turn alternative data into actionable insights.
+                </p>
+                <div class="hero-cta">
+                    <a href="#experience" class="btn btn-primary">View my work</a>
+                    <a href="#contact" class="btn btn-secondary">Get in touch</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="profile-container">
+                    <img src="images/profilepic.png" alt="Nevyn Duarte" class="profile-img">
+                    <div class="profile-accent"></div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">$10B+</span>
+                        <span class="stat-label">AUM Supported</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">About</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-lead">
+                        I'm a Data Scientist with deep experience in quantitative finance, 
+                        statistical modeling, and machine learning engineering.
+                    </p>
+                    <p>
+                        My background spans equity research at Jefferies, risk analysis supporting 
+                        hedge funds with $10B+ AUM, and deploying NLP models at scale. I've built 
+                        predictive models trained on millions of financial transactions and automated 
+                        workflows that cut reporting cycles from quarterly to monthly.
+                    </p>
+                    <p>
+                        I hold a B.S. in Mathematics from UT Austin and am currently completing 
+                        my M.S. in Data Science at CU Boulder, where I'm deepening my expertise 
+                        in deep learning, parallel computing, and advanced statistical methods.
+                    </p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>ML & AI</h3>
+                        <ul>
+                            <li>PyTorch</li>
+                            <li>TensorFlow</li>
+                            <li>scikit-learn</li>
+                            <li>HuggingFace</li>
+                            <li>XGBoost</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Data Engineering</h3>
+                        <ul>
+                            <li>PySpark</li>
+                            <li>Databricks</li>
+                            <li>SQL</li>
+                            <li>AWS</li>
+                            <li>Docker</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <ul>
+                            <li>Python</li>
+                            <li>R</li>
+                            <li>Go</li>
+                            <li>C++</li>
+                            <li>SQL</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Finance Tools</h3>
+                        <ul>
+                            <li>FactSet</li>
+                            <li>Bloomberg</li>
+                            <li>Tableau</li>
+                            <li>Power BI</li>
+                            <li>JMP</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section experience">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Experience</h2>
+            </div>
+            <div class="experience-list">
+                <article class="experience-item">
+                    <div class="exp-header">
+                        <div class="exp-company">
+                            <h3>M Science (Jefferies)</h3>
+                            <span class="exp-role">Quantitative Equity Research Associate</span>
+                        </div>
+                        <span class="exp-date">Oct 2022 – Mar 2023</span>
+                    </div>
+                    <ul class="exp-details">
+                        <li>Engineered predictive equity models in PySpark on Databricks, trained on millions of transactions and job postings data</li>
+                        <li>Produced 10+ research reports analyzing company fundamentals and alternative datasets</li>
+                        <li>Automated workflows with FactSet/REST APIs, reducing reporting effort by 20% and accelerating cycles from quarterly to monthly</li>
+                    </ul>
+                    <div class="exp-tags">
+                        <span>PySpark</span>
+                        <span>Databricks</span>
+                        <span>Python</span>
+                        <span>SQL</span>
+                        <span>FactSet API</span>
+                    </div>
+                </article>
+
+                <article class="experience-item">
+                    <div class="exp-header">
+                        <div class="exp-company">
+                            <h3>Goodfill</h3>
+                            <span class="exp-role">Backend Software Engineer Consultant</span>
+                        </div>
+                        <span class="exp-date">Jul 2022 – Oct 2022</span>
+                    </div>
+                    <ul class="exp-details">
+                        <li>Delivered investor onboarding system with FINRA API integration</li>
+                        <li>Deployed backend services in Go/AWS Lambda/SQS/SNS architecture</li>
+                        <li>Integrated trading applications with Interactive Brokers Gateway & TWS APIs</li>
+                    </ul>
+                    <div class="exp-tags">
+                        <span>Go</span>
+                        <span>AWS Lambda</span>
+                        <span>Docker</span>
+                        <span>IB Gateway</span>
+                    </div>
+                </article>
+
+                <article class="experience-item">
+                    <div class="exp-header">
+                        <div class="exp-company">
+                            <h3>PerceiveNow</h3>
+                            <span class="exp-role">Data Analyst</span>
+                        </div>
+                        <span class="exp-date">Jul 2022 – Oct 2022</span>
+                    </div>
+                    <ul class="exp-details">
+                        <li>Implemented HuggingFace NLP models on AWS Lambda to process 50k+ research articles with improved accuracy</li>
+                        <li>Streamlined Python REST pipelines, cutting reporting from minutes to seconds and reducing costs by 12%</li>
+                    </ul>
+                    <div class="exp-tags">
+                        <span>HuggingFace</span>
+                        <span>NLP</span>
+                        <span>AWS Lambda</span>
+                        <span>Python</span>
+                    </div>
+                </article>
+
+                <article class="experience-item">
+                    <div class="exp-header">
+                        <div class="exp-company">
+                            <h3>Citco</h3>
+                            <span class="exp-role">Risk Analysis Intern</span>
+                        </div>
+                        <span class="exp-date">May 2022 – Jul 2022</span>
+                    </div>
+                    <ul class="exp-details">
+                        <li>Automated AIFMD/Form PF reporting for 20+ hedge funds using VBA, SQL, and PySpark</li>
+                        <li>Maintained risk models in Python/SQL supporting $10B+ AUM across multiple fund structures</li>
+                    </ul>
+                    <div class="exp-tags">
+                        <span>PySpark</span>
+                        <span>Risk Modeling</span>
+                        <span>SQL</span>
+                        <span>VBA</span>
+                    </div>
+                </article>
+
+                <article class="experience-item">
+                    <div class="exp-header">
+                        <div class="exp-company">
+                            <h3>Advanced Micro Devices (AMD)</h3>
+                            <span class="exp-role">Yield Analysis Intern → Product Development Intern</span>
+                        </div>
+                        <span class="exp-date">Aug 2021 – May 2022</span>
+                    </div>
+                    <ul class="exp-details">
+                        <li>Researched nearest-neighbor ML algorithm on 100k+ wafer samples for anomaly detection</li>
+                        <li>Designed interactive Power BI dashboards adopted by 20+ engineers for yield analysis</li>
+                        <li>Automated failure alerts with pandas/SciPy/Power Automate for real-time issue resolution</li>
+                    </ul>
+                    <div class="exp-tags">
+                        <span>Machine Learning</span>
+                        <span>Python</span>
+                        <span>Power BI</span>
+                        <span>Snowflake</span>
+                    </div>
+                </article>
+
+                <article class="experience-item">
+                    <div class="exp-header">
+                        <div class="exp-company">
+                            <h3>BNY Mellon</h3>
+                            <span class="exp-role">Summer Data Analyst — Liquidity & Margin</span>
+                        </div>
+                        <span class="exp-date">Jun 2021 – Aug 2021</span>
+                    </div>
+                    <ul class="exp-details">
+                        <li>Created Tableau/Excel/Python dashboards monitoring daily liquidity across hundreds of accounts</li>
+                        <li>Reduced reconciliation time by 20% for 3+ business units</li>
+                    </ul>
+                    <div class="exp-tags">
+                        <span>Tableau</span>
+                        <span>Python</span>
+                        <span>Liquidity Analysis</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <article class="project-card featured">
+                    <div class="project-content">
+                        <span class="project-label">Featured Research</span>
+                        <h3>Robotics ML Research — UT Austin BWI Project</h3>
+                        <p>
+                            Developed an autonomy stack in Python, C++, and ROS for robotic navigation. 
+                            Trained a feature network for DeepSORT trajectory tracking using Google's 
+                            Triplet Loss, improving accuracy by 8%. Recognized with the UT CNS 
+                            Undergraduate Research Award.
+                        </p>
+                        <div class="project-tags">
+                            <span>Deep Learning</span>
+                            <span>Computer Vision</span>
+                            <span>ROS</span>
+                            <span>C++</span>
+                            <span>Python</span>
+                        </div>
+                        <a href="https://github.com/nevynduarte" class="project-link" target="_blank">
+                            View on GitHub →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-content">
+                        <span class="project-label">Quantitative Finance</span>
+                        <h3>Equity Prediction Models</h3>
+                        <p>
+                            Built predictive models for equity research using alternative data 
+                            including transaction records and job postings. Processed millions 
+                            of data points using PySpark on Databricks.
+                        </p>
+                        <div class="project-tags">
+                            <span>PySpark</span>
+                            <span>ML</span>
+                            <span>Alt Data</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-content">
+                        <span class="project-label">NLP</span>
+                        <h3>Research Article Processor</h3>
+                        <p>
+                            Deployed HuggingFace NLP models on serverless infrastructure 
+                            to analyze 50k+ research articles with improved classification accuracy.
+                        </p>
+                        <div class="project-tags">
+                            <span>HuggingFace</span>
+                            <span>AWS Lambda</span>
+                            <span>NLP</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section education">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">Education</h2>
+            </div>
+            <div class="education-grid">
+                <div class="edu-card">
+                    <div class="edu-degree">M.S. Data Science</div>
+                    <div class="edu-school">University of Colorado Boulder</div>
+                    <div class="edu-date">2023 – Present</div>
+                    <div class="edu-gpa">GPA: 3.72</div>
+                    <p class="edu-courses">
+                        Deep Learning, Parallel Computing, GLMs, Regression & Classification, Trees & SVMs
+                    </p>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-degree">B.S. Mathematics</div>
+                    <div class="edu-school">University of Texas at Austin</div>
+                    <div class="edu-date">2018 – 2022</div>
+                    <p class="edu-highlight">UT CNS Undergraduate Research Award</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reading List Section -->
+    <section class="section reading-list">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Currently Reading</h2>
+            </div>
+            <div class="reading-content">
+                <div class="reading-grid">
+                    <div class="reading-item">
+                        <p class="book-title">Understanding Machine Learning: From Theory to Algorithms</p>
+                        <p class="book-author">Shai Shalev-Shwartz & Shai Ben-David</p>
+                    </div>
+                    <div class="reading-item">
+                        <p class="book-title">Options, Futures and Other Derivatives</p>
+                        <p class="book-author">John Hull</p>
+                    </div>
+                    <div class="reading-item">
+                        <p class="book-title">The Concepts and Practice of Mathematical Finance</p>
+                        <p class="book-author">Mark Joshi</p>
+                    </div>
+                    <div class="reading-item">
+                        <p class="book-title">Deep Learning</p>
+                        <p class="book-author">Ian Goodfellow, Yoshua Bengio, Aaron Courville, & Francis Bach</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="section-inner">
+            <div class="contact-content">
+                <h2 class="contact-title">Let's connect</h2>
+                <p class="contact-text">
+                    I'm currently exploring opportunities in ML Engineering, Quantitative Finance, 
+                    and Data Science. If you're building something interesting, I'd love to hear about it.
+                </p>
+                <a href="/cdn-cgi/l/email-protection#9ff1fae9e6f1f5fbeafeedebfadff8f2fef6f3b1fcf0f2" class="contact-email"><span class="__cf_email__" data-cfemail="83ede6f5faede9e7f6e2f1f7e6c3e4eee2eaefade0ecee">[email&#160;protected]</span></a>
+                <div class="contact-links">
+                    <a href="https://linkedin.com/in/nevynduarte" target="_blank" class="contact-link">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                            <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/nevynduarte" target="_blank" class="contact-link">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                            <path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
+                        </svg>
+                        GitHub
+                    </a>
+                    <a href="https://twitter.com/nevynduarte" target="_blank" class="contact-link">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
+                        Twitter
+                    </a>
+                    <a href="tel:917-650-0432" class="contact-link">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        (917) 650-0432
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>© 2025 Nevyn Duarte. Built with precision.</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.experience-item, .project-card, .edu-card, .skill-category').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Nav background on scroll
+        window.addEventListener('scroll', () => {
+            const na
