@@ -1,0 +1,15 @@
+# Local configuration
+.claude/
+
+# IDE settings
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Deployment artifacts
+node_modules/
+dist/
+build/
