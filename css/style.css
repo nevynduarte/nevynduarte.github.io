@@ -542,6 +542,48 @@ ul {
     border-bottom: 1px solid var(--border);
 }
 
+/* Filter Container */
+.filter-container {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filter-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.filter-dropdown {
+    padding: 0.5rem 1rem;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    min-width: 200px;
+}
+
+.filter-dropdown:hover {
+    border-color: var(--border-light);
+}
+
+.filter-dropdown:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-subtle);
+}
+
+.filter-dropdown option {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
 /* Experience Section */
 .experience {
     /* Background set via nth-of-type rule below */
