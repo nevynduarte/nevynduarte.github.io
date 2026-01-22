@@ -548,40 +548,66 @@ ul {
     display: flex;
     align-items: center;
     gap: 1rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.03) 100%);
+    border: 1px solid var(--border);
+    border-radius: 8px;
 }
 
 .filter-label {
     font-size: 0.875rem;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     font-weight: 500;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.filter-label::before {
+    content: '⚡';
+    margin-right: 0.5rem;
+    opacity: 0.7;
 }
 
 .filter-dropdown {
-    padding: 0.5rem 1rem;
-    background: var(--bg-card);
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    background: var(--bg-tertiary);
+    background-image: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-card) 100%);
     color: var(--text-primary);
-    border: 1px solid var(--border);
-    border-radius: 4px;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
     font-family: var(--font-mono);
     font-size: 0.875rem;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all var(--transition-base);
     min-width: 200px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    background-image:
+        linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-card) 100%),
+        url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 .filter-dropdown:hover {
-    border-color: var(--border-light);
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    transform: translateY(-1px);
 }
 
 .filter-dropdown:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-subtle);
+    box-shadow: 0 0 0 3px var(--accent-subtle), 0 4px 12px rgba(59, 130, 246, 0.2);
 }
 
 .filter-dropdown option {
     background: var(--bg-card);
     color: var(--text-primary);
+    padding: 0.5rem;
 }
 
 /* Experience Section */
@@ -1242,10 +1268,36 @@ ul {
 
     .experience-item {
         padding: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .exp-logo {
+        margin-bottom: 1.5rem;
     }
 
     .exp-header {
         flex-direction: column;
+        align-items: center;
+    }
+
+    .exp-details {
+        text-align: left;
+    }
+
+    .exp-tags {
+        justify-content: center;
+    }
+
+    .edu-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .edu-logo {
+        margin-bottom: 1.5rem;
     }
 
     .projects-grid {
@@ -1255,6 +1307,24 @@ ul {
     .contact-links {
         flex-direction: column;
         align-items: center;
+    }
+
+    .filter-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        padding: 1.25rem;
+    }
+
+    .filter-label {
+        font-size: 0.8125rem;
+    }
+
+    .filter-dropdown {
+        width: 100%;
+        min-width: unset;
+        padding: 0.875rem 2.5rem 0.875rem 1rem;
+        font-size: 0.9375rem;
     }
 }
 
