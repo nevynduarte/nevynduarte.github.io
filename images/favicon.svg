@@ -1,5 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#0a0a0b"/>
-  <text x="16" y="22" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-style="italic" fill="#fafafa">nd</text>
-  <rect x="0" y="26" width="32" height="2" fill="#3b82f6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" fill="none"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- White letter strokes -->
+    <g stroke="#FFFFFF" stroke-width="10">
+      <!-- N -->
+      <path d="M18 24 V104"/>
+      <path d="M18 24 L52 104"/>
+      <path d="M52 24 V104"/>
+      <!-- D -->
+      <path d="M70 24 V104"/>
+      <path d="M70 24 Q116 64 70 104"/>
+    </g>
+
+    <!-- Blue circuit traces -->
+    <g stroke="#3CA0FF" stroke-width="5" opacity="0.95">
+      <path d="M28 38 V70 L40 82"/>
+      <path d="M84 36 V92"/>
+      <path d="M80 40 Q104 64 80 88"/>
+    </g>
+  </g>
+
+  <!-- Nodes -->
+  <g>
+    <g fill="#FFFFFF">
+      <circle cx="18" cy="24" r="7"/>
+      <circle cx="18" cy="104" r="7"/>
+      <circle cx="52" cy="24" r="7"/>
+      <circle cx="52" cy="104" r="7"/>
+      <circle cx="70" cy="24" r="7"/>
+      <circle cx="70" cy="104" r="7"/>
+      <circle cx="116" cy="64" r="7"/>
+    </g>
+    <g fill="#3CA0FF">
+      <circle cx="28" cy="38" r="5"/>
+      <circle cx="40" cy="82" r="5"/>
+      <circle cx="84" cy="36" r="5"/>
+    </g>
+  </g>
 </svg>

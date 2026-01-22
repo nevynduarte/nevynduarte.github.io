@@ -8,6 +8,9 @@
         content="Nevyn Duarte - Data Scientist & ML Engineer specializing in quantitative finance, machine learning, and predictive modeling.">
     <title>Nevyn Duarte | Data Scientist & ML Engineer</title>
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="images/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="images/favicon-32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="images/favicon-16.png" sizes="16x16">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -26,10 +29,11 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-inner">
-            <a href="#" class="nav-logo">nd</a>
+            <a href="#" class="nav-logo">Nevyn Duarte</a>
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
                 <a href="#projects">Projects</a>
                 <a href="#research">Research</a>
                 <a href="#blog">Blog</a>
@@ -47,6 +51,7 @@
     <div class="mobile-menu">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
         <a href="#projects">Projects</a>
         <a href="#research">Research</a>
         <a href="#blog">Blog</a>
@@ -310,11 +315,41 @@
         </div>
     </section>
 
+    <!-- Education Section -->
+    <section id="education" class="section education">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Education</h2>
+            </div>
+            <div class="education-grid">
+                <div class="edu-card">
+                    <div class="edu-degree">M.S. Data Science</div>
+                    <div class="edu-school">University of Colorado Boulder</div>
+                    <div class="edu-date">2023 – Present</div>
+                    <div class="edu-gpa">GPA: 3.72</div>
+                    <p class="edu-courses">
+                        Deep Learning, Parallel Computing, GLMs, Regression & Classification, Trees & SVMs
+                    </p>
+                </div>
+                <div class="edu-card">
+                    <img src="images/ut-logo-outlined-white-purple.png" alt="University of Texas at Austin" class="edu-logo">
+                    <div class="edu-content">
+                        <div class="edu-degree">B.S. Mathematics</div>
+                        <div class="edu-school">University of Texas at Austin</div>
+                        <div class="edu-date">2018 – 2022</div>
+                        <p class="edu-highlight">UT CNS Undergraduate Research Award</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section id="projects" class="section projects">
         <div class="section-inner">
             <div class="section-header">
-                <span class="section-number">03</span>
+                <span class="section-number">04</span>
                 <h2 class="section-title">Projects</h2>
             </div>
             <div class="projects-grid">
@@ -381,7 +416,7 @@
     <section id="research" class="section research">
         <div class="section-inner">
             <div class="section-header">
-                <span class="section-number">04</span>
+                <span class="section-number">05</span>
                 <h2 class="section-title">Research & Foundations</h2>
             </div>
             <div class="research-intro">
@@ -551,7 +586,7 @@
     <section id="blog" class="section blog">
         <div class="section-inner">
             <div class="section-header">
-                <span class="section-number">05</span>
+                <span class="section-number">06</span>
                 <h2 class="section-title">Blog & Technical Commentary</h2>
             </div>
             <div class="blog-intro">
@@ -609,33 +644,6 @@
             <p class="blog-link">
                 Want deeper dives? <a href="#contact">Reach out and I can share full drafts.</a>
             </p>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section class="section education">
-        <div class="section-inner">
-            <div class="section-header">
-                <span class="section-number">06</span>
-                <h2 class="section-title">Education</h2>
-            </div>
-            <div class="education-grid">
-                <div class="edu-card">
-                    <div class="edu-degree">M.S. Data Science</div>
-                    <div class="edu-school">University of Colorado Boulder</div>
-                    <div class="edu-date">2023 – Present</div>
-                    <div class="edu-gpa">GPA: 3.72</div>
-                    <p class="edu-courses">
-                        Deep Learning, Parallel Computing, GLMs, Regression & Classification, Trees & SVMs
-                    </p>
-                </div>
-                <div class="edu-card">
-                    <div class="edu-degree">B.S. Mathematics</div>
-                    <div class="edu-school">University of Texas at Austin</div>
-                    <div class="edu-date">2018 – 2022</div>
-                    <p class="edu-highlight">UT CNS Undergraduate Research Award</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -702,19 +710,30 @@
             });
         });
 
-        // Smooth scroll for navigation links
+        // Enhanced smooth scroll with glow effect for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
                 if (href === '#') return; // Skip bare hash links
                 e.preventDefault();
+
                 const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                if (!target) return;
+
+                // Calculate offset for navbar
+                const nav = document.querySelector('.nav');
+                const navHeight = nav ? nav.offsetHeight : 0;
+                const targetPosition = target.offsetTop - navHeight - 20;
+
+                // Smooth scroll with ease-out
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Add highlight glow effect on target section
+                target.classList.add('scroll-target');
+                setTimeout(() => target.classList.remove('scroll-target'), 1500);
             });
         });
 

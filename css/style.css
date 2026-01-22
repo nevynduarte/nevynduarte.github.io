@@ -11,12 +11,16 @@
     --bg-card: #1c1c1f;
 
     --text-primary: #fafafa;
-    --text-secondary: #a1a1aa;
-    --text-tertiary: #71717a;
+    --text-secondary: #d4d4d8;
+    --text-tertiary: #a1a1aa;
 
     --accent: #3b82f6;
     --accent-hover: #60a5fa;
     --accent-subtle: rgba(59, 130, 246, 0.1);
+
+    --accent-purple: #a78bfa;
+    --accent-purple-hover: #c4b5fd;
+    --accent-purple-subtle: rgba(167, 139, 250, 0.1);
 
     --border: #27272a;
     --border-light: #3f3f46;
@@ -53,7 +57,7 @@ body {
     font-family: var(--font-mono);
     font-size: 0.9375rem;
     line-height: 1.7;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     background-color: var(--bg-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -81,12 +85,17 @@ body {
 /* Links */
 a {
     color: var(--text-primary);
-    text-decoration: none;
-    transition: color var(--transition-fast);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: transparent;
+    transition: all var(--transition-fast);
 }
 
 a:hover {
     color: var(--accent);
+    text-decoration-color: var(--accent);
+    text-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
 }
 
 /* Typography */
@@ -146,11 +155,17 @@ ul {
     font-size: 0.8125rem;
     color: var(--text-secondary);
     letter-spacing: 0.02em;
-    transition: color var(--transition-fast);
+    transition: all var(--transition-fast);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: transparent;
 }
 
 .nav-links a:hover {
     color: var(--text-primary);
+    text-decoration-color: var(--text-primary);
+    text-shadow: 0 2px 8px rgba(250, 250, 250, 0.3);
 }
 
 .nav-cta {
@@ -169,11 +184,15 @@ ul {
 .nav-toggle {
     display: none;
     flex-direction: column;
-    gap: 6px;
+    gap: 0;
     background: none;
     border: none;
     cursor: pointer;
     padding: 4px;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    justify-content: center;
 }
 
 .nav-toggle span {
@@ -181,14 +200,25 @@ ul {
     height: 2px;
     background: var(--text-primary);
     transition: all var(--transition-fast);
+    position: absolute;
+}
+
+.nav-toggle span:first-child {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav-toggle span:last-child {
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .nav-toggle.active span:first-child {
-    transform: rotate(45deg) translate(5px, 6px);
+    transform: rotate(45deg);
 }
 
 .nav-toggle.active span:last-child {
-    transform: rotate(-45deg) translate(5px, -6px);
+    transform: rotate(-45deg);
 }
 
 /* Mobile Menu */
@@ -276,7 +306,7 @@ ul {
 .hero-description {
     font-size: 1rem;
     line-height: 1.8;
-    max-width: 500px;
+    max-width: 100%;
     margin-bottom: 2rem;
 }
 
@@ -934,11 +964,30 @@ ul {
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
 }
 
 .edu-card.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+.edu-logo {
+    flex-shrink: 0;
+    width: 120px;
+    height: auto;
+    opacity: 0.9;
+    transition: opacity var(--transition-base);
+}
+
+.edu-card:hover .edu-logo {
+    opacity: 1;
+}
+
+.edu-content {
+    flex: 1;
 }
 
 .edu-degree {
@@ -1144,6 +1193,45 @@ ul {
     .contact-links {
         flex-direction: column;
         align-items: center;
+    }
+}
+
+/* Purple Accent Colors - Strategic Application */
+
+/* Alternating section numbers (even sections get purple) */
+.section:nth-of-type(even) .section-number {
+    color: var(--accent-purple);
+}
+
+/* All experience role titles */
+.exp-role {
+    color: var(--accent-purple);
+}
+
+/* Alternating skill category headers */
+.skill-category:nth-child(even) h3 {
+    color: var(--accent-purple);
+}
+
+/* Non-featured project labels */
+.project-card:not(.featured) .project-label {
+    color: var(--accent-purple);
+}
+
+/* Scroll Target Highlight Animation */
+.scroll-target {
+    animation: scrollHighlight 1.5s ease-out;
+}
+
+@keyframes scrollHighlight {
+    0% {
+        box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 30px 10px rgba(167, 139, 250, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(167, 139, 250, 0);
     }
 }
 
