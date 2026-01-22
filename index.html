@@ -181,6 +181,12 @@
                 <span class="section-number">02</span>
                 <h2 class="section-title">Experience</h2>
             </div>
+            <div class="filter-container">
+                <label for="experience-filter" class="filter-label">Filter by skill:</label>
+                <select id="experience-filter" class="filter-dropdown">
+                    <option value="all">All Skills</option>
+                </select>
+            </div>
             <div class="experience-list">
                 <article class="experience-item">
                     <img src="images/logos/mscience-white-purple.png" alt="M Science" class="exp-logo">
@@ -453,6 +459,12 @@
             <div class="section-header">
                 <span class="section-number">04</span>
                 <h2 class="section-title">Projects</h2>
+            </div>
+            <div class="filter-container">
+                <label for="projects-filter" class="filter-label">Filter by skill:</label>
+                <select id="projects-filter" class="filter-dropdown">
+                    <option value="all">All Skills</option>
+                </select>
             </div>
             <div class="projects-grid">
                 <article class="project-card featured">
@@ -868,6 +880,82 @@
                 nav.classList.remove('scrolled');
             }
         });
+
+        // Skill filter functionality
+        function initializeSkillFilters() {
+            // Experience section
+            const experienceItems = document.querySelectorAll('.experience-item');
+            const experienceFilter = document.getElementById('experience-filter');
+            const experienceSkills = new Set();
+
+            // Collect all unique skills from experience items
+            experienceItems.forEach(item => {
+                const tags = item.querySelectorAll('.exp-tags span');
+                tags.forEach(tag => {
+                    experienceSkills.add(tag.textContent.trim());
+                });
+            });
+
+            // Populate experience filter dropdown
+            Array.from(experienceSkills).sort().forEach(skill => {
+                const option = document.createElement('option');
+                option.value = skill;
+                option.textContent = skill;
+                experienceFilter.appendChild(option);
+            });
+
+            // Experience filter event listener
+            experienceFilter.addEventListener('change', (e) => {
+                const selectedSkill = e.target.value;
+                experienceItems.forEach(item => {
+                    if (selectedSkill === 'all') {
+                        item.style.display = 'flex';
+                    } else {
+                        const tags = Array.from(item.querySelectorAll('.exp-tags span'));
+                        const hasSkill = tags.some(tag => tag.textContent.trim() === selectedSkill);
+                        item.style.display = hasSkill ? 'flex' : 'none';
+                    }
+                });
+            });
+
+            // Projects section
+            const projectCards = document.querySelectorAll('.project-card');
+            const projectsFilter = document.getElementById('projects-filter');
+            const projectSkills = new Set();
+
+            // Collect all unique skills from project cards
+            projectCards.forEach(card => {
+                const tags = card.querySelectorAll('.project-tags span');
+                tags.forEach(tag => {
+                    projectSkills.add(tag.textContent.trim());
+                });
+            });
+
+            // Populate projects filter dropdown
+            Array.from(projectSkills).sort().forEach(skill => {
+                const option = document.createElement('option');
+                option.value = skill;
+                option.textContent = skill;
+                projectsFilter.appendChild(option);
+            });
+
+            // Projects filter event listener
+            projectsFilter.addEventListener('change', (e) => {
+                const selectedSkill = e.target.value;
+                projectCards.forEach(card => {
+                    if (selectedSkill === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const tags = Array.from(card.querySelectorAll('.project-tags span'));
+                        const hasSkill = tags.some(tag => tag.textContent.trim() === selectedSkill);
+                        card.style.display = hasSkill ? 'block' : 'none';
+                    }
+                });
+            });
+        }
+
+        // Initialize filters when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeSkillFilters);
     </script>
 </body>
 
