@@ -543,7 +543,7 @@ ul {
 
 /* Experience Section */
 .experience {
-    background: var(--bg-secondary);
+    /* Background set via nth-of-type rule below */
 }
 
 .experience-list {
@@ -732,7 +732,7 @@ ul {
 
 /* Research Section */
 .research {
-    background: var(--bg-secondary);
+    /* Background set via nth-of-type rule below */
 }
 
 .research-intro {
@@ -966,7 +966,7 @@ ul {
 
 /* Education Section */
 .education {
-    background: var(--bg-secondary);
+    /* Background set via nth-of-type rule below */
 }
 
 .education-grid {
@@ -1216,6 +1216,11 @@ ul {
 }
 
 /* Purple Accent Colors - Strategic Application */
+
+/* Alternating section backgrounds (even sections get dark grey) */
+.section:nth-of-type(even) {
+    background: var(--bg-secondary);
+}
 
 /* Alternating section numbers (even sections get purple) */
 .section:nth-of-type(even) .section-number {
