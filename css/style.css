@@ -389,10 +389,11 @@ ul {
 .hero-stats {
     display: flex;
     gap: 3rem;
+    justify-content: center;
 }
 
 .stat {
-    text-align: right;
+    text-align: center;
 }
 
 .stat-number {
