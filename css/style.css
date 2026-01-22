@@ -560,6 +560,9 @@ ul {
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
 }
 
 .experience-item.visible {
@@ -569,6 +572,22 @@ ul {
 
 .experience-item:hover {
     border-color: var(--border-light);
+}
+
+.exp-logo {
+    flex-shrink: 0;
+    width: 100px;
+    height: auto;
+    opacity: 0.9;
+    transition: opacity var(--transition-base);
+}
+
+.experience-item:hover .exp-logo {
+    opacity: 1;
+}
+
+.exp-content {
+    flex: 1;
 }
 
 .exp-header {
