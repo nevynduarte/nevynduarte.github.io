@@ -1012,6 +1012,25 @@ ul {
     font-family: var(--font-mono);
     font-size: 0.95rem;
     color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.entry-title:hover {
+    color: var(--accent);
+}
+
+.entry-link-icon {
+    font-size: 0.85em;
+    color: var(--text-tertiary);
+    transition: color 0.2s ease;
+}
+
+.entry-title:hover .entry-link-icon {
+    color: var(--accent);
 }
 
 .entry-meta {
