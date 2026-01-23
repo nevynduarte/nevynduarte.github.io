@@ -718,6 +718,25 @@ ul {
     color: var(--accent);
 }
 
+/* Credentials */
+.credentials-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+}
+
+.credentials-list p {
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.credentials-list p:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
 /* Projects Section */
 .projects-grid {
     display: grid;
