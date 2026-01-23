@@ -621,6 +621,24 @@ ul {
     gap: 2rem;
 }
 
+.experience-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.experience-group + .experience-group {
+    margin-top: 1.5rem;
+}
+
+.experience-group-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-purple);
+}
+
 .experience-item {
     padding: 2rem;
     background: var(--bg-card);
@@ -742,6 +760,61 @@ ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 1.5rem;
+}
+
+/* Research & Systems Page */
+.research-systems-hero .section-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.research-systems-intro {
+    max-width: 720px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.research-systems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.research-system-card {
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all var(--transition-slow);
+}
+
+.research-system-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.research-system-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.research-system-row + .research-system-row {
+    margin-top: 1rem;
+}
+
+.research-system-row h3 {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+}
+
+.research-system-row p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
 }
 
 .project-card {
@@ -939,6 +1012,25 @@ ul {
     font-family: var(--font-mono);
     font-size: 0.95rem;
     color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.entry-title:hover {
+    color: var(--accent);
+}
+
+.entry-link-icon {
+    font-size: 0.85em;
+    color: var(--text-tertiary);
+    transition: color 0.2s ease;
+}
+
+.entry-title:hover .entry-link-icon {
+    color: var(--accent);
 }
 
 .entry-meta {
