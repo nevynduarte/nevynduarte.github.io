@@ -645,10 +645,24 @@ ul {
 
 .exp-logo {
     flex-shrink: 0;
-    width: 100px;
+    width: 115px;
     height: auto;
     opacity: 0.9;
     transition: opacity var(--transition-base);
+}
+
+.exp-logo-placeholder {
+    height: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text-tertiary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
 .experience-item:hover .exp-logo {
@@ -1083,7 +1097,7 @@ ul {
 
 .edu-logo {
     flex-shrink: 0;
-    width: 120px;
+    width: 138px;
     height: auto;
     opacity: 0.9;
     transition: opacity var(--transition-base);
@@ -1095,6 +1109,28 @@ ul {
 
 .edu-content {
     flex: 1;
+}
+
+.edu-card--minor {
+    padding: 1.25rem;
+    gap: 1rem;
+}
+
+.edu-card--minor .edu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.edu-minor-title {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.edu-minor-school {
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
 }
 
 .edu-school {
