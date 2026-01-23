@@ -621,24 +621,6 @@ ul {
     gap: 2rem;
 }
 
-.experience-group {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.experience-group + .experience-group {
-    margin-top: 1.5rem;
-}
-
-.experience-group-title {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--accent-purple);
-}
-
 .experience-item {
     padding: 2rem;
     background: var(--bg-card);
@@ -663,10 +645,24 @@ ul {
 
 .exp-logo {
     flex-shrink: 0;
-    width: 100px;
+    width: 115px;
     height: auto;
     opacity: 0.9;
     transition: opacity var(--transition-base);
+}
+
+.exp-logo-placeholder {
+    height: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text-tertiary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
 .experience-item:hover .exp-logo {
@@ -736,85 +732,11 @@ ul {
     color: var(--accent);
 }
 
-/* Credentials */
-.credentials-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    color: var(--text-secondary);
-    font-size: 0.9375rem;
-}
-
-.credentials-list p {
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--border);
-}
-
-.credentials-list p:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
 /* Projects Section */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 1.5rem;
-}
-
-/* Research & Systems Page */
-.research-systems-hero .section-title {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-}
-
-.research-systems-intro {
-    max-width: 720px;
-    color: var(--text-secondary);
-    font-size: 1rem;
-}
-
-.research-systems-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
-
-.research-system-card {
-    padding: 2rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all var(--transition-slow);
-}
-
-.research-system-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.research-system-card h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.research-system-row + .research-system-row {
-    margin-top: 1rem;
-}
-
-.research-system-row h3 {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    margin-bottom: 0.35rem;
-}
-
-.research-system-row p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
 }
 
 .project-card {
@@ -1175,7 +1097,7 @@ ul {
 
 .edu-logo {
     flex-shrink: 0;
-    width: 120px;
+    width: 138px;
     height: auto;
     opacity: 0.9;
     transition: opacity var(--transition-base);
@@ -1187,6 +1109,28 @@ ul {
 
 .edu-content {
     flex: 1;
+}
+
+.edu-card--minor {
+    padding: 1.25rem;
+    gap: 1rem;
+}
+
+.edu-card--minor .edu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.edu-minor-title {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.edu-minor-school {
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
 }
 
 .edu-school {
