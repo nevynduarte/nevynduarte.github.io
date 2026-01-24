@@ -30,7 +30,7 @@
     --font-mono: 'IBM Plex Mono', 'SF Mono', monospace;
 
     /* Spacing */
-    --section-padding: clamp(4rem, 10vw, 8rem);
+    --section-padding: clamp(2rem, 5vw, 4rem);
     --container-max: 1200px;
 
     /* Transitions */
@@ -518,7 +518,7 @@ ul {
     display: flex;
     align-items: baseline;
     gap: 1.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1.9rem;
 }
 
 .section-number {
@@ -581,6 +581,8 @@ ul {
     flex-direction: column;
     gap: 0.25rem;
 }
+
+
 
 .skill-category li {
     font-size: 0.875rem;
@@ -1089,6 +1091,21 @@ ul {
     color: var(--accent);
     margin-bottom: 0.75rem;
     display: inline-flex;
+}
+
+.blog-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+    transition: all var(--transition-base);
+}
+
+.blog-card:hover .blog-image {
+    transform: scale(1.01);
+    box-shadow: 0 0 30px rgba(167, 139, 250, 0.5);
 }
 
 .blog-card h3 {
