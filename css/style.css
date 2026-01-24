@@ -1327,6 +1327,11 @@ ul {
     color: var(--accent-purple);
 }
 
+.edu-card--white-bullets .edu-courses li::before,
+.edu-card--white-bullets .edu-activities li::before {
+    color: var(--text-primary);
+}
+
 /* Contact Section */
 .contact {
     text-align: center;
