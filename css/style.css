@@ -1213,16 +1213,115 @@ ul {
     margin-bottom: 1rem;
 }
 
+.edu-specializations {
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.specialization-group {
+    margin-bottom: 0;
+}
+
+.specialization-title {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 0 0 0 1.5rem;
+    margin-bottom: 0.35rem;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition: all var(--transition-fast);
+    position: relative;
+}
+
+.specialization-title::-webkit-details-marker {
+    display: none;
+}
+
+.specialization-title::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--accent-purple);
+    font-weight: bold;
+    transition: transform var(--transition-fast);
+}
+
+.specialization-group[open] .specialization-title::before {
+    content: '−';
+}
+
+.specialization-title:hover {
+    color: var(--text-primary);
+}
+
+.specialization-group[open] .edu-courses {
+    padding-left: 1.5rem;
+}
+
+.specialization-group .edu-courses {
+    margin-top: 0;
+}
+
 .edu-courses {
     font-size: 0.8125rem;
     color: var(--text-tertiary);
     line-height: 1.6;
+    display: grid;
+    gap: 0.35rem;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.edu-courses li {
+    position: relative;
+    padding-left: 1.25rem;
+}
+
+.edu-courses li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-purple);
 }
 
 .edu-highlight {
     font-size: 0.875rem;
     color: var(--accent);
     margin-top: 1rem;
+}
+
+.edu-activities-section {
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.edu-activities-label {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.edu-activities {
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+    display: grid;
+    gap: 0.35rem;
+}
+
+.edu-activities li {
+    position: relative;
+    padding-left: 1.25rem;
+}
+
+.edu-activities li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-purple);
 }
 
 /* Contact Section */
