@@ -1478,7 +1478,7 @@ ul {
     }
 
     .hero-title {
-        font-size: clamp(1.75rem, 8vw, 2.25rem);
+        font-size: clamp(1.75rem, 8vw, 2.5rem);
     }
 
     .profile-container {
