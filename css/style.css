@@ -292,6 +292,14 @@ ul {
 .hero-title {
     font-size: clamp(2.5rem, 6vw, 4.5rem);
     margin-bottom: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 50%, var(--text-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+    text-shadow: 0 0 40px rgba(139, 92, 246, 0.2);
 }
 
 .hero-title .line {
@@ -300,7 +308,30 @@ ul {
 
 .hero-title em {
     font-style: italic;
-    color: var(--accent);
+    background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.4));
+}
+
+.hero-title strong {
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.5));
+    letter-spacing: 0.02em;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .hero-description {
@@ -923,6 +954,23 @@ ul {
     border-bottom: none;
 }
 
+.research-cover {
+    width: 120px;
+    height: auto;
+    border-radius: 4px;
+    margin: 0 auto 1rem auto;
+    display: block;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    transition: all var(--transition-base);
+    opacity: 0.9;
+}
+
+.research-cover:hover {
+    opacity: 1;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+    transform: translateY(-2px);
+}
+
 .entry-header {
     display: flex;
     flex-direction: column;
@@ -1086,8 +1134,10 @@ ul {
     transform: translateY(20px);
     transition: all var(--transition-slow);
     display: flex;
+    flex-direction: column;
     gap: 2rem;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
 }
 
 .edu-card.visible {
@@ -1344,16 +1394,6 @@ ul {
 
     .exp-tags {
         justify-content: center;
-    }
-
-    .edu-card {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .edu-logo {
-        margin-bottom: 1.5rem;
     }
 
     .projects-grid {
