@@ -444,7 +444,7 @@ ul {
 
 /* Scroll Indicator */
 .scroll-indicator {
-    position: absolute;
+    position: fixed;
     bottom: 2rem;
     left: 2rem;
     display: flex;
@@ -454,14 +454,18 @@ ul {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--text-tertiary);
+    z-index: 100;
+    transition: opacity var(--transition-base);
 }
 
 .scroll-line {
-    width: 60px;
-    height: 1px;
+    width: 100px;
+    height: 3px;
     background: var(--border);
     position: relative;
     overflow: hidden;
+    border-radius: 2px;
+    --scroll-progress: 0%;
 }
 
 .scroll-line::after {
@@ -469,22 +473,11 @@ ul {
     position: absolute;
     left: 0;
     top: 0;
-    width: 30px;
+    width: var(--scroll-progress);
     height: 100%;
-    background: var(--accent);
-    animation: scrollLine 2s ease-in-out infinite;
-}
-
-@keyframes scrollLine {
-
-    0%,
-    100% {
-        transform: translateX(-100%);
-    }
-
-    50% {
-        transform: translateX(200%);
-    }
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 100%);
+    transition: width 0.15s ease-out;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
 }
 
 /* Sections */
@@ -1028,6 +1021,18 @@ ul {
     font-size: 0.875rem;
 }
 
+.research-interests li {
+    position: relative;
+    padding-left: 1.25rem;
+}
+
+.research-interests li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-purple);
+}
+
 .research-link a {
     color: var(--accent);
 }
@@ -1247,22 +1252,15 @@ ul {
     font-size: 1.5rem;
     color: var(--accent);
     margin-bottom: 2rem;
-    position: relative;
+    text-decoration: none;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+    transition: text-decoration-color var(--transition-base);
 }
 
-.contact-email::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent);
-    transition: width var(--transition-base);
-}
-
-.contact-email:hover::after {
-    width: 100%;
+.contact-email:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
 }
 
 .contact-links {
@@ -1342,10 +1340,6 @@ ul {
 
     .research-intro {
         grid-template-columns: 1fr;
-    }
-
-    .scroll-indicator {
-        display: none;
     }
 }
 

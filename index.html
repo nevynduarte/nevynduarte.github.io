@@ -946,7 +946,7 @@
             observer.observe(el);
         });
 
-        // Nav background on scroll
+        // Nav background on scroll and scroll progress bar
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('.nav');
             if (window.scrollY > 50) {
@@ -954,7 +954,26 @@
             } else {
                 nav.classList.remove('scrolled');
             }
+
+            // Update scroll progress bar
+            updateScrollProgress();
         });
+
+        function updateScrollProgress() {
+            const scrollLine = document.querySelector('.scroll-line');
+            if (scrollLine) {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight;
+                const scrollTop = window.scrollY;
+                const scrollPercent = Math.min((scrollTop / (documentHeight - windowHeight)) * 100, 100);
+
+                // Update CSS custom property for the ::after pseudo-element
+                scrollLine.style.setProperty('--scroll-progress', scrollPercent + '%');
+            }
+        }
+
+        // Initialize on page load
+        updateScrollProgress();
 
         // Skill filter functionality
         function initializeSkillFilters() {
