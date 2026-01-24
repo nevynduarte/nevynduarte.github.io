@@ -141,9 +141,30 @@ def convert_to_white(img):
 
     return Image.fromarray(data)
 
+def extract_white_pixels(img, threshold=200):
+    """
+    Keep only near-white pixels and make everything else transparent
+    Useful for logos that are white on a colored or dark background
+    """
+    img = img.convert('RGBA')
+    data = np.array(img)
+
+    # Get RGB channels
+    r, g, b, a = data.T
+
+    # Find NON-white areas (any RGB value below threshold)
+    # We use .T because numpy arrays are indexed [y, x, c] but we transposed earlier
+    non_white_areas = (r < threshold) | (g < threshold) | (b < threshold)
+
+    # Set alpha to 0 for non-white areas
+    data[..., 3] = np.where(non_white_areas.T, 0, 255)
+
+    return Image.fromarray(data)
+
 def process_image(input_path, output_path, outline_width=3, remove_bg=True,
                   bg_threshold=240, add_glow=False, glow_radius=5,
-                  convert_white=False, purple_glow=False, invert=False):
+                  convert_white=False, purple_glow=False, invert=False,
+                  keep_only_white=False):
     """
     Main processing function
     """
@@ -152,8 +173,11 @@ def process_image(input_path, output_path, outline_width=3, remove_bg=True,
     # Load image
     img = Image.open(input_path)
 
-    # Remove background if requested
-    if remove_bg:
+    # Specific logic for keeping only white pixels (prioritizes this over background removal)
+    if keep_only_white:
+        print("  - Extracting only white pixels...")
+        img = extract_white_pixels(img, threshold=bg_threshold)
+    elif remove_bg:
         print("  - Removing background...")
         img = remove_background_simple(img, threshold=bg_threshold)
     else:
@@ -213,6 +237,10 @@ def batch_process_logos():
     print(f"\nFound {len(image_files)} logos to process\n")
 
     for i, filename in enumerate(sorted(image_files), 1):
+        # Skip results of previous runs
+        if filename.endswith("-white-purple.png") or filename.endswith("-white-purple-white-purple.png"):
+            continue
+
         input_path = os.path.join(logos_dir, filename)
         # Create output filename
         name_without_ext = os.path.splitext(filename)[0]
@@ -222,15 +250,22 @@ def batch_process_logos():
         print(f"[{i}/{len(image_files)}] Processing: {filename}")
 
         try:
+            # Look for specific horizontal logo
+            is_horizontal_logo = 'bridges' in filename.lower() and 'horizontal' in filename.lower()
+            # Special handling for black logos (like Bridges square)
+            do_invert = 'black' in filename.lower() and 'transparent' in filename.lower()
+            
             process_image(
                 input_path,
                 output_path,
                 outline_width=0,
-                remove_bg=True,  # Remove white background from JPGs
-                bg_threshold=240,
-                convert_white=True,
+                remove_bg=not is_horizontal_logo,
+                bg_threshold=220 if is_horizontal_logo else 240,
+                convert_white=not (do_invert or is_horizontal_logo), # If we invert/extract white, it's already white
                 purple_glow=True,
-                glow_radius=10
+                glow_radius=10,
+                invert=do_invert,
+                keep_only_white=is_horizontal_logo
             )
         except Exception as e:
             print(f"  [ERROR] Failed to process {filename}: {str(e)}")
