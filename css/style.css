@@ -624,6 +624,7 @@ ul {
 .exp-company h3 a:hover,
 .edu-school a:hover {
     color: var(--accent-purple);
+    text-decoration: underline;
 }
 
 .skill-category li {
