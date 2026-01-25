@@ -292,7 +292,7 @@ ul {
     margin: 0 auto;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.3fr 0.7fr;
     gap: 4rem;
     align-items: center;
 }
@@ -406,7 +406,7 @@ ul {
 .hero-visual {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     gap: 2rem;
 }
 
@@ -479,7 +479,37 @@ ul {
     color: var(--text-tertiary);
     z-index: 100;
     transition: opacity var(--transition-base);
+    background: var(--bg-card);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
+
+.scroll-center {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.scroll-nav {
+    background: none;
+    border: none;
+    color: var(--text-tertiary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: all var(--transition-fast);
+    line-height: 1;
+}
+
+.scroll-nav:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+
 
 .scroll-line {
     width: 100px;
@@ -1300,7 +1330,7 @@ ul {
 
 .edu-courses {
     font-size: 0.8125rem;
-    color: var(--text-tertiary);
+    color: #ffffff;
     line-height: 1.6;
     display: grid;
     gap: 0.35rem;
@@ -1317,7 +1347,7 @@ ul {
     content: '→';
     position: absolute;
     left: 0;
-    color: var(--accent-purple);
+    color: #ffffff;
 }
 
 .edu-highlight {
@@ -1340,7 +1370,7 @@ ul {
 
 .edu-activities {
     font-size: 0.8125rem;
-    color: var(--text-tertiary);
+    color: #ffffff;
     line-height: 1.6;
     display: grid;
     gap: 0.35rem;
@@ -1355,7 +1385,7 @@ ul {
     content: '→';
     position: absolute;
     left: 0;
-    color: var(--accent-purple);
+    color: #ffffff;
 }
 
 .edu-card--white-bullets .edu-courses li::before,
@@ -1448,6 +1478,7 @@ ul {
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 2rem;
     }
 
     .hero-visual {
@@ -1483,8 +1514,10 @@ ul {
 
 @media (max-width: 640px) {
     .section {
-        padding: 4rem 1.5rem;
+        padding: 2rem 1.5rem;
     }
+
+
 
     .nav {
         padding: 1rem 1.5rem;
@@ -1501,6 +1534,10 @@ ul {
     .profile-container {
         width: 220px;
         height: 220px;
+    }
+
+    .stat-number {
+        font-size: 2rem;
     }
 
     .skills-grid {

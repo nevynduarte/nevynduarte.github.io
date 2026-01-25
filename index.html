@@ -98,8 +98,12 @@
             </div>
         </div>
         <div class="scroll-indicator">
-            <span>Scroll to explore</span>
-            <div class="scroll-line"></div>
+            <button class="scroll-nav prev" aria-label="Previous section">←</button>
+            <div class="scroll-center">
+                <span>Tap to explore</span>
+                <div class="scroll-line"></div>
+            </div>
+            <button class="scroll-nav next" aria-label="Next section">→</button>
         </div>
     </section>
 
@@ -284,7 +288,7 @@
                     <div class="exp-content">
                         <div class="exp-header">
                             <div class="exp-company">
-                                <h3>PerceiveNow</h3>
+                                <h3>Perceive Now</h3>
                                 <span class="exp-role">Data Analyst</span>
                             </div>
                             <span class="exp-date">Jul 2022 – Oct 2022</span>
@@ -310,7 +314,7 @@
                     <div class="exp-content">
                         <div class="exp-header">
                             <div class="exp-company">
-                                <h3>Citco</h3>
+                                <h3>Citco (Citco Fund Services)</h3>
                                 <span class="exp-role">Risk Analysis Intern</span>
                             </div>
                             <span class="exp-date">May 2022 – Jul 2022</span>
@@ -336,7 +340,7 @@
                     <div class="exp-content">
                         <div class="exp-header">
                             <div class="exp-company">
-                                <h3>Advanced Micro Devices (AMD)</h3>
+                                <h3>AMD (Advanced Micro Devices)</h3>
                             </div>
                             <span class="exp-date">Aug 2021 – Jun 2022</span>
                         </div>
@@ -378,7 +382,7 @@
                     <div class="exp-content">
                         <div class="exp-header">
                             <div class="exp-company">
-                                <h3>BNY Mellon</h3>
+                                <h3>BNY (The Bank of New York Mellon Corp)</h3>
                                 <span class="exp-role">Summer Data Analytics Analyst</span>
                             </div>
                             <span class="exp-date">Jun 2021 – Aug 2021</span>
@@ -406,8 +410,8 @@
                     <div class="exp-content">
                         <div class="exp-header">
                             <div class="exp-company">
-                                <h3>UT Austin Research</h3>
-                                <span class="exp-role">Undergraduate Research Associate — BWI Project</span>
+                                <h3>UT Austin BWI Project</h3>
+                                <span class="exp-role">Undergraduate Research Associate</span>
                             </div>
                             <span class="exp-date">Jan 2019 – Jun 2020</span>
                         </div>
@@ -433,7 +437,7 @@
                     <div class="exp-content">
                         <div class="exp-header">
                             <div class="exp-company">
-                                <h3>Negotiatus</h3>
+                                <h3>Order.co (formerly Negotiatus)</h3>
                                 <span class="exp-role">Software Engineering Intern</span>
                             </div>
                             <span class="exp-date">Jun 2017 – Aug 2017</span>
@@ -1057,6 +1061,68 @@
             navToggle.setAttribute('aria-expanded', isActive);
         });
 
+        // Helper function to handle smooth scrolling
+        function smoothScrollTo(top) {
+            window.scrollTo({
+                top: top,
+                behavior: 'smooth'
+            });
+        }
+
+        // Logic to get navigation details
+        function getNavDetails() {
+            const sections = document.querySelectorAll('section');
+            const nav = document.querySelector('.nav');
+            const navHeight = nav ? nav.offsetHeight : 0;
+            const currentScroll = window.scrollY;
+            return { sections, navHeight, currentScroll };
+        }
+
+        // Scroll Center (Text/Line) Click - Go to Next
+        document.querySelector('.scroll-center').addEventListener('click', () => {
+            const { sections, navHeight, currentScroll } = getNavDetails();
+
+            for (const section of sections) {
+                const sectionTop = section.offsetTop - navHeight;
+                if (sectionTop > currentScroll + 10) {
+                    smoothScrollTo(sectionTop);
+                    return;
+                }
+            }
+        });
+
+        // Next Button Click
+        document.querySelector('.scroll-nav.next').addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent bubbling if necessary
+            const { sections, navHeight, currentScroll } = getNavDetails();
+
+            for (const section of sections) {
+                const sectionTop = section.offsetTop - navHeight;
+                if (sectionTop > currentScroll + 10) {
+                    smoothScrollTo(sectionTop);
+                    return;
+                }
+            }
+        });
+
+        // Prev Button Click
+        document.querySelector('.scroll-nav.prev').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const { sections, navHeight, currentScroll } = getNavDetails();
+
+            // Iterate backwards to find the nearest section above
+            const sortedSections = Array.from(sections).reverse();
+
+            for (const section of sortedSections) {
+                const sectionTop = section.offsetTop - navHeight;
+                // Add buffer to ensure we go back to a section distinctly above
+                if (sectionTop < currentScroll - 10) {
+                    smoothScrollTo(sectionTop);
+                    return;
+                }
+            }
+        });
+
         // Close mobile menu when clicking a link
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
@@ -1078,7 +1144,7 @@
                 // Calculate offset for navbar
                 const nav = document.querySelector('.nav');
                 const navHeight = nav ? nav.offsetHeight : 0;
-                const targetPosition = target.offsetTop - navHeight - 20;
+                const targetPosition = target.offsetTop - navHeight;
 
                 // Smooth scroll with ease-out
                 window.scrollTo({
