@@ -350,8 +350,8 @@ ul {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 1rem 0 2rem;
-    /* Rely on parent gap + small additional top margin */
+    margin: 0 0 2.5rem;
+    /* Rely on section gap for top, handle spacing from stats below */
     width: 100%;
 }
 
@@ -371,14 +371,6 @@ ul {
     font-weight: 500;
     color: var(--text-secondary);
     letter-spacing: 0.02em;
-    margin-bottom: 0.75rem;
-}
-
-.hero-identity-tagline {
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--accent);
 }
 
 .hero-title {
