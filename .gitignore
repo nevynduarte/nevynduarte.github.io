@@ -8,6 +8,8 @@
 # OS generated files
 .DS_Store
 Thumbs.db
+nul
+__pycache__/
 
 # Deployment artifacts
 node_modules/
