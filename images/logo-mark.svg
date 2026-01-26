@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 136 128">
+  <!-- Background -->
+  <rect x="0" y="0" width="136" height="128" rx="22" fill="#000000"/>
+
+  <!-- Blue edge shadows (behind vertical strokes) -->
+  <g stroke="#3CA0FF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.85">
+    <!-- N shadows -->
+    <path d="M28 26 V102"/>
+    <path d="M62 26 V102"/>
+
+    <!-- D vertical shadow (shifted right) -->
+    <path d="M86 26 V102"/>
+  </g>
+
+  <!-- Blue arc shadow (behind D curve) -->
+  <!-- Slightly thinner + lower opacity to avoid muddy curve at small sizes -->
+  <g stroke="#3CA0FF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.55">
+    <!-- D arc shadow: offset right by +4px (82->86, 132->136) -->
+    <path d="M86 26 C136 32 136 96 86 102"/>
+  </g>
+
+  <!-- White ND letterforms -->
+  <g stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- N -->
+    <path d="M24 26 V102"/>
+    <path d="M24 26 L58 102"/>
+    <path d="M58 26 V102"/>
+
+    <!-- D (shifted right) -->
+    <path d="M82 26 V102"/>
+    <path d="M82 26 C132 32 132 96 82 102"/>
+  </g>
+
+  <!-- Minimal blue node accents -->
+  <g fill="#3CA0FF" stroke="#FFFFFF" stroke-width="3">
+    <!-- N nodes -->
+    <circle cx="24" cy="26" r="6"/>
+    <circle cx="24" cy="102" r="6"/>
+    <circle cx="58" cy="26" r="6"/>
+    <circle cx="58" cy="102" r="6"/>
+
+    <!-- D nodes (shifted right) -->
+    <circle cx="82" cy="26" r="6"/>
+    <circle cx="82" cy="102" r="6"/>
+    <circle cx="120" cy="64" r="6"/>
+  </g>
+</svg>

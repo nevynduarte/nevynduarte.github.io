@@ -145,9 +145,9 @@ ul {
 .nav-logo {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-style: italic;
     color: var(--text-primary);
     text-decoration: none;
@@ -158,14 +158,16 @@ ul {
 }
 
 .nav-logo-icon {
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
     display: block;
     flex-shrink: 0;
 }
 
 .nav-logo-text {
     white-space: nowrap;
+    font-weight: 400;
+    opacity: 0.85;
 }
 
 .nav-links {
