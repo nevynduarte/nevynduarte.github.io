@@ -162,7 +162,7 @@ ul {
 .nav-logo {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 14px;
     font-family: var(--font-display);
     font-size: 1.25rem;
     font-style: italic;
