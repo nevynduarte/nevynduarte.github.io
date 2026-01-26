@@ -143,10 +143,29 @@ ul {
 }
 
 .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-family: var(--font-display);
     font-size: 1.5rem;
     font-style: italic;
     color: var(--text-primary);
+    text-decoration: none;
+}
+
+.nav-logo:hover {
+    text-decoration: none;
+}
+
+.nav-logo-icon {
+    width: 26px;
+    height: 26px;
+    display: block;
+    flex-shrink: 0;
+}
+
+.nav-logo-text {
+    white-space: nowrap;
 }
 
 .nav-links {
@@ -275,6 +294,12 @@ ul {
     .nav-toggle {
         display: flex;
     }
+
+    .nav-logo-text {
+        display: none;
+    }
+
+    /* When text is hidden, icon provides accessible name via aria-label on parent */
 }
 
 /* Hero Section */
