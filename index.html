@@ -5,19 +5,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Nevyn Duarte - Data Scientist & ML Engineer specializing in quantitative finance, machine learning, and predictive modeling.">
-    <title>Nevyn Duarte | Data Scientist & ML Engineer</title>
+        content="Nevyn Duarte - Data Scientist & ML Engineer specializing in quantitative finance, AI engineering, and predictive modeling. Currently at Bridges AI Consulting.">
+    <title>Nevyn Duarte | Data Scientist & AI Engineer</title>
     <link rel="canonical" href="https://nevyn.tech">
+
+    <!-- SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Nevyn Duarte">
+    <meta name="theme-color" content="#0a0a0b">
+    <meta http-equiv="Content-Language" content="en">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Nevyn Duarte">
+    <meta property="og:title" content="Nevyn Duarte | Data Scientist & ML Engineer">
+    <meta property="og:description"
+        content="Nevyn Duarte is a Data Scientist & AI Engineer specializing in quantitative finance, AI systems, and predictive modeling. Currently building AI platforms at Bridges AI Consulting.">
+    <meta property="og:url" content="https://nevyn.tech">
+    <meta property="og:image" content="https://nevyn.tech/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Nevyn Duarte - Data Scientist & ML Engineer">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nevyn Duarte | Data Scientist & ML Engineer">
+    <meta name="twitter:description"
+        content="Nevyn Duarte is a Data Scientist & AI Engineer specializing in quantitative finance, AI systems, and predictive modeling.">
+    <meta name="twitter:image" content="https://nevyn.tech/images/og-image.png">
+    <meta name="twitter:image:alt" content="Nevyn Duarte - Data Scientist & ML Engineer">
+
+    <!-- Favicons -->
     <link rel="icon" href="images/favicon.svg?v=3" type="image/svg+xml">
     <link rel="icon" href="images/favicon.ico?v=3" sizes="any">
     <link rel="icon" type="image/png" href="images/favicon-32.png?v=3" sizes="32x32">
     <link rel="icon" type="image/png" href="images/favicon-16.png?v=3" sizes="16x16">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
         rel="stylesheet">
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Nevyn Duarte",
+        "url": "https://nevyn.tech",
+        "image": "https://nevyn.tech/images/profilepic.png",
+        "jobTitle": "Data Scientist & Machine Learning Engineer",
+        "description": "Data Scientist and AI Engineer with deep experience in building intelligent systems for quantitative finance and large-scale data engineering. Currently at Bridges AI Consulting designing end-to-end AI platforms.",
+        "sameAs": [
+            "https://github.com/nevynduarte",
+            "https://linkedin.com/in/nevynduarte"
+        ],
+        "alumniOf": [
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "University of Colorado Boulder",
+                "url": "https://www.colorado.edu/"
+            },
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "University of Texas at Austin",
+                "url": "https://www.utexas.edu/"
+            }
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Bridges AI Consulting",
+            "url": "https://bridgesai.consulting/"
+        },
+        "knowsAbout": ["Machine Learning", "Data Science", "Quantitative Finance", "AI Systems", "Python", "PyTorch", "PySpark", "Predictive Modeling", "Quantitative Analysis"],
+        "email": "mailto:nevynduarte@gmail.com"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Nevyn Duarte",
+        "url": "https://nevyn.tech",
+        "description": "Personal website of Nevyn Duarte, Data Scientist & Machine Learning Engineer",
+        "author": {
+            "@type": "Person",
+            "name": "Nevyn Duarte"
+        }
+    }
+    </script>
+
     <script>
         document.documentElement.classList.remove('no-js');
     </script>
@@ -32,13 +115,14 @@
         <div class="nav-inner">
             <a href="#" class="nav-logo">Nevyn Duarte</a>
             <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#education">Education</a>
-                <a href="#projects">Projects</a>
-                <a href="#research">Research</a>
-                <a href="#blog">Blog</a>
-                <a href="#contact">Contact</a>
+                <a href="/about/">Bio</a>
+                <a href="#about" title="About Nevyn Duarte">About</a>
+                <a href="#experience" title="Work Experience">Experience</a>
+                <a href="#education" title="Education & Certifications">Education</a>
+                <a href="#projects" title="Technical Projects">Projects</a>
+                <a href="#research" title="Research & Reading">Research</a>
+                <a href="#blog" title="Technical Blog">Blog</a>
+                <a href="#contact" title="Get in touch">Contact</a>
                 <a href="NevynDuarteResume.pdf" class="nav-cta" target="_blank">Resume ↗</a>
             </div>
             <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -51,6 +135,7 @@
 
     <!-- Mobile menu -->
     <div class="mobile-menu">
+        <a href="/about/">Bio</a>
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
@@ -65,16 +150,18 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
+                <h1 class="sr-only">Nevyn Duarte — Data Scientist & Machine Learning Engineer</h1>
                 <p class="hero-label">Data Scientist & ML Engineer</p>
-                <h1 class="hero-title">
+                <h2 class="hero-title">
                     <span class="line">Building <em>intelligent</em></span>
                     <span class="line">systems for</span>
                     <span class="line"><span class="nowrap">real-world</span> <strong>impact</strong></span>
-                </h1>
+                </h2>
                 <p class="hero-description">
-                    I engineer large-scale AI platforms and machine learning systems for real-world impact.
+                    I'm Nevyn Duarte, and I engineer large-scale AI platforms and machine learning systems for
+                    real-world impact.
                     Currently at Bridges AI Consulting, I build end-to-end solutions for content understanding and
-                    automated decision-making, while completing my M.S. in Data Science at CU Boulder.
+                    automated decision-making, while completing my Master of Science in Data Science at CU Boulder.
                 </p>
                 <div class="hero-cta">
                     <a href="#experience" class="btn btn-primary">View my work</a>
@@ -83,7 +170,8 @@
             </div>
             <div class="hero-visual">
                 <div class="profile-container">
-                    <img src="images/profilepic.png" alt="Nevyn Duarte" class="profile-img">
+                    <img src="images/profilepic.png" alt="Nevyn Duarte" class="profile-img" width="300" height="300"
+                        loading="eager">
                     <div class="profile-accent"></div>
                 </div>
                 <div class="hero-stats">
@@ -128,7 +216,8 @@
                         and risk analysis for hedge funds with $10B+ AUM.
                     </p>
                     <p>
-                        I hold a B.S. in Mathematics from UT Austin and am completing my M.S. in Data Science at CU
+                        I hold a Bachelor of Science in Mathematics from UT Austin and am completing my Master of
+                        Science in Data Science at CU
                         Boulder, focusing on deep learning, parallel computing, and advanced statistical modeling.
                     </p>
                 </div>
@@ -607,7 +696,7 @@
                     <div class="edu-content">
                         <div class="edu-school"><a href="https://www.utexas.edu/" target="_blank"
                                 rel="noopener noreferrer">University of Texas at Austin ↗</a></div>
-                        <div class="edu-degree">B.S. Mathematics</div>
+                        <div class="edu-degree">Bachelor of Science — Mathematics</div>
                         <div class="edu-date">2018 – 2022</div>
                         <ul class="edu-courses">
                             <li>Advanced Research in Autonomous Intelligent Robotics</li>
@@ -1030,14 +1119,16 @@
                 </p>
                 <a href="mailto:nevynduarte@gmail.com" class="contact-email">nevynduarte@gmail.com</a>
                 <div class="contact-links">
-                    <a href="https://linkedin.com/in/nevynduarte" target="_blank" class="contact-link">
+                    <a href="https://linkedin.com/in/nevynduarte" target="_blank" class="contact-link"
+                        rel="me noopener noreferrer">
                         <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
                             <path
                                 d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z" />
                         </svg>
                         LinkedIn
                     </a>
-                    <a href="https://github.com/nevynduarte" target="_blank" class="contact-link">
+                    <a href="https://github.com/nevynduarte" target="_blank" class="contact-link"
+                        rel="me noopener noreferrer">
                         <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
                             <path
                                 d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z" />
