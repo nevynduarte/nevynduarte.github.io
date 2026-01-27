@@ -355,8 +355,8 @@ ul {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 0 0 1rem;
-    /* Reduced bottom margin to pull stats closer */
+    margin: 0 0 0.5rem;
+    /* Added small gap to pull stats down */
     width: 100%;
 }
 
@@ -480,13 +480,17 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 0.75rem;
+    /* Ultra-tight gap */
 }
 
 .profile-container {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1;
+    margin-bottom: 1.5rem;
+    /* Space for desktop */
 }
 
 .profile-img {
@@ -494,7 +498,8 @@ ul {
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    transition: filter var(--transition-base), transform var(--transition-base);
+    transform: translateZ(0);
+    transition: transform 220ms ease, filter 400ms ease;
 }
 
 /* Profile Picture Easter Egg & Remix Effects */
@@ -512,8 +517,8 @@ ul {
 
 .profile-img {
     display: block;
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 50%;
     transform: translateZ(0);
@@ -811,7 +816,8 @@ ul {
 
 .hero-stats {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
+    /* Reduced for tighter desktop entry */
     justify-content: center;
 }
 
@@ -832,6 +838,28 @@ ul {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--text-tertiary);
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        margin-bottom: 0;
+        /* Tight layout on mobile */
+    }
+
+    .stat-number {
+        font-size: 1.75rem;
+        /* Smaller mobile stats */
+    }
+
+    .stat-label {
+        font-size: 0.6rem;
+        /* Finer mobile labels */
+    }
+
+    .hero-stats {
+        gap: 1.25rem;
+        /* Even tighter mobile gap */
+    }
 }
 
 /* Scroll Indicator */
