@@ -520,22 +520,26 @@ ul {
     transition: transform 220ms ease, filter 400ms ease;
 }
 
-/* Hover hint overlay (hidden unless hover/focus) */
+/* Hover hint overlay (improved legibility) */
 .pfp-hint {
     position: absolute !important;
     inset: 0 !important;
     display: flex !important;
-    align-items: center;
+    align-items: flex-end;
+    /* Move text to bottom */
     justify-content: center;
-    padding: 20px;
+    padding: 30px 20px;
     opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 220ms ease, transform 220ms ease;
-    background: radial-gradient(circle at center, rgba(10, 132, 255, 0.22), rgba(0, 0, 0, 0.6) 70%);
+    transform: translateY(10px);
+    transition: opacity 250ms ease, transform 250ms ease;
+    /* Strong caption-area gradient */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 40%, transparent 100%);
     pointer-events: none;
     z-index: 10 !important;
     border-radius: 50%;
     text-align: center;
+    backdrop-filter: blur(2px);
+    /* High-end legibility boost */
 }
 
 .pfp-hint div {
@@ -550,16 +554,19 @@ ul {
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 4px;
-    font-weight: 600;
+    font-weight: 700;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .pfp-hint__text {
     font-size: 14px;
     line-height: 1.2;
     font-weight: 500;
-    color: var(--text-primary);
+    color: #ffffff;
+    /* Absolute white for contrast */
     font-style: italic;
     font-family: var(--font-display);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
 }
 
 .pfp-wrap:hover .pfp-hint,
