@@ -497,20 +497,309 @@ ul {
     transition: filter var(--transition-base), transform var(--transition-base);
 }
 
-.profile-img:hover {
-    filter: brightness(1.1);
+/* Profile Picture Easter Egg & Remix Effects */
+.pfp-wrap {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    transition: transform var(--transition-base);
+}
+
+.profile-img {
+    display: block;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    transform: translateZ(0);
+    transition: transform 220ms ease, filter 400ms ease;
+}
+
+/* Hover hint overlay (hidden unless hover/focus) */
+.pfp-hint {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 220ms ease, transform 220ms ease;
+    background: radial-gradient(circle at center, rgba(10, 132, 255, 0.22), rgba(0, 0, 0, 0.6) 70%);
+    pointer-events: none;
+    z-index: 2;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.pfp-hint div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pfp-hint__title {
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.pfp-hint__text {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: var(--text-primary);
+    font-style: italic;
+    font-family: var(--font-display);
+}
+
+.pfp-wrap:hover .pfp-hint,
+.pfp-wrap:focus-visible .pfp-hint {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.pfp-wrap:hover {
     transform: scale(1.02);
 }
 
-.profile-accent {
+.pfp-overlay {
     position: absolute;
-    top: -8px;
-    right: -8px;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .profile-img,
+    .pfp-hint,
+    .pfp-wrap {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* ---------- EFFECTS (randomly applied) ---------- */
+
+/* 1) Clean cinematic grade */
+.profile-img.fx-grade {
+    filter: contrast(1.1) saturate(1.2) brightness(1.05) sepia(0.1);
+}
+
+/* 2) Professional blue wash mask */
+.profile-img.fx-bluewash {
+    filter: grayscale(0.2) contrast(1.1) brightness(1.05);
+}
+
+.pfp-wrap.fx-bluewash::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.3), transparent 70%),
+        radial-gradient(circle at 80% 70%, rgba(167, 139, 250, 0.2), transparent 70%);
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+/* 3) Subtle neon glow */
+.profile-img.fx-glow {
+    filter: contrast(1.1) brightness(1.1);
+}
+
+.pfp-wrap.fx-glow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: inset 0 0 30px rgba(59, 130, 246, 0.4), 0 0 20px rgba(59, 130, 246, 0.2);
+    z-index: 1;
+}
+
+/* 4) Subtle scanlines */
+.pfp-wrap.fx-scan::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.05) 1px,
+            rgba(0, 0, 0, 0) 2px,
+            rgba(0, 0, 0, 0) 4px);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+/* 5) Gentle float */
+@keyframes pfpFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.profile-img.fx-float {
+    animation: pfpFloat 3s ease-in-out infinite;
+}
+
+/* 6) Tilt effect (CSS vars set via JS) */
+.profile-img.fx-tilt {
+    transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 150ms ease-out;
+}
+
+.pfp-wrap.fx-tilt::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+            rgba(255, 255, 255, 0.15), transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+/* 7) Editorial Grain & Vignette */
+.pfp-wrap.fx-grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.pfp-wrap.fx-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.4) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* 8) Glass Sheen (Hover Only) */
+@keyframes sheenSweep {
+    0% {
+        transform: translateX(-150%) skewX(-25deg);
+    }
+
+    100% {
+        transform: translateX(150%) skewX(-25deg);
+    }
+}
+
+.pfp-overlay.fx-sheen {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     width: 100%;
     height: 100%;
-    border: 1px solid var(--accent);
-    border-radius: 50%;
-    z-index: -1;
+    transform: translateX(-150%) skewX(-25deg);
+}
+
+.pfp-wrap:hover .pfp-overlay.fx-sheen {
+    animation: sheenSweep 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* 9) Gentle Parallax (Controlled by JS) */
+.profile-img.fx-parallax {
+    transform: translate(var(--px, 0), var(--py, 0)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 0.2s ease-out;
+}
+
+/* 10) Breathing Pulse Glow */
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.2), 0 0 10px rgba(59, 130, 246, 0.1);
+    }
+
+    50% {
+        box-shadow: inset 0 0 40px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3);
+    }
+}
+
+.pfp-wrap.fx-pulseglow {
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* 11) Tech Duotone */
+.profile-img.fx-duotone {
+    filter: grayscale(1) contrast(1.2) brightness(0.9);
+}
+
+.pfp-overlay.fx-duotone {
+    background: #0a192f;
+    mix-blend-mode: multiply;
+}
+
+.pfp-overlay.fx-duotone::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #64ffda;
+    mix-blend-mode: screen;
+}
+
+/* 12) Micro Chromatic Aberration */
+.profile-img.fx-chromatic {
+    filter: drop-shadow(1px 0px 0px rgba(255, 0, 0, 0.5)) drop-shadow(-1px 0px 0px rgba(0, 255, 255, 0.5));
+}
+
+/* 13) Cursor Spotlight */
+.pfp-overlay.fx-spotlight {
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), transparent 10%, rgba(0, 0, 0, 0.7) 80%);
+    opacity: 0.8;
+}
+
+/* 14) Click Wobble (Springy Pop) */
+@keyframes pfpWobble {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.05) rotate(2deg);
+    }
+
+    50% {
+        transform: scale(0.95) rotate(-2deg);
+    }
+
+    70% {
+        transform: scale(1.02) rotate(1deg);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.fx-wobble {
+    animation: pfpWobble 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
 .hero-stats {
