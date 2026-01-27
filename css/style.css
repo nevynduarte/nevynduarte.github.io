@@ -816,7 +816,8 @@ ul {
 
 .hero-stats {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
+    /* Reduced for tighter desktop entry */
     justify-content: center;
 }
 
@@ -846,15 +847,18 @@ ul {
     }
 
     .stat-number {
-        font-size: 2rem;
+        font-size: 1.75rem;
+        /* Smaller mobile stats */
     }
 
     .stat-label {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
+        /* Finer mobile labels */
     }
 
     .hero-stats {
-        gap: 2rem;
+        gap: 1.25rem;
+        /* Even tighter mobile gap */
     }
 }
 
