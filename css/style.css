@@ -489,6 +489,8 @@ ul {
     width: 100%;
     max-width: 300px;
     aspect-ratio: 1;
+    margin-bottom: 1.5rem;
+    /* Space for desktop */
 }
 
 .profile-img {
@@ -838,6 +840,11 @@ ul {
 }
 
 @media (max-width: 768px) {
+    .profile-container {
+        margin-bottom: 0;
+        /* Tight layout on mobile */
+    }
+
     .stat-number {
         font-size: 2rem;
     }
