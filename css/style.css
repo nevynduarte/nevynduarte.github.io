@@ -522,9 +522,9 @@ ul {
 
 /* Hover hint overlay (hidden unless hover/focus) */
 .pfp-hint {
-    position: absolute;
-    inset: 0;
-    display: flex;
+    position: absolute !important;
+    inset: 0 !important;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     padding: 20px;
@@ -533,7 +533,7 @@ ul {
     transition: opacity 220ms ease, transform 220ms ease;
     background: radial-gradient(circle at center, rgba(10, 132, 255, 0.22), rgba(0, 0, 0, 0.6) 70%);
     pointer-events: none;
-    z-index: 2;
+    z-index: 10 !important;
     border-radius: 50%;
     text-align: center;
 }
@@ -573,10 +573,10 @@ ul {
 }
 
 .pfp-overlay {
-    position: absolute;
-    inset: 0;
+    position: absolute !important;
+    inset: 0 !important;
     pointer-events: none;
-    z-index: 1;
+    z-index: 5 !important;
     border-radius: 50%;
     overflow: hidden;
 }
