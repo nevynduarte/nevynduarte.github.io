@@ -210,6 +210,11 @@ ul {
     text-shadow: 0 2px 8px rgba(250, 250, 250, 0.3);
 }
 
+.nav-links a.active:not(.nav-cta) {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+}
+
 .nav-cta {
     padding: 0.5rem 1rem;
     border: 1px solid var(--border);

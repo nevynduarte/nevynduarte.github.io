@@ -1379,6 +1379,27 @@
             observer.observe(el);
         });
 
+        // Active nav link highlighting
+        const navSections = Array.from(document.querySelectorAll('section[id]'));
+        const navLinkEls = document.querySelectorAll('.nav-links a[href^="#"]');
+
+        function updateActiveNav() {
+            const nav = document.querySelector('.nav');
+            const navHeight = nav ? nav.offsetHeight : 0;
+            const scrollY = window.scrollY;
+
+            let activeId = null;
+            for (const section of navSections) {
+                if (section.offsetTop - navHeight - 10 <= scrollY) {
+                    activeId = section.id;
+                }
+            }
+
+            navLinkEls.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + activeId);
+            });
+        }
+
         // Nav background on scroll and scroll progress bar
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('.nav');
@@ -1390,6 +1411,9 @@
 
             // Update scroll progress bar
             updateScrollProgress();
+
+            // Update active nav link
+            updateActiveNav();
         });
 
         function updateScrollProgress() {
@@ -1407,6 +1431,7 @@
 
         // Initialize on page load
         updateScrollProgress();
+        updateActiveNav();
 
         // Skill filter functionality
         function initializeSkillFilters() {
