@@ -36,6 +36,15 @@ A modern, professional portfolio site designed to showcase experience in Machine
 This site is designed for GitHub Pages. Simply push to a repository named `username.github.io`.
 
 ## Tech Stack
+## Developer Docs
+
+This site is designed for GitHub Pages. To run locally:
+
+1. Clone the repository
+2. Open `index.html` in a browser
+3. For development, modify `css/style.css` and `index.html` directly
+
+No build process required.
 
 - HTML5
 - CSS3 (Custom Properties, Grid, Flexbox, Animations)
