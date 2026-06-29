@@ -1,0 +1,1 @@
+"// Test for smoothScrollTo function\nfunction testSmoothScrollTo() {\n    console.log('Testing smoothScrollTo function');\n    console.log('Function exists: ', typeof smoothScrollTo === 'function');\n    return true;\n}\n\ntestSmoothScrollTo();"  
