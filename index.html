@@ -1329,6 +1329,7 @@
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
                 mobileMenu.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
             });
         });
 
@@ -1398,7 +1399,8 @@
                 const windowHeight = window.innerHeight;
                 const documentHeight = document.documentElement.scrollHeight;
                 const scrollTop = window.scrollY;
-                const scrollPercent = Math.min((scrollTop / (documentHeight - windowHeight)) * 100, 100);
+                const scrollable = documentHeight - windowHeight;
+                const scrollPercent = scrollable > 0 ? Math.min((scrollTop / scrollable) * 100, 100) : 0;
 
                 // Update CSS custom property for the ::after pseudo-element
                 scrollLine.style.setProperty('--scroll-progress', scrollPercent + '%');
