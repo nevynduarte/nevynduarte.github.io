@@ -1174,23 +1174,23 @@
             let lastIndex = -1;
 
             const applyRandom = () => {
+                const pool = isReducedMotion.matches ? effects.filter(e => !e.motion) : effects;
+
+                // Pick a random index; if it matches the last-used effect, advance by one.
+                // This avoids unbounded recursion (which would call clearEffects and attach
+                // animationend listeners multiple times on the same click).
+                let idx = Math.floor(Math.random() * pool.length);
+                if (pool.length > 1 && effects.indexOf(pool[idx]) === lastIndex) {
+                    idx = (idx + 1) % pool.length;
+                }
+                lastIndex = effects.indexOf(pool[idx]);
+
                 clearEffects();
 
-                // Wobble micro-interaction
                 if (!isReducedMotion.matches) {
                     wrap.classList.add('fx-wobble');
                     wrap.addEventListener('animationend', () => wrap.classList.remove('fx-wobble'), { once: true });
                 }
-
-                let pool = isReducedMotion.matches ? effects.filter(e => !e.motion) : effects;
-                let idx = Math.floor(Math.random() * pool.length);
-
-                // Find actual index in main effects array to track lastIndex
-                const actualIndex = effects.indexOf(pool[idx]);
-                if (pool.length > 1 && actualIndex === lastIndex) {
-                    return applyRandom(); // Re-roll
-                }
-                lastIndex = actualIndex;
 
                 const fx = pool[idx];
                 if (fx.wrap) wrap.classList.add(fx.wrap);
@@ -1398,7 +1398,11 @@
                 const windowHeight = window.innerHeight;
                 const documentHeight = document.documentElement.scrollHeight;
                 const scrollTop = window.scrollY;
-                const scrollPercent = Math.min((scrollTop / (documentHeight - windowHeight)) * 100, 100);
+                const scrollable = documentHeight - windowHeight;
+                // Guard against division by zero when content is shorter than the viewport.
+                const scrollPercent = scrollable > 0
+                    ? Math.min((scrollTop / scrollable) * 100, 100)
+                    : 0;
 
                 // Update CSS custom property for the ::after pseudo-element
                 scrollLine.style.setProperty('--scroll-progress', scrollPercent + '%');
@@ -1436,7 +1440,7 @@
                 const selectedSkill = e.target.value;
                 experienceItems.forEach(item => {
                     if (selectedSkill === 'all') {
-                        item.style.display = 'flex';
+                        item.style.display = '';
                     } else {
                         const tags = Array.from(item.querySelectorAll('.exp-tags span'));
                         const hasSkill = tags.some(tag => tag.textContent.trim() === selectedSkill);
@@ -1471,7 +1475,7 @@
                 const selectedSkill = e.target.value;
                 projectCards.forEach(card => {
                     if (selectedSkill === 'all') {
-                        card.style.display = 'block';
+                        card.style.display = '';
                     } else {
                         const tags = Array.from(card.querySelectorAll('.project-tags span'));
                         const hasSkill = tags.some(tag => tag.textContent.trim() === selectedSkill);
