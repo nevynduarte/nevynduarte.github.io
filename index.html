@@ -1256,11 +1256,13 @@
         const navToggle = document.querySelector('.nav-toggle');
         const mobileMenu = document.querySelector('.mobile-menu');
 
-        navToggle.addEventListener('click', () => {
-            const isActive = navToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            navToggle.setAttribute('aria-expanded', isActive);
-        });
+        if (navToggle && mobileMenu) {
+            navToggle.addEventListener('click', () => {
+                const isActive = navToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                navToggle.setAttribute('aria-expanded', isActive);
+            });
+        }
 
         // Helper function to handle smooth scrolling
         function smoothScrollTo(top) {
@@ -1280,57 +1282,68 @@
         }
 
         // Scroll Center (Text/Line) Click - Go to Next
-        document.querySelector('.scroll-center').addEventListener('click', () => {
-            const { sections, navHeight, currentScroll } = getNavDetails();
+        const scrollCenter = document.querySelector('.scroll-center');
+        if (scrollCenter) {
+            scrollCenter.addEventListener('click', () => {
+                const { sections, navHeight, currentScroll } = getNavDetails();
 
-            for (const section of sections) {
-                const sectionTop = section.offsetTop - navHeight;
-                if (sectionTop > currentScroll + 10) {
-                    smoothScrollTo(sectionTop);
-                    return;
+                for (const section of sections) {
+                    const sectionTop = section.offsetTop - navHeight;
+                    if (sectionTop > currentScroll + 10) {
+                        smoothScrollTo(sectionTop);
+                        return;
+                    }
                 }
-            }
-        });
+            });
+        }
 
         // Next Button Click
-        document.querySelector('.scroll-nav.next').addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent bubbling if necessary
-            const { sections, navHeight, currentScroll } = getNavDetails();
+        const scrollNext = document.querySelector('.scroll-nav.next');
+        if (scrollNext) {
+            scrollNext.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const { sections, navHeight, currentScroll } = getNavDetails();
 
-            for (const section of sections) {
-                const sectionTop = section.offsetTop - navHeight;
-                if (sectionTop > currentScroll + 10) {
-                    smoothScrollTo(sectionTop);
-                    return;
+                for (const section of sections) {
+                    const sectionTop = section.offsetTop - navHeight;
+                    if (sectionTop > currentScroll + 10) {
+                        smoothScrollTo(sectionTop);
+                        return;
+                    }
                 }
-            }
-        });
+            });
+        }
 
         // Prev Button Click
-        document.querySelector('.scroll-nav.prev').addEventListener('click', (e) => {
-            e.stopPropagation();
-            const { sections, navHeight, currentScroll } = getNavDetails();
+        const scrollPrev = document.querySelector('.scroll-nav.prev');
+        if (scrollPrev) {
+            scrollPrev.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const { sections, navHeight, currentScroll } = getNavDetails();
 
-            // Iterate backwards to find the nearest section above
-            const sortedSections = Array.from(sections).reverse();
+                // Iterate backwards to find the nearest section above
+                const sortedSections = Array.from(sections).reverse();
 
-            for (const section of sortedSections) {
-                const sectionTop = section.offsetTop - navHeight;
-                // Add buffer to ensure we go back to a section distinctly above
-                if (sectionTop < currentScroll - 10) {
-                    smoothScrollTo(sectionTop);
-                    return;
+                for (const section of sortedSections) {
+                    const sectionTop = section.offsetTop - navHeight;
+                    // Add buffer to ensure we go back to a section distinctly above
+                    if (sectionTop < currentScroll - 10) {
+                        smoothScrollTo(sectionTop);
+                        return;
+                    }
                 }
-            }
-        });
+            });
+        }
 
         // Close mobile menu when clicking a link
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
+        if (mobileMenu && navToggle) {
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
             });
-        });
+        }
 
         // Enhanced smooth scroll with glow effect for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1360,24 +1373,29 @@
         });
 
         // Animate elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll(
+        const animatedEls = document.querySelectorAll(
             '.experience-item, .project-card, .edu-card, .skill-category, .research-card, .blog-card'
-        ).forEach(el => {
-            observer.observe(el);
-        });
+        );
+
+        if ('IntersectionObserver' in window) {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            animatedEls.forEach(el => observer.observe(el));
+        } else {
+            // Older browsers: reveal all elements immediately so content is never hidden
+            animatedEls.forEach(el => el.classList.add('visible'));
+        }
 
         // Nav background on scroll and scroll progress bar
         window.addEventListener('scroll', () => {
@@ -1483,6 +1501,30 @@
 
         // Initialize filters when DOM is loaded
         document.addEventListener('DOMContentLoaded', initializeSkillFilters);
+    </script>
+    <script>
+        // Graceful image degradation: wire up the .exp-logo-placeholder fallback for
+        // company logos, and silently hide broken research/blog cover images so the
+        // surrounding layout stays intact even when assets fail to load.
+        (function () {
+            document.querySelectorAll('.exp-logo').forEach(function (img) {
+                img.addEventListener('error', function () {
+                    var placeholder = document.createElement('div');
+                    placeholder.className = 'exp-logo-placeholder';
+                    var words = (this.alt || '').trim().split(/\s+/);
+                    placeholder.textContent = words.slice(0, 2).map(function (w) {
+                        return w.charAt(0).toUpperCase();
+                    }).join('') || '?';
+                    if (this.parentNode) this.parentNode.replaceChild(placeholder, this);
+                }, { once: true });
+            });
+
+            document.querySelectorAll('.research-cover, .blog-image').forEach(function (img) {
+                img.addEventListener('error', function () {
+                    this.style.display = 'none';
+                }, { once: true });
+            });
+        }());
     </script>
 </body>
 
