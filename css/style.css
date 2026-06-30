@@ -37,6 +37,22 @@
     --transition-fast: 150ms ease;
     --transition-base: 250ms ease;
     --transition-slow: 400ms ease;
+
+    /* ── Body-copy font-size scale (Open Props --font-size-* names) ──────
+       Fixed sizes for UI chrome and body copy. Fluid display sizes live
+       in --text-display-* tokens added by later design-system passes.
+       Value rationale: these are the literal rem values already used
+       throughout the stylesheet, surfaced here as named tokens so changes
+       propagate from one place.
+       ──────────────────────────────────────────────────────────────────── */
+    --font-size-0: 0.75rem;    /* 12px — timestamps, tiny labels, stat legends */
+    --font-size-1: 0.8125rem;  /* 13px — nav links, dates, filter dropdowns */
+    --font-size-2: 0.875rem;   /* 14px — secondary body copy, card text */
+    --font-size-3: 0.9375rem;  /* 15px — primary body copy (body element) */
+    --font-size-4: 1rem;       /* 16px — standard size */
+    --font-size-5: 1.125rem;   /* 18px — card subheadings */
+    --font-size-6: 1.25rem;    /* 20px — section numbers, nav logo */
+    --font-size-7: 1.5rem;     /* 24px — card headings (.research-card h3, etc.) */
 }
 
 /* Reset & Base */
@@ -55,7 +71,7 @@ html {
 
 body {
     font-family: var(--font-mono);
-    font-size: 0.9375rem;
+    font-size: var(--font-size-3);
     line-height: 1.7;
     color: var(--text-primary);
     background-color: var(--bg-primary);
@@ -164,7 +180,7 @@ ul {
     align-items: center;
     gap: 14px;
     font-family: var(--font-display);
-    font-size: 1.25rem;
+    font-size: var(--font-size-6);
     font-style: italic;
     color: var(--text-primary);
     text-decoration: none;
@@ -194,7 +210,7 @@ ul {
 }
 
 .nav-links a {
-    font-size: 0.8125rem;
+    font-size: var(--font-size-1);
     color: var(--text-secondary);
     letter-spacing: 0.02em;
     transition: all var(--transition-fast);
@@ -372,7 +388,7 @@ ul {
 }
 
 .hero-identity-role {
-    font-size: 1.25rem;
+    font-size: var(--font-size-6);
     font-weight: 500;
     color: var(--text-secondary);
     letter-spacing: 0.02em;
@@ -431,7 +447,7 @@ ul {
 }
 
 .hero-description {
-    font-size: 1rem;
+    font-size: var(--font-size-4);
     line-height: 1.8;
     max-width: 100%;
     margin-bottom: 2rem;
@@ -446,7 +462,7 @@ ul {
     display: inline-flex;
     align-items: center;
     padding: 0.875rem 1.5rem;
-    font-size: 0.8125rem;
+    font-size: var(--font-size-1);
     font-family: var(--font-mono);
     letter-spacing: 0.02em;
     border-radius: 4px;
@@ -834,7 +850,7 @@ ul {
 }
 
 .stat-label {
-    font-size: 0.75rem;
+    font-size: var(--font-size-0);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--text-tertiary);
@@ -870,7 +886,7 @@ ul {
     display: flex;
     align-items: center;
     gap: 1rem;
-    font-size: 0.75rem;
+    font-size: var(--font-size-0);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--text-tertiary);
@@ -949,7 +965,7 @@ ul {
 }
 
 .section-number {
-    font-size: 0.75rem;
+    font-size: var(--font-size-0);
     color: var(--accent);
     letter-spacing: 0.05em;
 }
@@ -966,7 +982,7 @@ ul {
 }
 
 .about-lead {
-    font-size: 1.25rem;
+    font-size: var(--font-size-6);
     color: var(--text-primary);
     line-height: 1.6;
     margin-bottom: 1.5rem;
@@ -995,7 +1011,7 @@ ul {
 
 .skill-category h3 {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--font-size-0);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--accent);
@@ -1027,7 +1043,7 @@ ul {
 }
 
 .skill-category li {
-    font-size: 0.875rem;
+    font-size: var(--font-size-2);
     color: var(--text-secondary);
     padding: 0.25rem 0;
     border-bottom: 1px solid var(--border);
@@ -1046,7 +1062,7 @@ ul {
 }
 
 .filter-label {
-    font-size: 0.875rem;
+    font-size: var(--font-size-2);
     color: var(--text-primary);
     font-weight: 500;
     letter-spacing: 0.02em;
@@ -1067,7 +1083,7 @@ ul {
     border: 1px solid var(--border-light);
     border-radius: 6px;
     font-family: var(--font-mono);
-    font-size: 0.875rem;
+    font-size: var(--font-size-2);
     cursor: pointer;
     transition: all var(--transition-base);
     min-width: 200px;
@@ -1148,7 +1164,7 @@ ul {
     border: 1px solid var(--border);
     border-radius: 12px;
     color: var(--text-tertiary);
-    font-size: 0.75rem;
+    font-size: var(--font-size-0);
     text-transform: uppercase;
     letter-spacing: 0.08em;
 }
@@ -1172,18 +1188,18 @@ ul {
 
 .exp-company h3 {
     font-family: var(--font-mono);
-    font-size: 1.125rem;
+    font-size: var(--font-size-5);
     font-weight: 500;
     margin-bottom: 0.25rem;
 }
 
 .exp-role {
-    font-size: 0.875rem;
+    font-size: var(--font-size-2);
     color: var(--accent);
 }
 
 .exp-date {
-    font-size: 0.8125rem;
+    font-size: var(--font-size-1);
     color: var(--text-tertiary);
 }
 
@@ -1195,7 +1211,7 @@ ul {
     position: relative;
     padding-left: 1.25rem;
     margin-bottom: 0.5rem;
-    font-size: 0.875rem;
+    font-size: var(--font-size-2);
 }
 
 .exp-details li::before {
@@ -1216,7 +1232,7 @@ ul {
     background: var(--accent-subtle);
     border: 1px solid rgba(59, 130, 246, 0.2);
     border-radius: 4px;
-    font-size: 0.75rem;
+    font-size: var(--font-size-0);
     color: var(--accent);
 }
 
@@ -1254,7 +1270,7 @@ ul {
 }
 
 .project-label {
-    font-size: 0.75rem;
+    font-size: var(--font-size-0);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--accent);
@@ -1264,13 +1280,13 @@ ul {
 
 .project-card h3 {
     font-family: var(--font-mono);
-    font-size: 1.125rem;
+    font-size: var(--font-size-5);
     font-weight: 500;
     margin-bottom: 1rem;
 }
 
 .project-card p {
-    font-size: 0.875rem;
+    font-size: var(--font-size-2);
     margin-bottom: 1rem;
 }
 
@@ -1290,7 +1306,7 @@ ul {
 }
 
 .project-link {
-    font-size: 0.875rem;
+    font-size: var(--font-size-2);
     color: var(--accent);
     display: inline-flex;
     align-items: center;
@@ -1328,7 +1344,7 @@ ul {
 .status-list {
     display: grid;
     gap: 0.75rem;
-    font-size: 0.875rem;
+    font-size: var(--font-size-2);
 }
 
 .status-tag {
@@ -1391,7 +1407,7 @@ ul {
 
 .research-card h3 {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: var(--font-size-7);
     color: var(--text-primary);
     margin-bottom: 1.5rem;
 }
@@ -1458,7 +1474,7 @@ ul {
 }
 
 .entry-meta {
-    font-size: 0.75rem;
+    font-size: var(--font-size-0);
     color: var(--text-tertiary);
 }
 
@@ -1479,7 +1495,7 @@ ul {
     display: grid;
     gap: 0.5rem;
     margin-bottom: 1rem;
-    font-size: 0.875rem;
+    font-size: var(--font-size-2);
 }
 
 .research-interests li {
@@ -1552,7 +1568,7 @@ ul {
 
 .blog-card h3 {
     font-family: var(--font-mono);
-    font-size: 1.5rem;
+    font-size: var(--font-size-7);
     margin-bottom: 0.75rem;
 }
 
@@ -1656,34 +1672,34 @@ ul {
 }
 
 .edu-minor-school {
-    font-size: 0.8125rem;
+    font-size: var(--font-size-1);
     color: var(--text-tertiary);
 }
 
 .edu-school {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: var(--font-size-7);
     color: var(--text-primary);
     margin-bottom: 0.25rem;
     text-align: center;
 }
 
 .edu-degree {
-    font-size: 1rem;
+    font-size: var(--font-size-4);
     color: var(--accent-purple);
     margin-bottom: 0.5rem;
     text-align: center;
 }
 
 .edu-date {
-    font-size: 0.8125rem;
+    font-size: var(--font-size-1);
     color: var(--text-tertiary);
     margin-bottom: 0.5rem;
     text-align: center;
 }
 
 .edu-gpa {
-    font-size: 0.875rem;
+    font-size: var(--font-size-2);
     color: var(--accent);
     margin-bottom: 1rem;
     text-align: center;
@@ -1699,7 +1715,7 @@ ul {
 }
 
 .specialization-title {
-    font-size: 0.8125rem;
+    font-size: var(--font-size-1);
     color: var(--text-secondary);
     font-weight: 500;
     padding: 0 0 0 1.5rem;
@@ -1741,7 +1757,7 @@ ul {
 }
 
 .edu-courses {
-    font-size: 0.8125rem;
+    font-size: var(--font-size-1);
     color: #ffffff;
     line-height: 1.6;
     display: grid;
@@ -1763,7 +1779,7 @@ ul {
 }
 
 .edu-highlight {
-    font-size: 0.875rem;
+    font-size: var(--font-size-2);
     color: var(--accent);
     margin-top: 1rem;
 }
@@ -1774,14 +1790,14 @@ ul {
 }
 
 .edu-activities-label {
-    font-size: 0.8125rem;
+    font-size: var(--font-size-1);
     color: var(--text-secondary);
     font-weight: 500;
     margin-bottom: 0.5rem;
 }
 
 .edu-activities {
-    font-size: 0.8125rem;
+    font-size: var(--font-size-1);
     color: #ffffff;
     line-height: 1.6;
     display: grid;
@@ -1822,14 +1838,14 @@ ul {
 }
 
 .contact-text {
-    font-size: 1rem;
+    font-size: var(--font-size-4);
     margin-bottom: 2rem;
 }
 
 .contact-email {
     display: inline-block;
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: var(--font-size-7);
     color: var(--accent);
     margin-bottom: 2rem;
     text-decoration: none;
@@ -1854,7 +1870,7 @@ ul {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.875rem;
+    font-size: var(--font-size-2);
     color: var(--text-secondary);
     transition: color var(--transition-fast);
 }
@@ -1881,7 +1897,7 @@ ul {
 }
 
 .footer p {
-    font-size: 0.8125rem;
+    font-size: var(--font-size-1);
     color: var(--text-tertiary);
 }
 
@@ -1998,14 +2014,14 @@ ul {
     }
 
     .filter-label {
-        font-size: 0.8125rem;
+        font-size: var(--font-size-1);
     }
 
     .filter-dropdown {
         width: 100%;
         min-width: unset;
         padding: 0.875rem 2.5rem 0.875rem 1rem;
-        font-size: 0.9375rem;
+        font-size: var(--font-size-3);
     }
 }
 
