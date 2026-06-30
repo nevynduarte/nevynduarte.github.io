@@ -14,13 +14,53 @@
     --text-secondary: #d4d4d8;
     --text-tertiary: #a1a1aa;
 
-    --accent: #3b82f6;
-    --accent-hover: #60a5fa;
-    --accent-subtle: rgba(59, 130, 246, 0.1);
+    /* ── Layer 10: Color-scale tokens ────────────────────────────────────
+       Raw named-palette tier (zinc / blue / violet) anchors semantic
+       tokens to a shared source of truth. Alpha variants use color-mix()
+       so opacity is always relative to the live token value — changing
+       --accent automatically updates every glow, border, and gradient.
+       color-mix() is supported in all evergreen browsers (Chrome 111+,
+       Firefox 113+, Safari 16.2+).
+       ──────────────────────────────────────────────────────────────────── */
 
-    --accent-purple: #a78bfa;
-    --accent-purple-hover: #c4b5fd;
-    --accent-purple-subtle: rgba(167, 139, 250, 0.1);
+    /* Raw scale */
+    --color-blue-400:   #60a5fa;   /* maps to --accent-hover */
+    --color-blue-500:   #3b82f6;   /* maps to --accent */
+    --color-violet-300: #c4b5fd;   /* maps to --accent-purple-hover */
+    --color-violet-400: #a78bfa;   /* maps to --accent-purple */
+    --color-violet-500: #8b5cf6;   /* hero / research / status gradients */
+
+    --accent: var(--color-blue-500);
+    --accent-hover: var(--color-blue-400);
+
+    /* Alpha variants — color-mix() ties opacity to the live token */
+    --accent-a03: color-mix(in srgb, var(--accent)  3%, transparent);
+    --accent-a05: color-mix(in srgb, var(--accent)  5%, transparent);
+    --accent-a10: color-mix(in srgb, var(--accent) 10%, transparent);
+    --accent-a15: color-mix(in srgb, var(--accent) 15%, transparent);
+    --accent-a20: color-mix(in srgb, var(--accent) 20%, transparent);
+    --accent-a30: color-mix(in srgb, var(--accent) 30%, transparent);
+    --accent-a40: color-mix(in srgb, var(--accent) 40%, transparent);
+    --accent-a50: color-mix(in srgb, var(--accent) 50%, transparent);
+
+    --accent-subtle: var(--accent-a10);
+
+    --accent-purple: var(--color-violet-400);
+    --accent-purple-hover: var(--color-violet-300);
+
+    --accent-purple-a10: color-mix(in srgb, var(--accent-purple) 10%, transparent);
+    --accent-purple-a20: color-mix(in srgb, var(--accent-purple) 20%, transparent);
+    --accent-purple-a30: color-mix(in srgb, var(--accent-purple) 30%, transparent);
+    --accent-purple-a40: color-mix(in srgb, var(--accent-purple) 40%, transparent);
+    --accent-purple-a50: color-mix(in srgb, var(--accent-purple) 50%, transparent);
+
+    --accent-purple-subtle: var(--accent-purple-a10);
+
+    --accent-violet-a12: color-mix(in srgb, var(--color-violet-500) 12%, transparent);
+    --accent-violet-a20: color-mix(in srgb, var(--color-violet-500) 20%, transparent);
+    --accent-violet-a30: color-mix(in srgb, var(--color-violet-500) 30%, transparent);
+    --accent-violet-a40: color-mix(in srgb, var(--color-violet-500) 40%, transparent);
+    --accent-violet-a50: color-mix(in srgb, var(--color-violet-500) 50%, transparent);
 
     --border: #27272a;
     --border-light: #3f3f46;
@@ -95,7 +135,7 @@ a {
 a:hover {
     color: var(--accent);
     text-decoration-color: var(--accent);
-    text-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+    text-shadow: 0 2px 8px var(--accent-a40);
 }
 
 /* Typography */
@@ -388,7 +428,7 @@ ul {
     background-clip: text;
     background-size: 200% 200%;
     animation: gradientShift 8s ease infinite;
-    text-shadow: 0 0 40px rgba(139, 92, 246, 0.2);
+    text-shadow: 0 0 40px var(--accent-violet-a20);
 }
 
 .hero-title .line {
@@ -397,20 +437,20 @@ ul {
 
 .hero-title em {
     font-style: italic;
-    background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%);
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-purple) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.4));
+    filter: drop-shadow(0 0 8px var(--accent-violet-a40));
 }
 
 .hero-title strong {
     font-weight: 900;
-    background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%);
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-purple) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.5));
+    filter: drop-shadow(0 0 8px var(--accent-violet-a50));
     letter-spacing: 0.02em;
     text-decoration: underline;
     text-decoration-color: var(--accent);
@@ -620,8 +660,8 @@ ul {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.3), transparent 70%),
-        radial-gradient(circle at 80% 70%, rgba(167, 139, 250, 0.2), transparent 70%);
+    background: radial-gradient(circle at 20% 30%, var(--accent-a30), transparent 70%),
+        radial-gradient(circle at 80% 70%, var(--accent-purple-a20), transparent 70%);
     mix-blend-mode: screen;
     pointer-events: none;
     z-index: 1;
@@ -639,7 +679,7 @@ ul {
     inset: 0;
     border-radius: 50%;
     pointer-events: none;
-    box-shadow: inset 0 0 30px rgba(59, 130, 246, 0.4), 0 0 20px rgba(59, 130, 246, 0.2);
+    box-shadow: inset 0 0 30px var(--accent-a40), 0 0 20px var(--accent-a20);
     z-index: 1;
 }
 
@@ -746,11 +786,11 @@ ul {
 
     0%,
     100% {
-        box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.2), 0 0 10px rgba(59, 130, 246, 0.1);
+        box-shadow: inset 0 0 20px var(--accent-a20), 0 0 10px var(--accent-a10);
     }
 
     50% {
-        box-shadow: inset 0 0 40px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3);
+        box-shadow: inset 0 0 40px var(--accent-a50), 0 0 30px var(--accent-a30);
     }
 }
 
@@ -927,7 +967,7 @@ ul {
     height: 100%;
     background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 100%);
     transition: width 0.15s ease-out;
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 10px var(--accent-a50);
 }
 
 /* Sections */
@@ -1040,7 +1080,7 @@ ul {
     align-items: center;
     gap: 1rem;
     padding: 1.5rem;
-    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.03) 100%);
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--accent-a03) 100%);
     border: 1px solid var(--border);
     border-radius: 8px;
 }
@@ -1085,14 +1125,14 @@ ul {
 
 .filter-dropdown:hover {
     border-color: var(--accent);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    box-shadow: 0 4px 12px var(--accent-a15);
     transform: translateY(-1px);
 }
 
 .filter-dropdown:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-subtle), 0 4px 12px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 0 3px var(--accent-subtle), 0 4px 12px var(--accent-a20);
 }
 
 .filter-dropdown option {
@@ -1214,7 +1254,7 @@ ul {
 .exp-tags span {
     padding: 0.25rem 0.75rem;
     background: var(--accent-subtle);
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    border: 1px solid var(--accent-a20);
     border-radius: 4px;
     font-size: 0.75rem;
     color: var(--accent);
@@ -1249,8 +1289,8 @@ ul {
 
 .project-card.featured {
     grid-column: 1 / -1;
-    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.05) 100%);
-    border-color: rgba(59, 130, 246, 0.2);
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--accent-a05) 100%);
+    border-color: var(--accent-a20);
 }
 
 .project-label {
@@ -1356,9 +1396,9 @@ ul {
 }
 
 .status-tag.reference {
-    color: #c4b5fd;
-    border-color: rgba(139, 92, 246, 0.4);
-    background: rgba(139, 92, 246, 0.12);
+    color: var(--accent-purple-hover);
+    border-color: var(--accent-violet-a40);
+    background: var(--accent-violet-a12);
 }
 
 .status-tag.applied {
@@ -1414,14 +1454,14 @@ ul {
     border-radius: 4px;
     margin: 0 auto 1rem auto;
     display: block;
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 20px var(--accent-violet-a30);
     transition: all var(--transition-base);
     opacity: 0.9;
 }
 
 .research-cover:hover {
     opacity: 1;
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+    box-shadow: 0 0 30px var(--accent-violet-a50);
     transform: translateY(-2px);
 }
 
@@ -1541,13 +1581,13 @@ ul {
     object-fit: cover;
     border-radius: 4px;
     margin-bottom: 1rem;
-    box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+    box-shadow: 0 0 20px var(--accent-purple-a30);
     transition: all var(--transition-base);
 }
 
 .blog-card:hover .blog-image {
     transform: scale(1.01);
-    box-shadow: 0 0 30px rgba(167, 139, 250, 0.5);
+    box-shadow: 0 0 30px var(--accent-purple-a50);
 }
 
 .blog-card h3 {
@@ -2043,15 +2083,15 @@ ul {
 
 @keyframes scrollHighlight {
     0% {
-        box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.4);
+        box-shadow: 0 0 0 0 var(--accent-purple-a40);
     }
 
     50% {
-        box-shadow: 0 0 30px 10px rgba(167, 139, 250, 0.2);
+        box-shadow: 0 0 30px 10px var(--accent-purple-a20);
     }
 
     100% {
-        box-shadow: 0 0 0 0 rgba(167, 139, 250, 0);
+        box-shadow: 0 0 0 0 transparent;
     }
 }
 
