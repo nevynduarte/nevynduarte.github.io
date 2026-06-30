@@ -4,7 +4,7 @@
  */
 
 :root {
-    /* Colors - Dark sophisticated palette */
+    /* ── Layer 1: Colors — brand-specific palette ────────────────────────── */
     --bg-primary: #0a0a0b;
     --bg-secondary: #111113;
     --bg-tertiary: #18181b;
@@ -25,18 +25,35 @@
     --border: #27272a;
     --border-light: #3f3f46;
 
-    /* Typography */
+    /* ── Layer 2: Typography ─────────────────────────────────────────────── */
     --font-display: 'Instrument Serif', Georgia, serif;
     --font-mono: 'IBM Plex Mono', 'SF Mono', monospace;
 
-    /* Spacing */
+    /* ── Layer 3: Layout ─────────────────────────────────────────────────── */
     --section-padding: clamp(2rem, 5vw, 4rem);
     --container-max: 1200px;
 
-    /* Transitions */
-    --transition-fast: 150ms ease;
-    --transition-base: 250ms ease;
-    --transition-slow: 400ms ease;
+    /* ── Layer 4: Border Radius — semantic tokens; Open Props primitives ─── */
+    /* Open Props provides --radius-1 (2px) and --radius-round (1e5px).      */
+    /* Other sizes are brand-calibrated constants surfaced as named tokens.   */
+    --radius-sm: 4px;                          /* tags, image corners */
+    --radius-md: 8px;                          /* cards, containers */
+    --radius-input: 6px;                       /* form inputs */
+    --radius-btn: 4px;                         /* buttons */
+    --radius-lg: 12px;                         /* large decorative elements */
+    --radius-line: var(--radius-1, 2px);       /* progress bars */
+    --radius-pill: var(--radius-round, 1e5px); /* badges, status tags */
+
+    /* ── Layer 5: Easing — sourced from Open Props ───────────────────────── */
+    /* Open Props --ease-3 / --ease-4 are deceleration curves (ease-out),    */
+    /* which feel more responsive than the default CSS `ease` keyword.        */
+    --ease-ui: var(--ease-3, cubic-bezier(.25, 0, .3, 1));    /* standard */
+    --ease-fast: var(--ease-4, cubic-bezier(.25, 0, .2, 1));  /* snappy */
+
+    /* ── Layer 6: Transitions — composed from easing tokens ─────────────── */
+    --transition-fast: 150ms var(--ease-fast);
+    --transition-base: 250ms var(--ease-ui);
+    --transition-slow: 400ms var(--ease-ui);
 }
 
 /* Reset & Base */
@@ -213,7 +230,7 @@ ul {
 .nav-cta {
     padding: 0.5rem 1rem;
     border: 1px solid var(--border);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     transition: all var(--transition-fast);
 }
 
@@ -449,7 +466,7 @@ ul {
     font-size: 0.8125rem;
     font-family: var(--font-mono);
     letter-spacing: 0.02em;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     transition: all var(--transition-fast);
     cursor: pointer;
 }
@@ -878,7 +895,7 @@ ul {
     transition: opacity var(--transition-base);
     background: var(--bg-card);
     padding: 0.5rem 1rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     border: 1px solid var(--border);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
@@ -914,7 +931,7 @@ ul {
     background: var(--border);
     position: relative;
     overflow: hidden;
-    border-radius: 2px;
+    border-radius: var(--radius-line);
     --scroll-progress: 0%;
 }
 
@@ -1042,7 +1059,7 @@ ul {
     padding: 1.5rem;
     background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.03) 100%);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
 }
 
 .filter-label {
@@ -1065,7 +1082,7 @@ ul {
     background-image: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-card) 100%);
     color: var(--text-primary);
     border: 1px solid var(--border-light);
-    border-radius: 6px;
+    border-radius: var(--radius-input);
     font-family: var(--font-mono);
     font-size: 0.875rem;
     cursor: pointer;
@@ -1113,7 +1130,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1146,7 +1163,7 @@ ul {
     justify-content: center;
     background: var(--bg-tertiary);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     color: var(--text-tertiary);
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -1215,7 +1232,7 @@ ul {
     padding: 0.25rem 0.75rem;
     background: var(--accent-subtle);
     border: 1px solid rgba(59, 130, 246, 0.2);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-size: 0.75rem;
     color: var(--accent);
 }
@@ -1231,7 +1248,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1284,7 +1301,7 @@ ul {
 .project-tags span {
     padding: 0.25rem 0.5rem;
     background: var(--bg-tertiary);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-size: 0.6875rem;
     color: var(--text-tertiary);
 }
@@ -1336,7 +1353,7 @@ ul {
     align-items: center;
     gap: 0.4rem;
     padding: 0.2rem 0.6rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 0.6875rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -1378,7 +1395,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1411,7 +1428,7 @@ ul {
 .research-cover {
     width: 120px;
     height: auto;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     margin: 0 auto 1rem auto;
     display: block;
     box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
@@ -1471,7 +1488,7 @@ ul {
 .research-forward {
     padding: 2rem;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     background: var(--bg-tertiary);
 }
 
@@ -1515,7 +1532,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1539,7 +1556,7 @@ ul {
     width: 100%;
     height: 180px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     margin-bottom: 1rem;
     box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
     transition: all var(--transition-base);
@@ -1582,7 +1599,7 @@ ul {
 .blog-status {
     display: inline-flex;
     padding: 0.25rem 0.75rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 0.6875rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -1607,7 +1624,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
