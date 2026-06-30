@@ -389,19 +389,21 @@
         const navToggle = document.querySelector('.nav-toggle');
         const mobileMenu = document.querySelector('.mobile-menu');
 
-        navToggle.addEventListener('click', () => {
-            const isActive = navToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            navToggle.setAttribute('aria-expanded', isActive);
-        });
-
-        // Close mobile menu when clicking a link
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
+        if (navToggle && mobileMenu) {
+            navToggle.addEventListener('click', () => {
+                const isActive = navToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                navToggle.setAttribute('aria-expanded', isActive);
             });
-        });
+
+            // Close mobile menu when clicking a link
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
+            });
+        }
 
         // Nav background on scroll
         window.addEventListener('scroll', () => {

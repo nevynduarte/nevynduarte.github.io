@@ -1256,11 +1256,13 @@
         const navToggle = document.querySelector('.nav-toggle');
         const mobileMenu = document.querySelector('.mobile-menu');
 
-        navToggle.addEventListener('click', () => {
-            const isActive = navToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            navToggle.setAttribute('aria-expanded', isActive);
-        });
+        if (navToggle && mobileMenu) {
+            navToggle.addEventListener('click', () => {
+                const isActive = navToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                navToggle.setAttribute('aria-expanded', isActive);
+            });
+        }
 
         // Helper function to handle smooth scrolling
         function smoothScrollTo(top) {
@@ -1280,7 +1282,8 @@
         }
 
         // Scroll Center (Text/Line) Click - Go to Next
-        document.querySelector('.scroll-center').addEventListener('click', () => {
+        const scrollCenter = document.querySelector('.scroll-center');
+        if (scrollCenter) scrollCenter.addEventListener('click', () => {
             const { sections, navHeight, currentScroll } = getNavDetails();
 
             for (const section of sections) {
@@ -1293,7 +1296,8 @@
         });
 
         // Next Button Click
-        document.querySelector('.scroll-nav.next').addEventListener('click', (e) => {
+        const scrollNext = document.querySelector('.scroll-nav.next');
+        if (scrollNext) scrollNext.addEventListener('click', (e) => {
             e.stopPropagation(); // Prevent bubbling if necessary
             const { sections, navHeight, currentScroll } = getNavDetails();
 
@@ -1307,7 +1311,8 @@
         });
 
         // Prev Button Click
-        document.querySelector('.scroll-nav.prev').addEventListener('click', (e) => {
+        const scrollPrev = document.querySelector('.scroll-nav.prev');
+        if (scrollPrev) scrollPrev.addEventListener('click', (e) => {
             e.stopPropagation();
             const { sections, navHeight, currentScroll } = getNavDetails();
 
@@ -1325,12 +1330,14 @@
         });
 
         // Close mobile menu when clicking a link
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
+        if (mobileMenu && navToggle) {
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
             });
-        });
+        }
 
         // Enhanced smooth scroll with glow effect for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1339,7 +1346,12 @@
                 if (href === '#') return; // Skip bare hash links
                 e.preventDefault();
 
-                const target = document.querySelector(href);
+                let target;
+                try {
+                    target = document.querySelector(href);
+                } catch (_) {
+                    return;
+                }
                 if (!target) return;
 
                 // Calculate offset for navbar
@@ -1424,26 +1436,28 @@
             });
 
             // Populate experience filter dropdown
-            Array.from(experienceSkills).sort().forEach(skill => {
-                const option = document.createElement('option');
-                option.value = skill;
-                option.textContent = skill;
-                experienceFilter.appendChild(option);
-            });
-
-            // Experience filter event listener
-            experienceFilter.addEventListener('change', (e) => {
-                const selectedSkill = e.target.value;
-                experienceItems.forEach(item => {
-                    if (selectedSkill === 'all') {
-                        item.style.display = 'flex';
-                    } else {
-                        const tags = Array.from(item.querySelectorAll('.exp-tags span'));
-                        const hasSkill = tags.some(tag => tag.textContent.trim() === selectedSkill);
-                        item.style.display = hasSkill ? 'flex' : 'none';
-                    }
+            if (experienceFilter) {
+                Array.from(experienceSkills).sort().forEach(skill => {
+                    const option = document.createElement('option');
+                    option.value = skill;
+                    option.textContent = skill;
+                    experienceFilter.appendChild(option);
                 });
-            });
+
+                // Experience filter event listener
+                experienceFilter.addEventListener('change', (e) => {
+                    const selectedSkill = e.target.value;
+                    experienceItems.forEach(item => {
+                        if (selectedSkill === 'all') {
+                            item.style.display = 'flex';
+                        } else {
+                            const tags = Array.from(item.querySelectorAll('.exp-tags span'));
+                            const hasSkill = tags.some(tag => tag.textContent.trim() === selectedSkill);
+                            item.style.display = hasSkill ? 'flex' : 'none';
+                        }
+                    });
+                });
+            }
 
             // Projects section
             const projectCards = document.querySelectorAll('.project-card');
@@ -1459,26 +1473,28 @@
             });
 
             // Populate projects filter dropdown
-            Array.from(projectSkills).sort().forEach(skill => {
-                const option = document.createElement('option');
-                option.value = skill;
-                option.textContent = skill;
-                projectsFilter.appendChild(option);
-            });
-
-            // Projects filter event listener
-            projectsFilter.addEventListener('change', (e) => {
-                const selectedSkill = e.target.value;
-                projectCards.forEach(card => {
-                    if (selectedSkill === 'all') {
-                        card.style.display = 'block';
-                    } else {
-                        const tags = Array.from(card.querySelectorAll('.project-tags span'));
-                        const hasSkill = tags.some(tag => tag.textContent.trim() === selectedSkill);
-                        card.style.display = hasSkill ? 'block' : 'none';
-                    }
+            if (projectsFilter) {
+                Array.from(projectSkills).sort().forEach(skill => {
+                    const option = document.createElement('option');
+                    option.value = skill;
+                    option.textContent = skill;
+                    projectsFilter.appendChild(option);
                 });
-            });
+
+                // Projects filter event listener
+                projectsFilter.addEventListener('change', (e) => {
+                    const selectedSkill = e.target.value;
+                    projectCards.forEach(card => {
+                        if (selectedSkill === 'all') {
+                            card.style.display = 'block';
+                        } else {
+                            const tags = Array.from(card.querySelectorAll('.project-tags span'));
+                            const hasSkill = tags.some(tag => tag.textContent.trim() === selectedSkill);
+                            card.style.display = hasSkill ? 'block' : 'none';
+                        }
+                    });
+                });
+            }
         }
 
         // Initialize filters when DOM is loaded
