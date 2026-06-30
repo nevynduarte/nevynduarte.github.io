@@ -4,6 +4,29 @@
  */
 
 :root {
+    /* ── Open Props design-token foundation (MIT) ────────────────────────────
+     * Easing curves and border-radius adopted from Open Props v1.7.
+     * https://open-props.style — these constants give the site a coherent
+     * motion and shape language grounded in a maintained design system.
+     * ──────────────────────────────────────────────────────────────────── */
+
+    /* Easing */
+    --ease-1: cubic-bezier(.25, 0, .5, 1);
+    --ease-2: cubic-bezier(.25, 0, .4, 1);
+    --ease-3: cubic-bezier(.25, 0, .3, 1);
+    --ease-out-1: cubic-bezier(0, 0, .75, 1);
+    --ease-out-2: cubic-bezier(0, 0, .50, 1);
+    --ease-out-3: cubic-bezier(0, 0, .30, 1);
+    --ease-elastic-out-1: cubic-bezier(.5, .75, .75, 1.25);
+
+    /* Border radius */
+    --radius-1: 2px;
+    --radius-2: 4px;
+    --radius-3: 8px;
+    --radius-4: 12px;
+    --radius-5: 16px;
+    --radius-round: 1e5px;
+
     /* Colors - Dark sophisticated palette */
     --bg-primary: #0a0a0b;
     --bg-secondary: #111113;
@@ -33,10 +56,10 @@
     --section-padding: clamp(2rem, 5vw, 4rem);
     --container-max: 1200px;
 
-    /* Transitions */
-    --transition-fast: 150ms ease;
-    --transition-base: 250ms ease;
-    --transition-slow: 400ms ease;
+    /* Transitions — eased with Open Props curves for intentional motion */
+    --transition-fast: 150ms var(--ease-out-3);
+    --transition-base: 250ms var(--ease-2);
+    --transition-slow: 400ms var(--ease-1);
 }
 
 /* Reset & Base */
@@ -113,19 +136,17 @@ h4 {
     white-space: nowrap;
 }
 
-/* Screen reader only utility - Absolute zero impact */
+/* Screen reader only — standard 1 px clip pattern (Bootstrap / Tailwind convention) */
 .sr-only {
-    position: absolute !important;
-    width: 0 !important;
-    height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    border: 0 !important;
-    pointer-events: none !important;
-    white-space: nowrap !important;
-    line-height: 0 !important;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
 
 ul {
@@ -213,7 +234,7 @@ ul {
 .nav-cta {
     padding: 0.5rem 1rem;
     border: 1px solid var(--border);
-    border-radius: 4px;
+    border-radius: var(--radius-2);
     transition: all var(--transition-fast);
 }
 
@@ -449,7 +470,7 @@ ul {
     font-size: 0.8125rem;
     font-family: var(--font-mono);
     letter-spacing: 0.02em;
-    border-radius: 4px;
+    border-radius: var(--radius-2);
     transition: all var(--transition-fast);
     cursor: pointer;
 }
@@ -878,7 +899,7 @@ ul {
     transition: opacity var(--transition-base);
     background: var(--bg-card);
     padding: 0.5rem 1rem;
-    border-radius: 999px;
+    border-radius: var(--radius-round);
     border: 1px solid var(--border);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
@@ -914,7 +935,7 @@ ul {
     background: var(--border);
     position: relative;
     overflow: hidden;
-    border-radius: 2px;
+    border-radius: var(--radius-1);
     --scroll-progress: 0%;
 }
 
@@ -1042,7 +1063,7 @@ ul {
     padding: 1.5rem;
     background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.03) 100%);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-3);
 }
 
 .filter-label {
@@ -1065,7 +1086,7 @@ ul {
     background-image: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-card) 100%);
     color: var(--text-primary);
     border: 1px solid var(--border-light);
-    border-radius: 6px;
+    border-radius: var(--radius-3);
     font-family: var(--font-mono);
     font-size: 0.875rem;
     cursor: pointer;
@@ -1089,8 +1110,7 @@ ul {
     transform: translateY(-1px);
 }
 
-.filter-dropdown:focus {
-    outline: none;
+.filter-dropdown:focus-visible {
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-subtle), 0 4px 12px rgba(59, 130, 246, 0.2);
 }
@@ -1113,7 +1133,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-3);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1146,7 +1166,7 @@ ul {
     justify-content: center;
     background: var(--bg-tertiary);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: var(--radius-4);
     color: var(--text-tertiary);
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -1215,7 +1235,7 @@ ul {
     padding: 0.25rem 0.75rem;
     background: var(--accent-subtle);
     border: 1px solid rgba(59, 130, 246, 0.2);
-    border-radius: 4px;
+    border-radius: var(--radius-2);
     font-size: 0.75rem;
     color: var(--accent);
 }
@@ -1231,7 +1251,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-3);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1284,7 +1304,7 @@ ul {
 .project-tags span {
     padding: 0.25rem 0.5rem;
     background: var(--bg-tertiary);
-    border-radius: 4px;
+    border-radius: var(--radius-2);
     font-size: 0.6875rem;
     color: var(--text-tertiary);
 }
@@ -1336,7 +1356,7 @@ ul {
     align-items: center;
     gap: 0.4rem;
     padding: 0.2rem 0.6rem;
-    border-radius: 999px;
+    border-radius: var(--radius-round);
     font-size: 0.6875rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -1378,7 +1398,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-3);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1411,7 +1431,7 @@ ul {
 .research-cover {
     width: 120px;
     height: auto;
-    border-radius: 4px;
+    border-radius: var(--radius-2);
     margin: 0 auto 1rem auto;
     display: block;
     box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
@@ -1471,7 +1491,7 @@ ul {
 .research-forward {
     padding: 2rem;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-3);
     background: var(--bg-tertiary);
 }
 
@@ -1515,7 +1535,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-3);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1539,7 +1559,7 @@ ul {
     width: 100%;
     height: 180px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: var(--radius-2);
     margin-bottom: 1rem;
     box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
     transition: all var(--transition-base);
@@ -1582,7 +1602,7 @@ ul {
 .blog-status {
     display: inline-flex;
     padding: 0.25rem 0.75rem;
-    border-radius: 999px;
+    border-radius: var(--radius-round);
     font-size: 0.6875rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -1607,7 +1627,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-3);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -2065,6 +2085,47 @@ ul {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+}
+
+/* ── Focus-visible accessibility ring ───────────────────────────────────────
+ * Explicit keyboard focus indicators for all interactive elements, following
+ * WCAG 2.2 §2.4.11 Focus Appearance. :focus-visible fires only for keyboard
+ * and programmatic focus — not on pointer clicks — so sighted mouse users
+ * are unaffected while keyboard and switch-access users get a clear indicator.
+ * The 2 px outline in --accent against the dark backgrounds exceeds the 3:1
+ * contrast ratio required by WCAG 2.1 §1.4.11 Non-text Contrast.
+ * ──────────────────────────────────────────────────────────────────────── */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: var(--radius-1);
+}
+
+/* Circular elements need a matching circular focus ring */
+.pfp-wrap:focus-visible {
+    outline-offset: 5px;
+    border-radius: 50%;
+}
+
+/* Dropdown: supplement the outline with the inner glow already defined above */
+.filter-dropdown:focus-visible {
+    outline-offset: 2px;
+}
+
+/* Mobile menu links are large — give them a little more breathing room */
+.mobile-menu a:focus-visible {
+    border-radius: var(--radius-2);
+    outline-offset: 4px;
+}
+
+/* Scroll nav arrow buttons */
+.scroll-nav:focus-visible {
+    border-radius: var(--radius-2);
+}
+
+/* details/summary collapsible headings */
+.specialization-title:focus-visible {
+    outline-offset: 2px;
 }
 
 /* No-JS Fallback */
