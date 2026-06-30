@@ -220,7 +220,7 @@ def batch_process_logos():
 
     if not os.path.exists(logos_dir):
         print(f"Error: {logos_dir} directory not found!")
-        return
+        return 0
 
     # Get all image files in logos directory
     image_files = []
@@ -229,12 +229,14 @@ def batch_process_logos():
 
     if not image_files:
         print(f"No image files found in {logos_dir}")
-        return
+        return 0
 
     print("=" * 60)
     print("Batch Logo Converter: White + Purple Glow")
     print("=" * 60)
     print(f"\nFound {len(image_files)} logos to process\n")
+
+    processed_count = 0
 
     for i, filename in enumerate(sorted(image_files), 1):
         # Skip results of previous runs
@@ -254,7 +256,7 @@ def batch_process_logos():
             is_horizontal_logo = 'bridges' in filename.lower() and 'horizontal' in filename.lower()
             # Special handling for black logos (like Bridges square)
             do_invert = 'black' in filename.lower() and 'transparent' in filename.lower()
-            
+
             process_image(
                 input_path,
                 output_path,
@@ -267,6 +269,7 @@ def batch_process_logos():
                 invert=do_invert,
                 keep_only_white=is_horizontal_logo
             )
+            processed_count += 1
         except Exception as e:
             print(f"  [ERROR] Failed to process {filename}: {str(e)}")
 
@@ -275,9 +278,11 @@ def batch_process_logos():
     print("=" * 60)
     print("[SUCCESS] Batch processing complete!")
     print("=" * 60)
-    print(f"\nProcessed {len(image_files)} logos")
+    print(f"\nProcessed {processed_count} logos")
     print(f"Output directory: {logos_dir}")
     print("\nAll logos converted to white with purple glow!")
+
+    return processed_count
 
 def main():
     """
