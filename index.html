@@ -1123,6 +1123,13 @@
         </div>
     </section>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-inner">
@@ -1379,6 +1386,22 @@
             observer.observe(el);
         });
 
+        // Back to top button
+        const backToTopBtn = document.getElementById('backToTop');
+
+        function updateBackToTop() {
+            if (backToTopBtn) {
+                backToTopBtn.classList.toggle('visible', window.scrollY > 400);
+            }
+        }
+
+        if (backToTopBtn) {
+            backToTopBtn.addEventListener('click', () => {
+                const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+            });
+        }
+
         // Nav background on scroll and scroll progress bar
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('.nav');
@@ -1390,7 +1413,13 @@
 
             // Update scroll progress bar
             updateScrollProgress();
+
+            // Update back to top visibility
+            updateBackToTop();
         });
+
+        // Initialize back to top state on load
+        updateBackToTop();
 
         function updateScrollProgress() {
             const scrollLine = document.querySelector('.scroll-line');
