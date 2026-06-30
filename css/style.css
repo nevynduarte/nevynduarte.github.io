@@ -37,6 +37,11 @@
     --transition-fast: 150ms ease;
     --transition-base: 250ms ease;
     --transition-slow: 400ms ease;
+
+    /* Focus Ring Tokens (WCAG 2.1 AA — SC 2.4.7) */
+    --focus-ring-width: 2px;
+    --focus-ring-offset: 3px;
+    --focus-ring-color: var(--accent);
 }
 
 /* Reset & Base */
@@ -126,6 +131,32 @@ h4 {
     pointer-events: none !important;
     white-space: nowrap !important;
     line-height: 0 !important;
+}
+
+/* Skip-to-content link (WCAG 2.4.1 Bypass Blocks)
+   Visually hidden until keyboard-focused; then slides in from top. */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 10000;
+    padding: 0.75rem 1.5rem;
+    background: var(--accent);
+    color: var(--bg-primary);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 0 0 6px 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: top var(--transition-fast);
+}
+
+.skip-link:focus-visible {
+    top: 0;
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: -2px;
 }
 
 ul {
@@ -2077,4 +2108,86 @@ ul {
     opacity: 1 !important;
     transform: none !important;
     visibility: visible !important;
+}
+
+/* =====================================================
+   FOCUS VISIBLE POLICY (WCAG 2.1 AA — SC 2.4.7)
+   Tokens: --focus-ring-width / --focus-ring-offset /
+   --focus-ring-color (defined in :root above).
+   :focus-visible keeps rings invisible to pointer users;
+   component-specific rules add border-radius context.
+   ===================================================== */
+
+/* Universal baseline — catches anything not listed below */
+:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+    border-radius: 2px;
+}
+
+/* Inline links */
+a:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+    border-radius: 2px;
+}
+
+/* Navigation and mobile-menu links */
+.nav-links a:focus-visible,
+.mobile-menu a:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+    border-radius: 2px;
+    color: var(--accent);
+}
+
+/* Nav CTA (bordered button-link) */
+.nav-links a.nav-cta:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: calc(var(--focus-ring-offset) + 1px);
+    border-radius: 4px;
+}
+
+/* Hamburger / mobile-menu toggle */
+.nav-toggle:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+    border-radius: 4px;
+}
+
+/* Hero and About page CTA buttons */
+.btn:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+    border-radius: 4px;
+}
+
+/* Profile picture Easter egg — overrides the bare outline:none on .pfp-wrap */
+.pfp-wrap:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: calc(var(--focus-ring-offset) + 2px);
+    border-radius: 50%;
+}
+
+/* Section scroll-navigation arrows */
+.scroll-nav:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+    border-radius: 50%;
+}
+
+/* Projects filter <select> — supplements existing :focus box-shadow for keyboard nav */
+.filter-dropdown:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+    border-radius: 6px;
+}
+
+/* Contact icon links */
+.contact-link:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+    border-radius: 6px;
 }
