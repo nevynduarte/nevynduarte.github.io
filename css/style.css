@@ -33,10 +33,38 @@
     --section-padding: clamp(2rem, 5vw, 4rem);
     --container-max: 1200px;
 
-    /* Transitions */
-    --transition-fast: 150ms ease;
-    --transition-base: 250ms ease;
-    --transition-slow: 400ms ease;
+    /* === Open Props — Easing (MIT, openprops.dev) === */
+    --ease-1: cubic-bezier(.25, 0, .5, 1);
+    --ease-2: cubic-bezier(.25, 0, .4, 1);
+    --ease-3: cubic-bezier(.25, 0, .3, 1);
+    --ease-out-1: cubic-bezier(0, 0, .75, 1);
+    --ease-out-2: cubic-bezier(0, 0, .5, 1);
+    --ease-out-3: cubic-bezier(0, 0, .3, 1);
+    --ease-elastic-1: cubic-bezier(.5, .75, .75, 1.25);
+    --ease-squish-1: cubic-bezier(.5, -.1, .1, 1.5);
+
+    /* === Radius tokens === */
+    --radius-1: 2px;
+    --radius-2: 4px;
+    --radius-3: 6px;
+    --radius-4: 8px;
+    --radius-5: 12px;
+    --radius-round: 1e5px;
+
+    /* === Shadow tokens (dark-theme tuned) === */
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.25);
+    --shadow-2: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-3: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --shadow-4: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-glow-blue: 0 0 10px rgba(59, 130, 246, 0.5);
+    --shadow-glow-blue-lg: 0 0 20px rgba(59, 130, 246, 0.3);
+    --shadow-glow-purple: 0 0 20px rgba(167, 139, 250, 0.3);
+    --shadow-glow-purple-lg: 0 0 30px rgba(167, 139, 250, 0.5);
+
+    /* Transitions — easing via Open Props tokens */
+    --transition-fast: 150ms var(--ease-out-2);
+    --transition-base: 250ms var(--ease-out-2);
+    --transition-slow: 400ms var(--ease-out-1);
 }
 
 /* Reset & Base */
@@ -213,7 +241,7 @@ ul {
 .nav-cta {
     padding: 0.5rem 1rem;
     border: 1px solid var(--border);
-    border-radius: 4px;
+    border-radius: var(--radius-2);
     transition: all var(--transition-fast);
 }
 
@@ -449,7 +477,7 @@ ul {
     font-size: 0.8125rem;
     font-family: var(--font-mono);
     letter-spacing: 0.02em;
-    border-radius: 4px;
+    border-radius: var(--radius-2);
     transition: all var(--transition-fast);
     cursor: pointer;
 }
@@ -738,7 +766,7 @@ ul {
 /* 9) Gentle Parallax (Controlled by JS) */
 .profile-img.fx-parallax {
     transform: translate(var(--px, 0), var(--py, 0)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-    transition: transform 0.2s ease-out;
+    transition: transform 0.2s var(--ease-out-2);
 }
 
 /* 10) Breathing Pulse Glow */
@@ -878,9 +906,9 @@ ul {
     transition: opacity var(--transition-base);
     background: var(--bg-card);
     padding: 0.5rem 1rem;
-    border-radius: 999px;
+    border-radius: var(--radius-round);
     border: 1px solid var(--border);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-3);
 }
 
 .scroll-center {
@@ -914,7 +942,7 @@ ul {
     background: var(--border);
     position: relative;
     overflow: hidden;
-    border-radius: 2px;
+    border-radius: var(--radius-1);
     --scroll-progress: 0%;
 }
 
@@ -926,8 +954,8 @@ ul {
     width: var(--scroll-progress);
     height: 100%;
     background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 100%);
-    transition: width 0.15s ease-out;
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    transition: width 0.15s var(--ease-out-3);
+    box-shadow: var(--shadow-glow-blue);
 }
 
 /* Sections */
@@ -1042,7 +1070,7 @@ ul {
     padding: 1.5rem;
     background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.03) 100%);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-4);
 }
 
 .filter-label {
@@ -1065,13 +1093,13 @@ ul {
     background-image: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-card) 100%);
     color: var(--text-primary);
     border: 1px solid var(--border-light);
-    border-radius: 6px;
+    border-radius: var(--radius-3);
     font-family: var(--font-mono);
     font-size: 0.875rem;
     cursor: pointer;
     transition: all var(--transition-base);
     min-width: 200px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-2);
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -1113,7 +1141,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-4);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1146,7 +1174,7 @@ ul {
     justify-content: center;
     background: var(--bg-tertiary);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: var(--radius-5);
     color: var(--text-tertiary);
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -1215,7 +1243,7 @@ ul {
     padding: 0.25rem 0.75rem;
     background: var(--accent-subtle);
     border: 1px solid rgba(59, 130, 246, 0.2);
-    border-radius: 4px;
+    border-radius: var(--radius-2);
     font-size: 0.75rem;
     color: var(--accent);
 }
@@ -1231,7 +1259,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-4);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1284,7 +1312,7 @@ ul {
 .project-tags span {
     padding: 0.25rem 0.5rem;
     background: var(--bg-tertiary);
-    border-radius: 4px;
+    border-radius: var(--radius-2);
     font-size: 0.6875rem;
     color: var(--text-tertiary);
 }
@@ -1336,7 +1364,7 @@ ul {
     align-items: center;
     gap: 0.4rem;
     padding: 0.2rem 0.6rem;
-    border-radius: 999px;
+    border-radius: var(--radius-round);
     font-size: 0.6875rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -1378,7 +1406,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-4);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1411,17 +1439,17 @@ ul {
 .research-cover {
     width: 120px;
     height: auto;
-    border-radius: 4px;
+    border-radius: var(--radius-2);
     margin: 0 auto 1rem auto;
     display: block;
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    box-shadow: var(--shadow-glow-purple);
     transition: all var(--transition-base);
     opacity: 0.9;
 }
 
 .research-cover:hover {
     opacity: 1;
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+    box-shadow: var(--shadow-glow-purple-lg);
     transform: translateY(-2px);
 }
 
@@ -1440,7 +1468,7 @@ ul {
     align-items: center;
     gap: 0.35rem;
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color 0.2s var(--ease-out-2);
 }
 
 .entry-title:hover {
@@ -1450,7 +1478,7 @@ ul {
 .entry-link-icon {
     font-size: 0.85em;
     color: var(--text-tertiary);
-    transition: color 0.2s ease;
+    transition: color 0.2s var(--ease-out-2);
 }
 
 .entry-title:hover .entry-link-icon {
@@ -1471,7 +1499,7 @@ ul {
 .research-forward {
     padding: 2rem;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-4);
     background: var(--bg-tertiary);
 }
 
@@ -1515,7 +1543,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-4);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1539,15 +1567,15 @@ ul {
     width: 100%;
     height: 180px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: var(--radius-2);
     margin-bottom: 1rem;
-    box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+    box-shadow: var(--shadow-glow-purple);
     transition: all var(--transition-base);
 }
 
 .blog-card:hover .blog-image {
     transform: scale(1.01);
-    box-shadow: 0 0 30px rgba(167, 139, 250, 0.5);
+    box-shadow: var(--shadow-glow-purple-lg);
 }
 
 .blog-card h3 {
@@ -1582,7 +1610,7 @@ ul {
 .blog-status {
     display: inline-flex;
     padding: 0.25rem 0.75rem;
-    border-radius: 999px;
+    border-radius: var(--radius-round);
     font-size: 0.6875rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -1607,7 +1635,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-4);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
