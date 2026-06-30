@@ -76,6 +76,7 @@
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Subtle grid background -->
     <div class="grid-bg"></div>
 
@@ -97,7 +98,7 @@
                 <a href="/#contact" title="Get in touch">Contact</a>
                 <a href="/NevynDuarteResume.pdf" class="nav-cta" target="_blank">Resume ↗</a>
             </div>
-            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -106,7 +107,7 @@
     </nav>
 
     <!-- Mobile menu -->
-    <div class="mobile-menu">
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
         <a href="/#about">About</a>
         <a href="/#experience">Experience</a>
         <a href="/#education">Education</a>
@@ -118,7 +119,7 @@
     </div>
 
     <!-- About Page Content -->
-    <section class="section about-page" style="padding-top: 8rem;">
+    <section class="section about-page" id="main-content" style="padding-top: 8rem;">
         <div class="section-inner">
             <div class="section-header">
                 <span class="section-number">Bio</span>
@@ -393,6 +394,7 @@
             const isActive = navToggle.classList.toggle('active');
             mobileMenu.classList.toggle('active');
             navToggle.setAttribute('aria-expanded', isActive);
+            mobileMenu.setAttribute('aria-hidden', !isActive);
         });
 
         // Close mobile menu when clicking a link
@@ -400,6 +402,8 @@
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
                 mobileMenu.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
             });
         });
 

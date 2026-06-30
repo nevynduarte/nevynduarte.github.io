@@ -74,6 +74,7 @@
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Subtle grid background -->
     <div class="grid-bg"></div>
 
@@ -94,7 +95,7 @@
                 <a href="#contact" title="Get in touch">Contact</a>
                 <a href="NevynDuarteResume.pdf" class="nav-cta" target="_blank">Resume ↗</a>
             </div>
-            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -103,7 +104,7 @@
     </nav>
 
     <!-- Mobile menu -->
-    <div class="mobile-menu">
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
@@ -115,7 +116,7 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="main-content">
         <h1 class="sr-only">Nevyn Duarte — Data Scientist & Machine Learning Engineer</h1>
         <div class="hero-content">
             <div class="hero-text">
@@ -1260,6 +1261,7 @@
             const isActive = navToggle.classList.toggle('active');
             mobileMenu.classList.toggle('active');
             navToggle.setAttribute('aria-expanded', isActive);
+            mobileMenu.setAttribute('aria-hidden', !isActive);
         });
 
         // Helper function to handle smooth scrolling
@@ -1329,6 +1331,8 @@
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
                 mobileMenu.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
             });
         });
 
