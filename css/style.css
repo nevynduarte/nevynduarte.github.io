@@ -37,6 +37,28 @@
     --transition-fast: 150ms ease;
     --transition-base: 250ms ease;
     --transition-slow: 400ms ease;
+
+    /* === Fluid spacing scale — Open Props v1.7 (MIT, open-props.style) ===
+     * Inlined as pure CSS custom properties; zero build cost.
+     * Prefer these over bare clamp() calls in padding / gap / margin. */
+    --size-fluid-1: clamp(.5rem, 1vw, 1rem);
+    --size-fluid-2: clamp(1rem, 2vw, 1.5rem);
+    --size-fluid-3: clamp(1.5rem, 3vw, 2rem);
+    --size-fluid-4: clamp(2rem, 4vw, 3rem);
+    --size-fluid-5: clamp(4rem, 5vw, 5rem);
+    --size-fluid-6: clamp(5rem, 6vw, 7.5rem);
+
+    /* === Fluid font-size scale — Open Props v1.7 (MIT) === */
+    --font-size-fluid-1: clamp(1rem, 4vw, 1.5rem);
+    --font-size-fluid-2: clamp(1.5rem, 6vw, 2.5rem);
+    --font-size-fluid-3: clamp(2rem, 9vw, 3.5rem);
+
+    /* === Site display-type tokens (semantic aliases over bespoke clamp values) ===
+     * Named by visual intent so callers don't repeat raw clamp() literals. */
+    --text-display-xl: clamp(2.5rem, 6vw, 4.5rem);  /* hero title */
+    --text-display-lg: clamp(2.5rem, 5vw, 4rem);    /* contact / about page title */
+    --text-display-md: clamp(2rem, 4vw, 3rem);       /* section headings */
+    --text-display-sm: clamp(1.75rem, 8vw, 2.5rem);  /* mobile hero title */
 }
 
 /* Reset & Base */
@@ -379,7 +401,7 @@ ul {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-size: var(--text-display-xl);
     margin-bottom: 1.5rem;
     font-weight: 700;
     background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 50%, var(--text-primary) 100%);
@@ -955,7 +977,7 @@ ul {
 }
 
 .section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: var(--text-display-md);
 }
 
 /* About Section */
@@ -1817,7 +1839,7 @@ ul {
 }
 
 .contact-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: var(--text-display-lg);
     margin-bottom: 1.5rem;
 }
 
@@ -1940,7 +1962,7 @@ ul {
     }
 
     .hero-title {
-        font-size: clamp(1.75rem, 8vw, 2.5rem);
+        font-size: var(--text-display-sm);
     }
 
     .profile-container {
