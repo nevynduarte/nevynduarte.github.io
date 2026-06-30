@@ -37,6 +37,28 @@
     --transition-fast: 150ms ease;
     --transition-base: 250ms ease;
     --transition-slow: 400ms ease;
+
+    /* ── Shadow Tokens — Open Props-inspired, dark-theme calibrated ───────
+       Two tiers: neutral elevation (dark drop shadows) and brand glow
+       (accent-tinted halos for interactive feedback).
+       ──────────────────────────────────────────────────────────────────── */
+
+    /* Elevation: neutral depth for raised UI elements */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.20);  /* cards, selects at rest */
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.30); /* floating UI (tooltips, indicators) */
+
+    /* Accent glow: blue (#3b82f6) for hover / focus feedback */
+    --shadow-glow-accent:        0 4px 12px rgba(59, 130, 246, 0.15); /* hover */
+    --shadow-glow-accent-strong: 0 4px 12px rgba(59, 130, 246, 0.20); /* focus */
+    --shadow-glow-accent-bar:    0 0  10px rgba(59, 130, 246, 0.50);  /* progress bar fill */
+
+    /* Purple glow: deep violet (#8b5cf6) for research imagery */
+    --shadow-glow-purple:        0 0 20px rgba(139, 92, 246, 0.30);
+    --shadow-glow-purple-strong: 0 0 30px rgba(139, 92, 246, 0.50);
+
+    /* Violet glow: soft violet (#a78bfa = --accent-purple) for blog imagery */
+    --shadow-glow-violet:        0 0 20px rgba(167, 139, 250, 0.30);
+    --shadow-glow-violet-strong: 0 0 30px rgba(167, 139, 250, 0.50);
 }
 
 /* Reset & Base */
@@ -880,7 +902,7 @@ ul {
     padding: 0.5rem 1rem;
     border-radius: 999px;
     border: 1px solid var(--border);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-md);
 }
 
 .scroll-center {
@@ -927,7 +949,7 @@ ul {
     height: 100%;
     background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 100%);
     transition: width 0.15s ease-out;
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    box-shadow: var(--shadow-glow-accent-bar);
 }
 
 /* Sections */
@@ -1071,7 +1093,7 @@ ul {
     cursor: pointer;
     transition: all var(--transition-base);
     min-width: 200px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-sm);
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -1085,14 +1107,14 @@ ul {
 
 .filter-dropdown:hover {
     border-color: var(--accent);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    box-shadow: var(--shadow-glow-accent);
     transform: translateY(-1px);
 }
 
 .filter-dropdown:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-subtle), 0 4px 12px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 0 3px var(--accent-subtle), var(--shadow-glow-accent-strong);
 }
 
 .filter-dropdown option {
@@ -1414,14 +1436,14 @@ ul {
     border-radius: 4px;
     margin: 0 auto 1rem auto;
     display: block;
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    box-shadow: var(--shadow-glow-purple);
     transition: all var(--transition-base);
     opacity: 0.9;
 }
 
 .research-cover:hover {
     opacity: 1;
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+    box-shadow: var(--shadow-glow-purple-strong);
     transform: translateY(-2px);
 }
 
@@ -1541,13 +1563,13 @@ ul {
     object-fit: cover;
     border-radius: 4px;
     margin-bottom: 1rem;
-    box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+    box-shadow: var(--shadow-glow-violet);
     transition: all var(--transition-base);
 }
 
 .blog-card:hover .blog-image {
     transform: scale(1.01);
-    box-shadow: 0 0 30px rgba(167, 139, 250, 0.5);
+    box-shadow: var(--shadow-glow-violet-strong);
 }
 
 .blog-card h3 {
