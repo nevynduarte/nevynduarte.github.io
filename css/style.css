@@ -33,10 +33,47 @@
     --section-padding: clamp(2rem, 5vw, 4rem);
     --container-max: 1200px;
 
-    /* Transitions */
-    --transition-fast: 150ms ease;
-    --transition-base: 250ms ease;
-    --transition-slow: 400ms ease;
+    /* Transitions — Open Props ease scale */
+    --transition-fast: 150ms var(--ease-3);
+    --transition-base: 250ms var(--ease-2);
+    --transition-slow: 400ms var(--ease-1);
+
+    /* ── Open Props bridge layer ──────────────────────────────────────
+     * Semantic aliases over Open Props primitives (unpkg.com/open-props).
+     * Open Props must load before this stylesheet.
+     * ────────────────────────────────────────────────────────────── */
+
+    /* Border radius */
+    --radius-xs:     var(--radius-1);
+    --radius-sm:     4px;
+    --radius-md:     8px;
+    --radius-lg:     var(--radius-3);
+    --radius-pill:   var(--radius-round);
+    --radius-circle: 50%;
+
+    /* Spacing (Open Props size scale) */
+    --space-1: var(--size-1);
+    --space-2: var(--size-2);
+    --space-3: var(--size-3);
+    --space-4: var(--size-5);
+    --space-5: var(--size-7);
+    --space-6: var(--size-8);
+    --space-7: var(--size-9);
+
+    /* Typography scale (Open Props font-size scale) */
+    --text-xs:   var(--font-size-0);
+    --text-sm:   0.8125rem;
+    --text-base: var(--font-size-1);
+    --text-lg:   var(--font-size-3);
+    --text-xl:   var(--font-size-4);
+    --text-2xl:  var(--font-size-5);
+    --text-3xl:  var(--font-size-6);
+
+    /* Line heights (Open Props font-lineheight scale) */
+    --leading-tight:   var(--font-lineheight-1);
+    --leading-snug:    var(--font-lineheight-2);
+    --leading-normal:  var(--font-lineheight-4);
+    --leading-relaxed: var(--font-lineheight-5);
 }
 
 /* Reset & Base */
@@ -213,7 +250,7 @@ ul {
 .nav-cta {
     padding: 0.5rem 1rem;
     border: 1px solid var(--border);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     transition: all var(--transition-fast);
 }
 
@@ -449,7 +486,7 @@ ul {
     font-size: 0.8125rem;
     font-family: var(--font-mono);
     letter-spacing: 0.02em;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     transition: all var(--transition-fast);
     cursor: pointer;
 }
@@ -497,7 +534,7 @@ ul {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     transform: translateZ(0);
     transition: transform 220ms ease, filter 400ms ease;
 }
@@ -506,7 +543,7 @@ ul {
 .pfp-wrap {
     position: relative;
     display: inline-block;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     overflow: hidden;
     cursor: pointer;
     user-select: none;
@@ -520,7 +557,7 @@ ul {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     transform: translateZ(0);
     transition: transform 220ms ease, filter 400ms ease;
 }
@@ -541,7 +578,7 @@ ul {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 40%, transparent 100%);
     pointer-events: none;
     z-index: 10 !important;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     text-align: center;
     backdrop-filter: blur(2px);
     /* High-end legibility boost */
@@ -589,7 +626,7 @@ ul {
     inset: 0 !important;
     pointer-events: none;
     z-index: 5 !important;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     overflow: hidden;
 }
 
@@ -625,7 +662,7 @@ ul {
     mix-blend-mode: screen;
     pointer-events: none;
     z-index: 1;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
 }
 
 /* 3) Subtle neon glow */
@@ -637,7 +674,7 @@ ul {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     pointer-events: none;
     box-shadow: inset 0 0 30px rgba(59, 130, 246, 0.4), 0 0 20px rgba(59, 130, 246, 0.2);
     z-index: 1;
@@ -656,7 +693,7 @@ ul {
     opacity: 0.15;
     pointer-events: none;
     z-index: 1;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
 }
 
 /* 5) Gentle float */
@@ -690,7 +727,7 @@ ul {
             rgba(255, 255, 255, 0.15), transparent 50%);
     pointer-events: none;
     z-index: 1;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
 }
 
 /* 7) Editorial Grain & Vignette */
@@ -878,7 +915,7 @@ ul {
     transition: opacity var(--transition-base);
     background: var(--bg-card);
     padding: 0.5rem 1rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     border: 1px solid var(--border);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
@@ -914,7 +951,7 @@ ul {
     background: var(--border);
     position: relative;
     overflow: hidden;
-    border-radius: 2px;
+    border-radius: var(--radius-xs);
     --scroll-progress: 0%;
 }
 
@@ -1042,7 +1079,7 @@ ul {
     padding: 1.5rem;
     background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.03) 100%);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
 }
 
 .filter-label {
@@ -1113,7 +1150,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1215,7 +1252,7 @@ ul {
     padding: 0.25rem 0.75rem;
     background: var(--accent-subtle);
     border: 1px solid rgba(59, 130, 246, 0.2);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-size: 0.75rem;
     color: var(--accent);
 }
@@ -1231,7 +1268,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1284,7 +1321,7 @@ ul {
 .project-tags span {
     padding: 0.25rem 0.5rem;
     background: var(--bg-tertiary);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-size: 0.6875rem;
     color: var(--text-tertiary);
 }
@@ -1336,7 +1373,7 @@ ul {
     align-items: center;
     gap: 0.4rem;
     padding: 0.2rem 0.6rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 0.6875rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -1378,7 +1415,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1411,7 +1448,7 @@ ul {
 .research-cover {
     width: 120px;
     height: auto;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     margin: 0 auto 1rem auto;
     display: block;
     box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
@@ -1471,7 +1508,7 @@ ul {
 .research-forward {
     padding: 2rem;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     background: var(--bg-tertiary);
 }
 
@@ -1515,7 +1552,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1539,7 +1576,7 @@ ul {
     width: 100%;
     height: 180px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     margin-bottom: 1rem;
     box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
     transition: all var(--transition-base);
@@ -1582,7 +1619,7 @@ ul {
 .blog-status {
     display: inline-flex;
     padding: 0.25rem 0.75rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 0.6875rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -1607,7 +1644,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
