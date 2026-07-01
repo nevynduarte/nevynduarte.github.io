@@ -48,8 +48,11 @@
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
         rel="stylesheet">
 
+    <!-- Design tokens: Open Props (MIT) — primitive easing, radius, and shadow tokens -->
+    <link rel="stylesheet" href="https://unpkg.com/open-props/open-props.min.css">
+
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=1.2">
+    <link rel="stylesheet" href="css/style.css?v=1.3">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -1483,6 +1486,65 @@
 
         // Initialize filters when DOM is loaded
         document.addEventListener('DOMContentLoaded', initializeSkillFilters);
+    </script>
+    <script>
+        // Smooth <details> open/close animation for Education specialization cards.
+        // Uses Web Animations API so it respects prefers-reduced-motion and degrades
+        // gracefully to instant toggle in older browsers.
+        (function () {
+            if (!('animate' in Element.prototype)) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            document.querySelectorAll('.specialization-group').forEach(function (details) {
+                var summary = details.querySelector('.specialization-title');
+                var content = details.querySelector(':scope > .edu-courses');
+                if (!summary || !content) return;
+
+                var anim = null;
+
+                summary.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Cancel any in-flight animation cleanly
+                    if (anim) {
+                        anim.cancel();
+                        content.style.overflow = '';
+                        content.style.maxHeight = '';
+                        anim = null;
+                    }
+
+                    if (details.open) {
+                        // Closing: animate height to zero, then remove [open]
+                        var startH = content.scrollHeight;
+                        content.style.overflow = 'hidden';
+                        anim = content.animate(
+                            [{ maxHeight: startH + 'px' }, { maxHeight: '0px' }],
+                            { duration: 240, easing: 'cubic-bezier(0,0,.3,1)' }
+                        );
+                        anim.onfinish = function () {
+                            details.open = false;   // UA stylesheet hides via display:none
+                            content.style.overflow = '';
+                            anim = null;
+                        };
+                    } else {
+                        // Opening: prime overflow+max-height, set [open], then animate in
+                        content.style.overflow = 'hidden';
+                        content.style.maxHeight = '0px';
+                        details.open = true;        // UA makes content display:block
+                        var targetH = content.scrollHeight; // scrollHeight ignores max-height
+                        anim = content.animate(
+                            [{ maxHeight: '0px' }, { maxHeight: targetH + 'px' }],
+                            { duration: 280, easing: 'cubic-bezier(.25,0,.4,1)' }
+                        );
+                        anim.onfinish = function () {
+                            content.style.overflow = '';
+                            content.style.maxHeight = '';
+                            anim = null;
+                        };
+                    }
+                });
+            });
+        }());
     </script>
 </body>
 
