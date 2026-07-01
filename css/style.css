@@ -37,6 +37,26 @@
     --transition-fast: 150ms ease;
     --transition-base: 250ms ease;
     --transition-slow: 400ms ease;
+
+    /* ── Layer 7 — Border-radius scale ──────────────────────────────── */
+    /* Values mirror Open Props radius-1…radius-6 semantics; circle/pill added for this site. */
+    --radius-xs:     2px;    /* subtle rounding — progress indicators */
+    --radius-sm:     4px;    /* buttons, inputs, small UI chips */
+    --radius-md:     6px;    /* medium cards, dropdown items */
+    --radius-lg:     8px;    /* cards, panels, modal corners */
+    --radius-xl:     12px;   /* large cards, feature sections */
+    --radius-circle: 50%;    /* avatar / circular badge */
+    --radius-pill:   999px;  /* pill tags, scroll nav */
+
+    /* ── Layer 8 — Z-index stacking scale ───────────────────────────── */
+    --z-ground:      0;     /* fixed background layer (.grid-bg) */
+    --z-base:        1;     /* base stacking context */
+    --z-raised:      2;     /* slightly elevated (pfp overlays) */
+    --z-elevated:    5;     /* pfp-overlay absolute stack */
+    --z-higher:      10;    /* pfp-hint hover label */
+    --z-indicator:   100;   /* scroll-down indicator badge */
+    --z-mobile-menu: 999;   /* full-screen mobile menu overlay */
+    --z-nav:         1000;  /* sticky top navigation */
 }
 
 /* Reset & Base */
@@ -73,7 +93,7 @@ body {
         linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none;
-    z-index: 0;
+    z-index: var(--z-ground);
 }
 
 /* Selection */
@@ -138,7 +158,7 @@ ul {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: var(--z-nav);
     padding: 1.25rem 2rem;
     transition: all var(--transition-base);
 }
@@ -213,7 +233,7 @@ ul {
 .nav-cta {
     padding: 0.5rem 1rem;
     border: 1px solid var(--border);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     transition: all var(--transition-fast);
 }
 
@@ -283,7 +303,7 @@ ul {
     right: 0;
     bottom: 0;
     background: var(--bg-primary);
-    z-index: 999;
+    z-index: var(--z-mobile-menu);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -449,7 +469,7 @@ ul {
     font-size: 0.8125rem;
     font-family: var(--font-mono);
     letter-spacing: 0.02em;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     transition: all var(--transition-fast);
     cursor: pointer;
 }
@@ -497,7 +517,7 @@ ul {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     transform: translateZ(0);
     transition: transform 220ms ease, filter 400ms ease;
 }
@@ -506,7 +526,7 @@ ul {
 .pfp-wrap {
     position: relative;
     display: inline-block;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     overflow: hidden;
     cursor: pointer;
     user-select: none;
@@ -520,7 +540,7 @@ ul {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     transform: translateZ(0);
     transition: transform 220ms ease, filter 400ms ease;
 }
@@ -540,8 +560,8 @@ ul {
     /* Strong caption-area gradient */
     background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 40%, transparent 100%);
     pointer-events: none;
-    z-index: 10 !important;
-    border-radius: 50%;
+    z-index: var(--z-higher) !important;
+    border-radius: var(--radius-circle);
     text-align: center;
     backdrop-filter: blur(2px);
     /* High-end legibility boost */
@@ -588,8 +608,8 @@ ul {
     position: absolute !important;
     inset: 0 !important;
     pointer-events: none;
-    z-index: 5 !important;
-    border-radius: 50%;
+    z-index: var(--z-elevated) !important;
+    border-radius: var(--radius-circle);
     overflow: hidden;
 }
 
@@ -624,8 +644,8 @@ ul {
         radial-gradient(circle at 80% 70%, rgba(167, 139, 250, 0.2), transparent 70%);
     mix-blend-mode: screen;
     pointer-events: none;
-    z-index: 1;
-    border-radius: 50%;
+    z-index: var(--z-base);
+    border-radius: var(--radius-circle);
 }
 
 /* 3) Subtle neon glow */
@@ -637,10 +657,10 @@ ul {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     pointer-events: none;
     box-shadow: inset 0 0 30px rgba(59, 130, 246, 0.4), 0 0 20px rgba(59, 130, 246, 0.2);
-    z-index: 1;
+    z-index: var(--z-base);
 }
 
 /* 4) Subtle scanlines */
@@ -655,8 +675,8 @@ ul {
             rgba(0, 0, 0, 0) 4px);
     opacity: 0.15;
     pointer-events: none;
-    z-index: 1;
-    border-radius: 50%;
+    z-index: var(--z-base);
+    border-radius: var(--radius-circle);
 }
 
 /* 5) Gentle float */
@@ -689,8 +709,8 @@ ul {
     background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
             rgba(255, 255, 255, 0.15), transparent 50%);
     pointer-events: none;
-    z-index: 1;
-    border-radius: 50%;
+    z-index: var(--z-base);
+    border-radius: var(--radius-circle);
 }
 
 /* 7) Editorial Grain & Vignette */
@@ -701,7 +721,7 @@ ul {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
     opacity: 0.4;
     pointer-events: none;
-    z-index: 2;
+    z-index: var(--z-raised);
 }
 
 .pfp-wrap.fx-grain::before {
@@ -710,7 +730,7 @@ ul {
     inset: 0;
     background: radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.4) 100%);
     pointer-events: none;
-    z-index: 2;
+    z-index: var(--z-raised);
 }
 
 /* 8) Glass Sheen (Hover Only) */
@@ -874,11 +894,11 @@ ul {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--text-tertiary);
-    z-index: 100;
+    z-index: var(--z-indicator);
     transition: opacity var(--transition-base);
     background: var(--bg-card);
     padding: 0.5rem 1rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     border: 1px solid var(--border);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
@@ -914,7 +934,7 @@ ul {
     background: var(--border);
     position: relative;
     overflow: hidden;
-    border-radius: 2px;
+    border-radius: var(--radius-xs);
     --scroll-progress: 0%;
 }
 
@@ -1042,7 +1062,7 @@ ul {
     padding: 1.5rem;
     background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.03) 100%);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
 }
 
 .filter-label {
@@ -1065,7 +1085,7 @@ ul {
     background-image: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-card) 100%);
     color: var(--text-primary);
     border: 1px solid var(--border-light);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     font-family: var(--font-mono);
     font-size: 0.875rem;
     cursor: pointer;
@@ -1113,7 +1133,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1146,7 +1166,7 @@ ul {
     justify-content: center;
     background: var(--bg-tertiary);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: var(--radius-xl);
     color: var(--text-tertiary);
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -1215,7 +1235,7 @@ ul {
     padding: 0.25rem 0.75rem;
     background: var(--accent-subtle);
     border: 1px solid rgba(59, 130, 246, 0.2);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-size: 0.75rem;
     color: var(--accent);
 }
@@ -1231,7 +1251,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1284,7 +1304,7 @@ ul {
 .project-tags span {
     padding: 0.25rem 0.5rem;
     background: var(--bg-tertiary);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-size: 0.6875rem;
     color: var(--text-tertiary);
 }
@@ -1336,7 +1356,7 @@ ul {
     align-items: center;
     gap: 0.4rem;
     padding: 0.2rem 0.6rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 0.6875rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -1378,7 +1398,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1411,7 +1431,7 @@ ul {
 .research-cover {
     width: 120px;
     height: auto;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     margin: 0 auto 1rem auto;
     display: block;
     box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
@@ -1471,7 +1491,7 @@ ul {
 .research-forward {
     padding: 2rem;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     background: var(--bg-tertiary);
 }
 
@@ -1515,7 +1535,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
@@ -1539,7 +1559,7 @@ ul {
     width: 100%;
     height: 180px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     margin-bottom: 1rem;
     box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
     transition: all var(--transition-base);
@@ -1582,7 +1602,7 @@ ul {
 .blog-status {
     display: inline-flex;
     padding: 0.25rem 0.75rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 0.6875rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -1607,7 +1627,7 @@ ul {
     padding: 2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-slow);
