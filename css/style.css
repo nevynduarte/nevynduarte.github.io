@@ -33,10 +33,47 @@
     --section-padding: clamp(2rem, 5vw, 4rem);
     --container-max: 1200px;
 
-    /* Transitions */
-    --transition-fast: 150ms ease;
-    --transition-base: 250ms ease;
-    --transition-slow: 400ms ease;
+    /* === Layer 1 — Easing (Open Props v1.7, MIT, inlined) === */
+    --ease-1: cubic-bezier(.25, 0, .5, 1);
+    --ease-2: cubic-bezier(.25, 0, .4, 1);
+    --ease-3: cubic-bezier(.25, 0, .3, 1);
+    --ease-4: cubic-bezier(.25, 0, .2, 1);
+    --ease-5: cubic-bezier(.25, 0, .1, 1);
+    --ease-in-1: cubic-bezier(.25, 0, 1, 1);
+    --ease-in-2: cubic-bezier(.50, 0, 1, 1);
+    --ease-in-3: cubic-bezier(.70, 0, 1, 1);
+    --ease-in-4: cubic-bezier(.90, 0, 1, 1);
+    --ease-in-5: cubic-bezier(1, 0, 1, 1);
+    --ease-out-1: cubic-bezier(0, 0, .75, 1);
+    --ease-out-2: cubic-bezier(0, 0, .50, 1);
+    --ease-out-3: cubic-bezier(0, 0, .3, 1);
+    --ease-out-4: cubic-bezier(0, 0, .1, 1);
+    --ease-out-5: cubic-bezier(0, 0, 0, 1);
+    --ease-in-out-1: cubic-bezier(.1, 0, .9, 1);
+    --ease-in-out-2: cubic-bezier(.3, 0, .7, 1);
+    --ease-in-out-3: cubic-bezier(.5, 0, .5, 1);
+    --ease-in-out-4: cubic-bezier(.7, 0, .3, 1);
+    --ease-in-out-5: cubic-bezier(.9, 0, .1, 1);
+    --ease-elastic-out-1: cubic-bezier(.5, .75, .75, 1.25);
+    --ease-elastic-out-2: cubic-bezier(.5, 1, .75, 1.25);
+    --ease-elastic-out-3: cubic-bezier(.5, 1.25, .75, 1.25);
+    --ease-elastic-out-4: cubic-bezier(.5, 1.5, .75, 1.25);
+    --ease-elastic-out-5: cubic-bezier(.5, 1.75, .75, 1.25);
+    --ease-squish-1: cubic-bezier(.5, -.1, .1, 1.5);
+    --ease-squish-2: cubic-bezier(.5, -.3, .1, 1.5);
+    --ease-squish-3: cubic-bezier(.5, -.5, .1, 1.5);
+    --ease-squish-4: cubic-bezier(.5, -.7, .1, 1.5);
+    --ease-squish-5: cubic-bezier(.5, -.9, .1, 1.5);
+    --ease-step-1: steps(2);
+    --ease-step-2: steps(3);
+    --ease-step-3: steps(4);
+    --ease-step-4: steps(7);
+    --ease-step-5: steps(10);
+
+    /* Transitions — semantic aliases over easing tokens */
+    --transition-fast: 150ms var(--ease-out-2);
+    --transition-base: 250ms var(--ease-out-2);
+    --transition-slow: 400ms var(--ease-in-out-2);
 }
 
 /* Reset & Base */
@@ -387,7 +424,7 @@ ul {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     background-size: 200% 200%;
-    animation: gradientShift 8s ease infinite;
+    animation: gradientShift 8s var(--ease-in-out-3) infinite;
     text-shadow: 0 0 40px rgba(139, 92, 246, 0.2);
 }
 
@@ -499,7 +536,7 @@ ul {
     object-fit: cover;
     border-radius: 50%;
     transform: translateZ(0);
-    transition: transform 220ms ease, filter 400ms ease;
+    transition: transform 220ms var(--ease-out-2), filter 400ms var(--ease-in-out-2);
 }
 
 /* Profile Picture Easter Egg & Remix Effects */
@@ -522,7 +559,7 @@ ul {
     object-fit: cover;
     border-radius: 50%;
     transform: translateZ(0);
-    transition: transform 220ms ease, filter 400ms ease;
+    transition: transform 220ms var(--ease-out-2), filter 400ms var(--ease-in-out-2);
 }
 
 /* Hover hint overlay (improved legibility) */
@@ -536,7 +573,7 @@ ul {
     padding: 30px 20px;
     opacity: 0;
     transform: translateY(10px);
-    transition: opacity 250ms ease, transform 250ms ease;
+    transition: opacity 250ms var(--ease-out-2), transform 250ms var(--ease-out-2);
     /* Strong caption-area gradient */
     background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 40%, transparent 100%);
     pointer-events: none;
@@ -673,13 +710,13 @@ ul {
 }
 
 .profile-img.fx-float {
-    animation: pfpFloat 3s ease-in-out infinite;
+    animation: pfpFloat 3s var(--ease-in-out-3) infinite;
 }
 
 /* 6) Tilt effect (CSS vars set via JS) */
 .profile-img.fx-tilt {
     transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-    transition: transform 150ms ease-out;
+    transition: transform 150ms var(--ease-out-3);
 }
 
 .pfp-wrap.fx-tilt::after {
@@ -738,7 +775,7 @@ ul {
 /* 9) Gentle Parallax (Controlled by JS) */
 .profile-img.fx-parallax {
     transform: translate(var(--px, 0), var(--py, 0)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-    transition: transform 0.2s ease-out;
+    transition: transform 200ms var(--ease-out-3);
 }
 
 /* 10) Breathing Pulse Glow */
@@ -755,7 +792,7 @@ ul {
 }
 
 .pfp-wrap.fx-pulseglow {
-    animation: pulseGlow 3s ease-in-out infinite;
+    animation: pulseGlow 3s var(--ease-in-out-3) infinite;
 }
 
 /* 11) Tech Duotone */
@@ -926,7 +963,7 @@ ul {
     width: var(--scroll-progress);
     height: 100%;
     background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 100%);
-    transition: width 0.15s ease-out;
+    transition: width 150ms var(--ease-out-3);
     box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
 }
 
@@ -1440,7 +1477,7 @@ ul {
     align-items: center;
     gap: 0.35rem;
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color 200ms var(--ease-out-2);
 }
 
 .entry-title:hover {
@@ -1450,7 +1487,7 @@ ul {
 .entry-link-icon {
     font-size: 0.85em;
     color: var(--text-tertiary);
-    transition: color 0.2s ease;
+    transition: color 200ms var(--ease-out-2);
 }
 
 .entry-title:hover .entry-link-icon {
@@ -2038,7 +2075,7 @@ ul {
 
 /* Scroll Target Highlight Animation */
 .scroll-target {
-    animation: scrollHighlight 1.5s ease-out;
+    animation: scrollHighlight 1.5s var(--ease-out-2);
 }
 
 @keyframes scrollHighlight {
