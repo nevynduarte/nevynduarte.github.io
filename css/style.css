@@ -37,6 +37,14 @@
     --transition-fast: 150ms ease;
     --transition-base: 250ms ease;
     --transition-slow: 400ms ease;
+
+    /* Font-weight scale */
+    --weight-light:    300;
+    --weight-regular:  400;
+    --weight-medium:   500;
+    --weight-semibold: 600;
+    --weight-bold:     700;
+    --weight-black:    900;
 }
 
 /* Reset & Base */
@@ -104,7 +112,7 @@ h2,
 h3,
 h4 {
     font-family: var(--font-display);
-    font-weight: 400;
+    font-weight: var(--weight-regular);
     color: var(--text-primary);
     line-height: 1.2;
 }
@@ -183,7 +191,7 @@ ul {
 
 .nav-logo-text {
     white-space: nowrap;
-    font-weight: 400;
+    font-weight: var(--weight-regular);
     opacity: 0.85;
 }
 
@@ -364,7 +372,7 @@ ul {
     font-family: var(--font-display);
     font-size: 3rem;
     /* Larger than 2.5rem stats */
-    font-weight: 400;
+    font-weight: var(--weight-regular);
     color: var(--text-primary);
     margin-bottom: 0.25rem;
     font-style: italic;
@@ -373,7 +381,7 @@ ul {
 
 .hero-identity-role {
     font-size: 1.25rem;
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     color: var(--text-secondary);
     letter-spacing: 0.02em;
 }
@@ -381,7 +389,7 @@ ul {
 .hero-title {
     font-size: clamp(2.5rem, 6vw, 4.5rem);
     margin-bottom: 1.5rem;
-    font-weight: 700;
+    font-weight: var(--weight-bold);
     background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 50%, var(--text-primary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -405,7 +413,7 @@ ul {
 }
 
 .hero-title strong {
-    font-weight: 900;
+    font-weight: var(--weight-black);
     background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -559,14 +567,14 @@ ul {
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 4px;
-    font-weight: 700;
+    font-weight: var(--weight-bold);
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .pfp-hint__text {
     font-size: 14px;
     line-height: 1.2;
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     color: #ffffff;
     /* Absolute white for contrast */
     font-style: italic;
@@ -1000,7 +1008,7 @@ ul {
     letter-spacing: 0.1em;
     color: var(--accent);
     margin-bottom: 0.75rem;
-    font-weight: 500;
+    font-weight: var(--weight-medium);
 }
 
 .skill-category ul {
@@ -1048,7 +1056,7 @@ ul {
 .filter-label {
     font-size: 0.875rem;
     color: var(--text-primary);
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     letter-spacing: 0.02em;
     white-space: nowrap;
 }
@@ -1173,7 +1181,7 @@ ul {
 .exp-company h3 {
     font-family: var(--font-mono);
     font-size: 1.125rem;
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     margin-bottom: 0.25rem;
 }
 
@@ -1265,7 +1273,7 @@ ul {
 .project-card h3 {
     font-family: var(--font-mono);
     font-size: 1.125rem;
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     margin-bottom: 1rem;
 }
 
@@ -1701,7 +1709,7 @@ ul {
 .specialization-title {
     font-size: 0.8125rem;
     color: var(--text-secondary);
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     padding: 0 0 0 1.5rem;
     margin-bottom: 0.35rem;
     cursor: pointer;
@@ -1720,7 +1728,7 @@ ul {
     position: absolute;
     left: 0;
     color: var(--accent-purple);
-    font-weight: bold;
+    font-weight: var(--weight-bold);
     transition: transform var(--transition-fast);
 }
 
@@ -1776,7 +1784,7 @@ ul {
 .edu-activities-label {
     font-size: 0.8125rem;
     color: var(--text-secondary);
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     margin-bottom: 0.5rem;
 }
 
