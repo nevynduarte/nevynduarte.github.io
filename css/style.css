@@ -33,10 +33,42 @@
     --section-padding: clamp(2rem, 5vw, 4rem);
     --container-max: 1200px;
 
-    /* Transitions */
-    --transition-fast: 150ms ease;
-    --transition-base: 250ms ease;
-    --transition-slow: 400ms ease;
+    /* Open Props motion & shape tokens (MIT — https://open-props.style)
+       These constants anchor the site to a maintained design-token foundation.
+       Local fallback values match Open Props v1.7 exactly so the CDN can
+       override them without any cascade conflict. */
+
+    /* Easing curves */
+    --ease-1: cubic-bezier(.25, 0, .5, 1);
+    --ease-2: cubic-bezier(.25, 0, .4, 1);
+    --ease-3: cubic-bezier(.25, 0, .3, 1);
+    --ease-out-1: cubic-bezier(0, 0, .75, 1);
+    --ease-out-2: cubic-bezier(0, 0, .5, 1);
+    --ease-out-3: cubic-bezier(0, 0, .3, 1);
+    --ease-elastic-out-1: cubic-bezier(.5, .75, .75, 1.25);
+
+    /* Border-radius scale */
+    --radius-1: 2px;
+    --radius-2: 4px;
+    --radius-3: 8px;
+    --radius-4: 12px;
+    --radius-round: 1e5px;
+
+    /* Shadow tokens — tuned for a dark-background surface */
+    --shadow-color: 220 3% 5%;
+    --shadow-strength: 1%;
+    --shadow-2:
+        0 1px 2px -1px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%)),
+        0 2px 4px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%));
+    --shadow-3:
+        0 2px 4px -2px  hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
+        0 4px 8px -4px  hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)),
+        0 8px 16px -8px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 7%));
+
+    /* Transitions — reference Open Props easing curves for intentional motion */
+    --transition-fast: 150ms var(--ease-out-3);
+    --transition-base: 250ms var(--ease-2);
+    --transition-slow: 400ms var(--ease-1);
 }
 
 /* Reset & Base */
@@ -1129,6 +1161,7 @@ ul {
 
 .experience-item:hover {
     border-color: var(--border-light);
+    box-shadow: var(--shadow-2);
 }
 
 .exp-logo {
@@ -1245,6 +1278,7 @@ ul {
 .project-card:hover {
     border-color: var(--border-light);
     transform: translateY(-4px);
+    box-shadow: var(--shadow-3);
 }
 
 .project-card.featured {
@@ -1716,16 +1750,21 @@ ul {
 }
 
 .specialization-title::before {
-    content: '+';
+    content: '▸';
     position: absolute;
     left: 0;
     color: var(--accent-purple);
-    font-weight: bold;
-    transition: transform var(--transition-fast);
+    font-size: 0.7em;
+    line-height: 1.6;
+    display: inline-block; /* required for transform on pseudo-elements */
+    transform-origin: center;
+    /* Animate rotation with Open Props easing; content stays '▸' — no content jump */
+    transition: transform 220ms var(--ease-out-2), color var(--transition-fast);
 }
 
 .specialization-group[open] .specialization-title::before {
-    content: '−';
+    transform: rotate(90deg); /* chevron points down when open */
+    color: var(--accent);
 }
 
 .specialization-title:hover {
