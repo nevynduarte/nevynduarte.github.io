@@ -1,47 +1,26 @@
-# Nevyn Duarte - Personal Site
+# nevyn.tech
 
-A modern, professional portfolio site designed to showcase experience in Machine Learning Engineering, Quantitative Finance, and Data Science.
+An architecture-led portfolio for AI / ML engineering, quantitative systems, and production software work.
 
-## Features
+## Stack
 
-- **Modern Design**: Dark theme with refined typography using IBM Plex Mono and Instrument Serif
-- **Responsive**: Fully responsive design optimized for all devices
-- **Performance**: Minimal dependencies, CSS animations, lazy loading
-- **Accessibility**: Semantic HTML, reduced motion support, proper contrast ratios
+- React + Vite
+- React Three Fiber + Drei + Three.js
+- Framer Motion
+- Responsive CSS with reduced-motion support
 
-## Structure
+## Local development
 
-```
-├── index.html          # Main page
-├── css/
-│   └── style.css       # Stylesheet
-├── images/
-│   ├── profilepic.jpg  # Profile photo
-│   ├── favicon.ico     # Site favicon
-│   └── ...             # Other assets
-└── NevynDuarteResume.pdf
+```bash
+npm install
+npm run dev
 ```
 
-## Sections
+Create a production build with `npm run build`. Static assets, the résumé, crawler files, and the GitHub Pages `CNAME` are copied from `public/`.
 
-1. **Hero** - Introduction with key stats
-2. **About** - Background and skills overview
-3. **Experience** - Professional history with tech tags
-4. **Projects** - Featured work including ML research
-5. **Education** - Academic credentials
-6. **Contact** - Links and call-to-action
+## Design principles
 
-## Deployment
-
-This site is designed for GitHub Pages. Simply push to a repository named `username.github.io`.
-
-## Tech Stack
-
-- HTML5
-- CSS3 (Custom Properties, Grid, Flexbox, Animations)
-- Vanilla JavaScript (Intersection Observer, Smooth Scroll)
-- Google Fonts (IBM Plex Mono, Instrument Serif)
-
----
-
-Built with precision.
+- Systems and technical evidence appear before chronology.
+- WebGL is enhancement, not content: the page remains readable when 3D is disabled.
+- Full career history stays available while repetitive detail is progressively compressed.
+- Keyboard navigation, semantic headings, mobile layout, and reduced motion are first-class.
