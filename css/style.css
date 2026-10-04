@@ -1,6 +1,6 @@
 /* 
  * Nevyn Duarte - Personal Site Stylesheet
- * A refined, professional aesthetic for MLE/Quant/DS positioning
+ * A refined, professional aesthetic for applied AI and ML engineering
  */
 
 :root {
@@ -1885,6 +1885,18 @@ ul {
     color: var(--text-tertiary);
 }
 
+.about-page-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 4rem;
+    align-items: start;
+}
+
+.about-sidebar {
+    position: sticky;
+    top: 6rem;
+}
+
 /* Responsive */
 @media (max-width: 968px) {
     .hero-content {
@@ -1917,6 +1929,18 @@ ul {
 
     .about-content {
         grid-template-columns: 1fr;
+    }
+
+    .about-page-content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+    }
+
+    .about-sidebar {
+        position: static;
+        width: 100%;
+        max-width: 400px;
+        justify-self: center;
     }
 
     .research-intro {
